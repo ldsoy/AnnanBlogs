@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ldsoy.github.io/AnnanBlogs/</id>
     <title>Annan&apos;s Blogs</title>
-    <updated>2021-09-30T13:19:25.311Z</updated>
+    <updated>2021-09-30T13:22:43.662Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ldsoy.github.io/AnnanBlogs/"/>
     <link rel="self" href="https://ldsoy.github.io/AnnanBlogs/atom.xml"/>
@@ -12,8 +12,8 @@
     <rights>All rights reserved 2021, Annan&apos;s Blogs</rights>
     <entry>
         <title type="html"><![CDATA[白嫖HeroKu，利用CloudFlare进行反向代理]]></title>
-        <id>https://ldsoy.github.io/AnnanBlogs/post/bai-piao-herokuli-yong-cloudflare-jin-xing-fan-xiang-dai-li/</id>
-        <link href="https://ldsoy.github.io/AnnanBlogs/post/bai-piao-herokuli-yong-cloudflare-jin-xing-fan-xiang-dai-li/">
+        <id>https://ldsoy.github.io/AnnanBlogs/post/herokuli-cloudflare/</id>
+        <link href="https://ldsoy.github.io/AnnanBlogs/post/herokuli-cloudflare/">
         </link>
         <updated>2021-09-30T12:27:51.000Z</updated>
         <content type="html"><![CDATA[<ol>
@@ -71,8 +71,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[JDK11的配置问题]]></title>
-        <id>https://ldsoy.github.io/AnnanBlogs/post/jdk11-de-pei-zhi-wen-ti/</id>
-        <link href="https://ldsoy.github.io/AnnanBlogs/post/jdk11-de-pei-zhi-wen-ti/">
+        <id>https://ldsoy.github.io/AnnanBlogs/post/jdk11/</id>
+        <link href="https://ldsoy.github.io/AnnanBlogs/post/jdk11/">
         </link>
         <updated>2021-09-30T11:03:31.000Z</updated>
         <content type="html"><![CDATA[<h2 id="事件过程">事件过程</h2>

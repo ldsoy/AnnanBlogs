@@ -1,0 +1,226 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>白嫖HeroKu，利用CloudFlare进行反向代理 | Annan&#39;s Blogs</title>
+<link rel="shortcut icon" href="https://ldsoy.github.io/AnnanBlogs//favicon.ico?v=1633008161350">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://ldsoy.github.io/AnnanBlogs//styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="白嫖HeroKu，利用CloudFlare进行反向代理 | Annan&#39;s Blogs - Atom Feed" href="https://ldsoy.github.io/AnnanBlogs//atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="
+为了省去HeroKu自己搭建V2ray的环境，所以直接找GitHub的现成的项目就行
+去这里  https://github.com/qwer123369/bclswl0827-v2ray-heroku
+
+
+App name由小写字母和数..." />
+    <meta name="keywords" content="proxy" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://ldsoy.github.io/AnnanBlogs/">
+  <img class="avatar" src="https://ldsoy.github.io/AnnanBlogs//images/avatar.png?v=1633008161350" alt="">
+  </a>
+  <h1 class="site-title">
+    Annan&#39;s Blogs
+  </h1>
+  <p class="site-description">
+    每天都要开心哦！
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              白嫖HeroKu，利用CloudFlare进行反向代理
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-09-30
+              </span>
+              <span>
+                2 min read
+              </span>
+              
+                <a href="https://ldsoy.github.io/AnnanBlogs/tag/b0QsyBKyE/" class="post-tag">
+                  # proxy
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/68267833_p0.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <ol>
+<li>为了省去HeroKu自己搭建V2ray的环境，所以直接找GitHub的现成的项目就行<br>
+去这里  <a href="https://github.com/qwer123369/bclswl0827-v2ray-heroku">https://github.com/qwer123369/bclswl0827-v2ray-heroku</a></li>
+</ol>
+<figure data-type="image" tabindex="1"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930202919.png" alt="" loading="lazy"></figure>
+<p>App name由小写字母和数字组成，输入完点deploy，如果你没有Heroku账号就注册个，邮箱就能注册</p>
+<figure data-type="image" tabindex="2"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930203101.png" alt="" loading="lazy"></figure>
+<p>进去了点Settings</p>
+<figure data-type="image" tabindex="3"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930203139.png" alt="" loading="lazy"></figure>
+<p>进入settings，记住下面的那个域名和UUID</p>
+<figure data-type="image" tabindex="4"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930203207.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="5"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930203223.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="6"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930203232.png" alt="" loading="lazy"></figure>
+<p>现在可以填入你的V2ray自定义的节点了</p>
+<figure data-type="image" tabindex="7"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930203303.png" alt="" loading="lazy"></figure>
+<p>填好就是可以正常科学上网了，但是呢，这么是非常慢的，所以得进行反代理提速</p>
+<hr>
+<ol start="2">
+<li>打开<a href="https://dash.cloudflare.com/">https://dash.cloudflare.com/</a>，没有就注册个<br>
+<img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930203451.png" alt="" loading="lazy"><br>
+进去点创建Worker</li>
+</ol>
+<p><strong>接下来看仔细咯</strong></p>
+<p>复制下面这段代码</p>
+<pre><code class="language-java">addEventListener(
+	&quot;fetch&quot;,event =&gt; {
+		let url=new URL(event.request.url);
+		url.hostname=&quot;域名&quot;;
+		let request=new Request(url,event.request);
+		event. respondWith(
+			fetch(request)
+		)
+	}
+)
+</code></pre>
+<p>把他的代码都删了，替换成上面这段代码,<code>域名</code>两个字改成你自己的域名<br>
+<img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930204100.png" alt="" loading="lazy"></p>
+<p>当右边变成如图所示的<code>Bad Request</code>，就代表好了<br>
+然后复制右边那个我打码部分的域名，那个就是反向代理加速完的域名，这个域名一会填到<code>伪装域名</code>那里</p>
+<p>然而，这个时候测速，你会发现还是很慢，那是因为反向代理的ip并不是你这里最快的IP，所以要进行IP优选</p>
+<hr>
+<ol start="3">
+<li>IP优选<a href="https://github.com/badafans/better-cloudflare-ip/releases">https://github.com/badafans/better-cloudflare-ip/releases</a>，下载那个Windows版本<br>
+<img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930205758.png" alt="" loading="lazy"></li>
+</ol>
+<p>下载好解压，运行<code>CF优选IP.bat</code>,Win10可以直接运行，win7看使用说明，有解决办法</p>
+<figure data-type="image" tabindex="8"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930205908.png" alt="" loading="lazy"></figure>
+<p>一个免费的vps，你就别期望太高了，50就行了，如果50Mbps还是找不到合适的IP，就再少点</p>
+<p>把优选到的IP，替换那个地址，第二步反向代理得到的域名填入伪装域名，如下图<br>
+<img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930210912.png" alt="" loading="lazy"></p>
+<p><strong>搞定收工</strong></p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://ldsoy.github.io/AnnanBlogs/post/jdk11/">
+              <h3 class="post-title">
+                JDK11的配置问题
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://ldsoy.github.io/AnnanBlogs//atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
