@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ldsoy.github.io/AnnanBlogs/</id>
     <title>Annan&apos;s Blogs</title>
-    <updated>2021-09-30T13:22:43.662Z</updated>
+    <updated>2021-09-30T13:56:45.719Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ldsoy.github.io/AnnanBlogs/"/>
     <link rel="self" href="https://ldsoy.github.io/AnnanBlogs/atom.xml"/>
@@ -11,15 +11,126 @@
     <icon>https://ldsoy.github.io/AnnanBlogs/favicon.ico</icon>
     <rights>All rights reserved 2021, Annan&apos;s Blogs</rights>
     <entry>
+        <title type="html"><![CDATA[Clash For Windows启用虚拟网卡TUN模式]]></title>
+        <id>https://ldsoy.github.io/AnnanBlogs/post/cfw-tun/</id>
+        <link href="https://ldsoy.github.io/AnnanBlogs/post/cfw-tun/">
+        </link>
+        <updated>2021-09-30T13:25:58.000Z</updated>
+        <summary type="html"><![CDATA[<p>Clash for windows以下简称为cfw，这个软件的作者提到tun模式在windows上是支持最好的，所以在此说一下怎么打开虚拟网卡tun模式</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Clash for windows以下简称为cfw，这个软件的作者提到tun模式在windows上是支持最好的，所以在此说一下怎么打开虚拟网卡tun模式</p>
+<!-- more -->
+<ol>
+<li>
+<p>先要下载支持tun的组件，去这里下<a href="https://www.wintun.net">https://www.wintun.net</a></p>
+<figure data-type="image" tabindex="1"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930213149.png" alt="" loading="lazy"></figure>
+<p>下载完是一个压缩包，里面有64的有x86的，找到跟你CFW对应版本的wintun.dll</p>
+</li>
+</ol>
+<hr>
+<ol start="2">
+<li>
+<p>把wintun.dll放进你们配置文件目录，点一下我标注的Open Folder就会弹出一个文件夹，那就是配置文件目录</p>
+<figure data-type="image" tabindex="2"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930213246.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930213301.png" alt="" loading="lazy"></figure>
+</li>
+</ol>
+<hr>
+<ol start="3">
+<li>
+<p>启用Service Mode，并安装</p>
+<figure data-type="image" tabindex="4"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930213417.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="5"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930213427.png" alt="" loading="lazy"></figure>
+<p>弄好后，Service Mode会变成雾蓝色的地球</p>
+<figure data-type="image" tabindex="6"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930213447.png" alt="" loading="lazy"></figure>
+<p>并且的你的配置文件的目录，会多一个Service的文件夹</p>
+</li>
+<li>
+<p>到Settings配置Profile Mixin</p>
+<figure data-type="image" tabindex="7"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930213607.png" alt="" loading="lazy"></figure>
+<p>打开后，把下面的配置填进去</p>
+<pre><code class="language-yaml">mixin:
+dns:
+    enable: true
+    default-nameserver:
+      - 223.5.5.5
+      - 1.1.1.1
+    enhanced-mode: redir-host
+    nameserver:
+      - 223.5.5.5
+      - 223.6.6.6
+      - https://223.5.5.5/resolve
+    fallback:
+      - 1.1.1.1
+      - 208.67.220.222:5353
+      - https://dns.rubyfish.cn/dns-query
+      - https://doh.opendns.com/dns-query
+      - tls://1.1.1.1:853
+    fallback-filter:
+      geoip: true
+tun:
+    enable: true
+    stack: gvisor
+    dns-hijack:
+      - 198.18.0.2:53
+    macOS-auto-route: true
+    macOS-auto-detect-interface: true
+    ```
+
+    就像下面这样
+
+    ![](https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930214503.png)
+
+    填好点右下角保存就行了。
+
+</code></pre>
+</li>
+<li>
+<p>回主界面打开Mixin和system proxy就ok了</p>
+<figure data-type="image" tabindex="8"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930214600.png" alt="" loading="lazy"></figure>
+<p>现在就是开启了虚拟网卡模式</p>
+<figure data-type="image" tabindex="9"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930214648.png" alt="" loading="lazy"></figure>
+<p>当你不想使用TUN模式了的时候就把Mixin关了就行</p>
+</li>
+</ol>
+<h2 id="补充">补充</h2>
+<p>如果显示Clash网卡无法连接，请更换Mixin中的DNS，或者你可以删掉fallback部分<br>
+如下：</p>
+<pre><code class="language-yaml">mixin:
+   dns:
+       enable: true
+       default-nameserver:
+         - 223.5.5.5
+         - 1.1.1.1
+       enhanced-mode: redir-host
+       nameserver:
+         - 223.5.5.5
+         - 223.6.6.6
+         - https://223.5.5.5/resolve
+   tun:
+       enable: true
+       stack: gvisor
+       dns-hijack:
+         - 198.18.0.2:53
+       macOS-auto-route: true
+       macOS-auto-detect-interface: true
+       ```
+
+
+
+
+
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[白嫖HeroKu，利用CloudFlare进行反向代理]]></title>
         <id>https://ldsoy.github.io/AnnanBlogs/post/herokuli-cloudflare/</id>
         <link href="https://ldsoy.github.io/AnnanBlogs/post/herokuli-cloudflare/">
         </link>
         <updated>2021-09-30T12:27:51.000Z</updated>
-        <content type="html"><![CDATA[<ol>
-<li>为了省去HeroKu自己搭建V2ray的环境，所以直接找GitHub的现成的项目就行<br>
-去这里  <a href="https://github.com/qwer123369/bclswl0827-v2ray-heroku">https://github.com/qwer123369/bclswl0827-v2ray-heroku</a></li>
-</ol>
+        <content type="html"><![CDATA[<p>1.为了省去HeroKu自己搭建V2ray的环境，所以直接找GitHub的现成的项目就行<br>
+去这里</p>
 <figure data-type="image" tabindex="1"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930202919.png" alt="" loading="lazy"></figure>
 <p>App name由小写字母和数字组成，输入完点deploy，如果你没有Heroku账号就注册个，邮箱就能注册</p>
 <figure data-type="image" tabindex="2"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930203101.png" alt="" loading="lazy"></figure>
@@ -33,11 +144,9 @@
 <figure data-type="image" tabindex="7"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930203303.png" alt="" loading="lazy"></figure>
 <p>填好就是可以正常科学上网了，但是呢，这么是非常慢的，所以得进行反代理提速</p>
 <hr>
-<ol start="2">
-<li>打开<a href="https://dash.cloudflare.com/">https://dash.cloudflare.com/</a>，没有就注册个<br>
+<p>2.打开<a href="https://dash.cloudflare.com/">https://dash.cloudflare.com/</a>，没有就注册个<br>
 <img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930203451.png" alt="" loading="lazy"><br>
-进去点创建Worker</li>
-</ol>
+进去点创建Worker</p>
 <p><strong>接下来看仔细咯</strong></p>
 <p>复制下面这段代码</p>
 <pre><code class="language-java">addEventListener(
@@ -57,10 +166,8 @@
 然后复制右边那个我打码部分的域名，那个就是反向代理加速完的域名，这个域名一会填到<code>伪装域名</code>那里</p>
 <p>然而，这个时候测速，你会发现还是很慢，那是因为反向代理的ip并不是你这里最快的IP，所以要进行IP优选</p>
 <hr>
-<ol start="3">
-<li>IP优选<a href="https://github.com/badafans/better-cloudflare-ip/releases">https://github.com/badafans/better-cloudflare-ip/releases</a>，下载那个Windows版本<br>
-<img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930205758.png" alt="" loading="lazy"></li>
-</ol>
+<p>3.IP优选<a href="https://github.com/badafans/better-cloudflare-ip/releases">https://github.com/badafans/better-cloudflare-ip/releases</a>，下载那个Windows版本<br>
+<img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930205758.png" alt="" loading="lazy"></p>
 <p>下载好解压，运行<code>CF优选IP.bat</code>,Win10可以直接运行，win7看使用说明，有解决办法</p>
 <figure data-type="image" tabindex="8"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930205908.png" alt="" loading="lazy"></figure>
 <p>一个免费的vps，你就别期望太高了，50就行了，如果50Mbps还是找不到合适的IP，就再少点</p>
@@ -71,8 +178,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[JDK11的配置问题]]></title>
-        <id>https://ldsoy.github.io/AnnanBlogs/post/jdk11/</id>
-        <link href="https://ldsoy.github.io/AnnanBlogs/post/jdk11/">
+        <id>https://ldsoy.github.io/AnnanBlogs/post/jdk11-config/</id>
+        <link href="https://ldsoy.github.io/AnnanBlogs/post/jdk11-config/">
         </link>
         <updated>2021-09-30T11:03:31.000Z</updated>
         <content type="html"><![CDATA[<h2 id="事件过程">事件过程</h2>

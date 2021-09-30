@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>白嫖HeroKu，利用CloudFlare进行反向代理 | Annan&#39;s Blogs</title>
-<link rel="shortcut icon" href="https://ldsoy.github.io/AnnanBlogs//favicon.ico?v=1633008161350">
+<link rel="shortcut icon" href="https://ldsoy.github.io/AnnanBlogs//favicon.ico?v=1633010172022">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://ldsoy.github.io/AnnanBlogs//styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="白嫖HeroKu，利用CloudFlare进行反向代理 | Annan&#39;s Blogs - Atom Feed" href="https://ldsoy.github.io/AnnanBlogs//atom.xml">
@@ -11,12 +11,14 @@
 
 
 
-    <meta name="description" content="
-为了省去HeroKu自己搭建V2ray的环境，所以直接找GitHub的现成的项目就行
-去这里  https://github.com/qwer123369/bclswl0827-v2ray-heroku
+    <meta name="description" content="1.为了省去HeroKu自己搭建V2ray的环境，所以直接找GitHub的现成的项目就行
+去这里
 
+App name由小写字母和数字组成，输入完点deploy，如果你没有Heroku账号就注册个，邮箱就能注册
 
-App name由小写字母和数..." />
+进去了点Settings
+
+..." />
     <meta name="keywords" content="proxy" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -26,7 +28,7 @@ App name由小写字母和数..." />
       <div class="main-content">
         <div class="site-header">
   <a href="https://ldsoy.github.io/AnnanBlogs/">
-  <img class="avatar" src="https://ldsoy.github.io/AnnanBlogs//images/avatar.png?v=1633008161350" alt="">
+  <img class="avatar" src="https://ldsoy.github.io/AnnanBlogs//images/avatar.png?v=1633010172022" alt="">
   </a>
   <h1 class="site-title">
     Annan&#39;s Blogs
@@ -99,10 +101,8 @@ App name由小写字母和数..." />
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <ol>
-<li>为了省去HeroKu自己搭建V2ray的环境，所以直接找GitHub的现成的项目就行<br>
-去这里  <a href="https://github.com/qwer123369/bclswl0827-v2ray-heroku">https://github.com/qwer123369/bclswl0827-v2ray-heroku</a></li>
-</ol>
+                <p>1.为了省去HeroKu自己搭建V2ray的环境，所以直接找GitHub的现成的项目就行<br>
+去这里</p>
 <figure data-type="image" tabindex="1"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930202919.png" alt="" loading="lazy"></figure>
 <p>App name由小写字母和数字组成，输入完点deploy，如果你没有Heroku账号就注册个，邮箱就能注册</p>
 <figure data-type="image" tabindex="2"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930203101.png" alt="" loading="lazy"></figure>
@@ -116,11 +116,9 @@ App name由小写字母和数..." />
 <figure data-type="image" tabindex="7"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930203303.png" alt="" loading="lazy"></figure>
 <p>填好就是可以正常科学上网了，但是呢，这么是非常慢的，所以得进行反代理提速</p>
 <hr>
-<ol start="2">
-<li>打开<a href="https://dash.cloudflare.com/">https://dash.cloudflare.com/</a>，没有就注册个<br>
+<p>2.打开<a href="https://dash.cloudflare.com/">https://dash.cloudflare.com/</a>，没有就注册个<br>
 <img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930203451.png" alt="" loading="lazy"><br>
-进去点创建Worker</li>
-</ol>
+进去点创建Worker</p>
 <p><strong>接下来看仔细咯</strong></p>
 <p>复制下面这段代码</p>
 <pre><code class="language-java">addEventListener(
@@ -140,10 +138,8 @@ App name由小写字母和数..." />
 然后复制右边那个我打码部分的域名，那个就是反向代理加速完的域名，这个域名一会填到<code>伪装域名</code>那里</p>
 <p>然而，这个时候测速，你会发现还是很慢，那是因为反向代理的ip并不是你这里最快的IP，所以要进行IP优选</p>
 <hr>
-<ol start="3">
-<li>IP优选<a href="https://github.com/badafans/better-cloudflare-ip/releases">https://github.com/badafans/better-cloudflare-ip/releases</a>，下载那个Windows版本<br>
-<img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930205758.png" alt="" loading="lazy"></li>
-</ol>
+<p>3.IP优选<a href="https://github.com/badafans/better-cloudflare-ip/releases">https://github.com/badafans/better-cloudflare-ip/releases</a>，下载那个Windows版本<br>
+<img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930205758.png" alt="" loading="lazy"></p>
 <p>下载好解压，运行<code>CF优选IP.bat</code>,Win10可以直接运行，win7看使用说明，有解决办法</p>
 <figure data-type="image" tabindex="8"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930205908.png" alt="" loading="lazy"></figure>
 <p>一个免费的vps，你就别期望太高了，50就行了，如果50Mbps还是找不到合适的IP，就再少点</p>
@@ -162,7 +158,7 @@ App name由小写字母和数..." />
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://ldsoy.github.io/AnnanBlogs/post/jdk11/">
+            <a href="https://ldsoy.github.io/AnnanBlogs/post/jdk11-config/">
               <h3 class="post-title">
                 JDK11的配置问题
               </h3>
