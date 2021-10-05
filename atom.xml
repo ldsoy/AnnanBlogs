@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ldsoy.github.io/AnnanBlogs/</id>
     <title>Annan&apos;s Blogs</title>
-    <updated>2021-10-04T11:35:37.710Z</updated>
+    <updated>2021-10-05T03:44:38.770Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ldsoy.github.io/AnnanBlogs/"/>
     <link rel="self" href="https://ldsoy.github.io/AnnanBlogs/atom.xml"/>
@@ -10,6 +10,38 @@
     <logo>https://ldsoy.github.io/AnnanBlogs/images/avatar.png</logo>
     <icon>https://ldsoy.github.io/AnnanBlogs/favicon.ico</icon>
     <rights>All rights reserved 2021, Annan&apos;s Blogs</rights>
+    <entry>
+        <title type="html"><![CDATA[N1盒子OpenWrt局域网共享硬盘]]></title>
+        <id>https://ldsoy.github.io/AnnanBlogs/post/n1-he-zi-openwrt-ju-yu-wang-gong-xiang-ying-pan/</id>
+        <link href="https://ldsoy.github.io/AnnanBlogs/post/n1-he-zi-openwrt-ju-yu-wang-gong-xiang-ying-pan/">
+        </link>
+        <updated>2021-10-05T03:38:08.000Z</updated>
+        <summary type="html"><![CDATA[<p>关于Openwrt系统怎么共享已经挂载的硬盘到局域网</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>关于Openwrt系统怎么共享已经挂载的硬盘到局域网</p>
+<!-- more -->
+<ol>
+<li>
+<p>先去你<code>挂载点</code>，看看硬盘挂上没，顺便记下<code>目录</code>，我这里是使用我的一个300G硬盘做的演示</p>
+<figure data-type="image" tabindex="1"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20211005113914.png" alt="" loading="lazy"></figure>
+</li>
+<li>
+<p>然后找到<code>网络共享</code></p>
+<figure data-type="image" tabindex="2"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20211005114100.png" alt="" loading="lazy"></figure>
+<p>主机名随便填<br>
+勾选共享家目录 启用macOS兼容共享<br>
+剩下不用管</p>
+</li>
+<li>
+<p>按我的图片弄下</p>
+<figure data-type="image" tabindex="3"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20211005114210.png" alt="" loading="lazy"></figure>
+<p>那个目录就是挂载点那个目录，名称随便填<br>
+勾选可浏览 强制root 允许匿名<br>
+剩下不要动</p>
+</li>
+</ol>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[论当代大学生半夜饿了吃了一桶酸辣粉]]></title>
         <id>https://ldsoy.github.io/AnnanBlogs/post/suanlafen/</id>
