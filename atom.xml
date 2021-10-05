@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ldsoy.github.io/AnnanBlogs/</id>
     <title>Annan&apos;s Blogs</title>
-    <updated>2021-10-05T03:53:47.656Z</updated>
+    <updated>2021-10-05T04:05:42.426Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ldsoy.github.io/AnnanBlogs/"/>
     <link rel="self" href="https://ldsoy.github.io/AnnanBlogs/atom.xml"/>
@@ -10,6 +10,30 @@
     <logo>https://ldsoy.github.io/AnnanBlogs/images/avatar.png</logo>
     <icon>https://ldsoy.github.io/AnnanBlogs/favicon.ico</icon>
     <rights>All rights reserved 2021, Annan&apos;s Blogs</rights>
+    <entry>
+        <title type="html"><![CDATA[关于CFW无法代理uwp应用]]></title>
+        <id>https://ldsoy.github.io/AnnanBlogs/post/CFW-uwp/</id>
+        <link href="https://ldsoy.github.io/AnnanBlogs/post/CFW-uwp/">
+        </link>
+        <updated>2021-10-05T03:55:30.000Z</updated>
+        <summary type="html"><![CDATA[<p>正常情况下，clash for wondows 是无法代理到windows系统的UWP的应用的，UWP应用包括但不限于Microsoft Store，还有啥你可以自己搜下</p>
+<p>这种模式好像叫UWP应用回环</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>正常情况下，clash for wondows 是无法代理到windows系统的UWP的应用的，UWP应用包括但不限于Microsoft Store，还有啥你可以自己搜下</p>
+<p>这种模式好像叫UWP应用回环</p>
+<!-- more -->
+<ol>
+<li>
+<p>打开clash，点击</p>
+<figure data-type="image" tabindex="1"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20211005115842.png" alt="" loading="lazy"></figure>
+</li>
+<li>
+<p>进去后选择你需要代理的UWP应用，Save changes就行了</p>
+<figure data-type="image" tabindex="2"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20211005120254.png" alt="" loading="lazy"></figure>
+</li>
+</ol>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[8度书签整理]]></title>
         <id>https://ldsoy.github.io/AnnanBlogs/post/8-du-bookmark/</id>
