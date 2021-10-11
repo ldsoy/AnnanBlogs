@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ldsoy.github.io/AnnanBlogs/</id>
     <title>Annan&apos;s Blogs</title>
-    <updated>2021-10-09T06:24:27.970Z</updated>
+    <updated>2021-10-11T13:21:21.077Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ldsoy.github.io/AnnanBlogs/"/>
     <link rel="self" href="https://ldsoy.github.io/AnnanBlogs/atom.xml"/>
@@ -1272,7 +1272,11 @@ tun:
         <link href="https://ldsoy.github.io/AnnanBlogs/post/herokuli-cloudflare/">
         </link>
         <updated>2021-09-30T12:27:51.000Z</updated>
-        <content type="html"><![CDATA[<p>1.为了省去HeroKu自己搭建V2ray的环境，所以直接找GitHub的现成的项目就行<br>
+        <summary type="html"><![CDATA[<p>白嫖heroKu，并不是vps，应该是docker</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>白嫖heroKu，并不是vps，应该是docker</p>
+<!-- more -->
+<p>1.为了省去HeroKu自己搭建V2ray的环境，所以直接找GitHub的现成的项目就行<br>
 去这里</p>
 <figure data-type="image" tabindex="1"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930202919.png" alt="" loading="lazy"></figure>
 <p>App name由小写字母和数字组成，输入完点deploy，如果你没有Heroku账号就注册个，邮箱就能注册</p>
@@ -1325,14 +1329,22 @@ tun:
         <link href="https://ldsoy.github.io/AnnanBlogs/post/jdk11-config/">
         </link>
         <updated>2021-09-30T11:03:31.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="事件过程">事件过程</h2>
-<p>今天我把电脑上的JDK14和16都卸载了，今天导入了老师说的那个项目<br>
+        <summary type="html"><![CDATA[<p>事件过程<br>
+今天我把电脑上的JDK14和16都卸载了，今天导入了老师说的那个项目<br>
 https://gitee.com/52itstyle/smart-parking<br>
 导入的IDEA里面用JDK16，死活找不到<strong>Toools.jar</strong>,<br>
 应该不是自身配置的问题，应该是JDK的特性问题，<br>
 然后用的JDK14就很正常，但是我在系统变量里面配置好了，但是再cmd里面还是找不到cmd</p>
 <p>导致我都给卸载了，卸载也是有讲究的</p>
-<hr>
+]]></summary>
+        <content type="html"><![CDATA[<p>事件过程<br>
+今天我把电脑上的JDK14和16都卸载了，今天导入了老师说的那个项目<br>
+https://gitee.com/52itstyle/smart-parking<br>
+导入的IDEA里面用JDK16，死活找不到<strong>Toools.jar</strong>,<br>
+应该不是自身配置的问题，应该是JDK的特性问题，<br>
+然后用的JDK14就很正常，但是我在系统变量里面配置好了，但是再cmd里面还是找不到cmd</p>
+<p>导致我都给卸载了，卸载也是有讲究的</p>
+<!-- more -->
 <h2 id="jdk的卸载">JDK的卸载</h2>
 <ol>
 <li>去系统的卸载里面去卸载JDK</li>
