@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ldsoy.github.io/AnnanBlogs/</id>
     <title>Annan&apos;s Blogs</title>
-    <updated>2021-10-11T13:25:17.837Z</updated>
+    <updated>2021-10-21T13:08:10.851Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ldsoy.github.io/AnnanBlogs/"/>
     <link rel="self" href="https://ldsoy.github.io/AnnanBlogs/atom.xml"/>
@@ -10,6 +10,94 @@
     <logo>https://ldsoy.github.io/AnnanBlogs/images/avatar.png</logo>
     <icon>https://ldsoy.github.io/AnnanBlogs/favicon.ico</icon>
     <rights>All rights reserved 2021, Annan&apos;s Blogs</rights>
+    <entry>
+        <title type="html"><![CDATA[京东Cookie的获取（安卓＋PC）]]></title>
+        <id>https://ldsoy.github.io/AnnanBlogs/post/get-jingdongcookie/</id>
+        <link href="https://ldsoy.github.io/AnnanBlogs/post/get-jingdongcookie/">
+        </link>
+        <updated>2021-10-21T12:14:09.000Z</updated>
+        <summary type="html"><![CDATA[<p>这里提供两种获取京东Cookie的方式</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>这里提供两种获取京东Cookie的方式</p>
+<!-- more -->
+<h1 id="1安卓获取">1.安卓获取</h1>
+<ul>
+<li>下载 京豆.apk</li>
+<li><a href="https://sexyfox.lanzouw.com/ikS5Yvlrz9i">https://sexyfox.lanzouw.com/ikS5Yvlrz9i</a></li>
+<li>安装好</li>
+<li><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/1634819099908.jpg" alt="1634819107702" loading="lazy"></li>
+<li>点击 <code>获取京东CK</code> 然后输入手机号验证码，就弹出来Cookie了</li>
+</ul>
+<p><mark>提示：</mark><br>
+这个软件除了可以获取COOKIE外，还可以在桌面上添加京豆信息组件<br>
+预览图：<a href="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/1634819099908.jpg">点击预览</a></p>
+<p>感谢作者：<a href="https://github.com/wangjing71/JingBeanAppWidget">https://github.com/wangjing71/JingBeanAppWidget</a></p>
+<h1 id="2pc获取">2.PC获取</h1>
+<ul>
+<li>下载 <code>Get_COOKIE.zip</code> 文件并解压</li>
+<li>双击 <code>JDCookie获取工具-forWin.exe</code> 打开</li>
+<li>如果有错，就命令行中的提示，去下载跟你谷歌版本差不多的驱动</li>
+<li>查看谷歌版本<a href="chrome://settings/help">chrome://settings/help</a></li>
+<li>装好驱动，就会弹出来京东手机网页的登入，输入手机号验证码，登入成功，COOKIE就会显示在命令行，同时程序目录下也会出现一个txt文档，里面就是获取到的COOKIE</li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[薅京东羊毛+青龙面板的安装]]></title>
+        <id>https://ldsoy.github.io/AnnanBlogs/post/hao-jing-dong-yang-mao-qing-long-mian-ban-de-an-zhuang/</id>
+        <link href="https://ldsoy.github.io/AnnanBlogs/post/hao-jing-dong-yang-mao-qing-long-mian-ban-de-an-zhuang/">
+        </link>
+        <updated>2021-10-17T11:21:01.000Z</updated>
+        <summary type="html"><![CDATA[<p>东东农场自动签到，自动签到领豆，自动给水果浇水·········</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>东东农场自动签到，自动签到领豆，自动给水果浇水·········</p>
+<!-- more -->
+<h1 id="1首先自备docker">1.首先自备Docker</h1>
+<h1 id="2安装青龙面板">2.安装青龙面板</h1>
+<h2 id="1拉取青龙镜像">1.拉取青龙镜像</h2>
+<p><code>docker pull whyour/qinglong:latest</code></p>
+<h2 id="2安装青龙面板-2">2.安装青龙面板</h2>
+<ul>
+<li>服务器安装</li>
+</ul>
+<pre><code>docker run -dit \
+   -v $PWD/ql/config:/ql/config \
+   -v $PWD/ql/log:/ql/log \
+   -v $PWD/ql/db:/ql/db \
+   -v $PWD/ql/scripts:/ql/scripts \
+   -p 5700:5700 \
+   --name qinglong \
+   --hostname qinglong \
+   --restart always \
+   whyour/qinglong:latest
+</code></pre>
+<ul>
+<li>N1盒子安装（旁路由设备）</li>
+</ul>
+<pre><code>docker run -dit \
+   -v /mnt/mmcblk2p4/qinglong/config:/ql/config \
+   -v /mnt/mmcblk2p4/qinglong/log:/ql/log \
+   -v /mnt/mmcblk2p4/qinglong/db:/ql/db \
+   -v /mnt/mmcblk2p4/qinglong/scripts:/ql/scripts \
+   --net host \
+   --name qinglong \
+   --hostname qinglong \
+   --restart always \
+   whyour/qinglong:latest
+</code></pre>
+<p>安装完成后开启5700的端口访问，即可用IP:5700访问青龙面板了</p>
+<h1 id="3安装必要依赖">3.安装必要依赖</h1>
+<p><code>docker exec -it qinglong bash -c &quot;pnpm i png-js&quot;</code><br>
+这个是宠汪汪活动的必要依赖，其他的依赖缺就装不缺就没啥。</p>
+<h1 id="4拉库">4.拉库</h1>
+<p>库的解释：就是一个脚本的集合，一个库里面有很多脚本，脚本对应的京东的活动<br>
+这里推荐一个我目前用的库<br>
+这是项目地址，里面有拉库的方法<br>
+<a href="https://github.com/zero205/JD_tencent_scf/tree/main">https://github.com/zero205/JD_tencent_scf/tree/main</a></p>
+<p>这是这个库的电报交流群<br>
+<a href="https://t.me/jd_zero_205">https://t.me/jd_zero_205</a></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[关于CFW无法代理uwp应用]]></title>
         <id>https://ldsoy.github.io/AnnanBlogs/post/CFW-uwp/</id>
