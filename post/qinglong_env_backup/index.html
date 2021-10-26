@@ -2,22 +2,20 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>论当代大学生半夜饿了吃了一桶酸辣粉 | Annan&#39;s Blogs</title>
+<title>如何备份青龙面板的环境变量 | Annan&#39;s Blogs</title>
 <link rel="shortcut icon" href="https://ldsoy.github.io/AnnanBlogs//favicon.ico?v=1635279907718">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://ldsoy.github.io/AnnanBlogs//styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="论当代大学生半夜饿了吃了一桶酸辣粉 | Annan&#39;s Blogs - Atom Feed" href="https://ldsoy.github.io/AnnanBlogs//atom.xml">
+<link rel="alternate" type="application/atom+xml" title="如何备份青龙面板的环境变量 | Annan&#39;s Blogs - Atom Feed" href="https://ldsoy.github.io/AnnanBlogs//atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="重点：
-酸辣粉真好吃😋
-酸辣粉真好吃😋
-酸辣粉真好吃😋
+    <meta name="description" content="每次重装完青龙面板，我们不得不面对的一个问题就是，环境变量还要重新配置，对于环境变量少的人来说，倒是简单，但是对于多的人来说，那就是头疼事儿了啊
 
-" />
-    <meta name="keywords" content="日常" />
+声明
+以下步骤皆以https://ldsoy.github.io/AnnanBlogs/po..." />
+    <meta name="keywords" content="京东" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
@@ -79,33 +77,45 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              论当代大学生半夜饿了吃了一桶酸辣粉
+              如何备份青龙面板的环境变量
             </h2>
             <div class="post-info">
               <span>
-                2021-10-04
+                2021-10-27
               </span>
               <span>
-                1 min read
+                2 min read
               </span>
               
-                <a href="https://ldsoy.github.io/AnnanBlogs/tag/sI2Onv0Hv/" class="post-tag">
-                  # 日常
+                <a href="https://ldsoy.github.io/AnnanBlogs/tag/203OwxXEM/" class="post-tag">
+                  # 京东
                 </a>
               
             </div>
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <p>重点：<br>
-酸辣粉真好吃😋<br>
-酸辣粉真好吃😋<br>
-酸辣粉真好吃😋</p>
+                <p>每次重装完青龙面板，我们不得不面对的一个问题就是，环境变量还要重新配置，对于环境变量少的人来说，倒是简单，但是对于多的人来说，那就是头疼事儿了啊</p>
 <!-- more -->
+<p><mark>声明</mark><br>
+以下步骤皆以<a href="https://ldsoy.github.io/AnnanBlogs/post/install_qinglong/">https://ldsoy.github.io/AnnanBlogs/post/install_qinglong/</a>这个安装面板教程为前提</p>
+<h1 id="备份db文件夹下的envdb文件">备份db文件夹下的env.db文件</h1>
+<p>情况一：<br>
+安装青龙的时候，这个db文件夹一般都映射到宿主机了，直接去宿主机找就行了，找到里面的env.db文件，备份下，装好新容器直接替换就行了</p>
+<p>情况二：<br>
+如果没有映射db文件夹，那就想办法通过命令行进入青龙面板，顺嘴提一下，进入青龙面板的docker命令<br>
+<code>docker exec -it qinglong bash</code><br>
+进去了之后就找到db文件夹，进去找到env.db,<code>cat env.db</code>打印一下变量内容，然后选中复制，等装好新容器，就把复制的内容粘贴进env.db文件就行了</p>
+<p><mark>注意</mark><br>
+上文说的环境变量是下图圈中的这个，别搞错了，替换完了env.db,记得重启面板才会生效<br>
+<img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20211027040731.png" alt="" loading="lazy"></p>
 
               </div>
               <div class="toc-container">
-                
+                <ul class="markdownIt-TOC">
+<li><a href="#%E5%A4%87%E4%BB%BDdb%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8B%E7%9A%84envdb%E6%96%87%E4%BB%B6">备份db文件夹下的env.db文件</a></li>
+</ul>
+
               </div>
             </div>
           </article>
@@ -114,9 +124,9 @@
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://ldsoy.github.io/AnnanBlogs/post/cfw-tun/">
+            <a href="https://ldsoy.github.io/AnnanBlogs/post/get_jingdongcookie/">
               <h3 class="post-title">
-                Clash For Windows启用虚拟网卡TUN模式
+                京东Cookie的获取（安卓＋PC）
               </h3>
             </a>
           </div>
