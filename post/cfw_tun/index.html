@@ -1,0 +1,283 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Clash For Windows启用虚拟网卡TUN模式 | Annan&#39;s Blogs</title>
+<link rel="shortcut icon" href="https://ldsoy.github.io/AnnanBlogs//favicon.ico?v=1635280360462">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://ldsoy.github.io/AnnanBlogs//styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Clash For Windows启用虚拟网卡TUN模式 | Annan&#39;s Blogs - Atom Feed" href="https://ldsoy.github.io/AnnanBlogs//atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="Clash for windows以下简称为cfw，这个软件的作者提到tun模式在windows上是支持最好的，所以在此说一下怎么打开虚拟网卡tun模式
+
+
+
+先要下载支持tun的组件，去这里下https://www.wintun.net
+..." />
+    <meta name="keywords" content="proxy" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://ldsoy.github.io/AnnanBlogs/">
+  <img class="avatar" src="https://ldsoy.github.io/AnnanBlogs//images/avatar.png?v=1635280360462" alt="">
+  </a>
+  <h1 class="site-title">
+    Annan&#39;s Blogs
+  </h1>
+  <p class="site-description">
+    每天都要开心哦！
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://ldsoy.github.io/AnnanBlogs/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="https://ldsoy.github.io/AnnanBlogs/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="https://ldsoy.github.io/AnnanBlogs/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://ldsoy.github.io/AnnanBlogs/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Clash For Windows启用虚拟网卡TUN模式
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-09-30
+              </span>
+              <span>
+                2 min read
+              </span>
+              
+                <a href="https://ldsoy.github.io/AnnanBlogs/tag/b0QsyBKyE/" class="post-tag">
+                  # proxy
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>Clash for windows以下简称为cfw，这个软件的作者提到tun模式在windows上是支持最好的，所以在此说一下怎么打开虚拟网卡tun模式</p>
+<!-- more -->
+<ol>
+<li>
+<p>先要下载支持tun的组件，去这里下<a href="https://www.wintun.net">https://www.wintun.net</a></p>
+<figure data-type="image" tabindex="1"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930213149.png" alt="" loading="lazy"></figure>
+<p>下载完是一个压缩包，里面有64的有x86的，找到跟你CFW对应版本的wintun.dll</p>
+</li>
+</ol>
+<hr>
+<ol start="2">
+<li>
+<p>把wintun.dll放进你们配置文件目录，点一下我标注的Open Folder就会弹出一个文件夹，那就是配置文件目录</p>
+<figure data-type="image" tabindex="2"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930213246.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930213301.png" alt="" loading="lazy"></figure>
+</li>
+</ol>
+<hr>
+<ol start="3">
+<li>
+<p>启用Service Mode，并安装</p>
+<figure data-type="image" tabindex="4"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930213417.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="5"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930213427.png" alt="" loading="lazy"></figure>
+<p>弄好后，Service Mode会变成雾蓝色的地球</p>
+<figure data-type="image" tabindex="6"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930213447.png" alt="" loading="lazy"></figure>
+<p>并且的你的配置文件的目录，会多一个Service的文件夹</p>
+</li>
+<li>
+<p>到Settings配置Profile Mixin</p>
+<figure data-type="image" tabindex="7"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930213607.png" alt="" loading="lazy"></figure>
+<p>打开后，把下面的配置填进去</p>
+<pre><code class="language-yaml">mixin:
+dns:
+    enable: true
+    default-nameserver:
+      - 223.5.5.5
+      - 1.1.1.1
+    enhanced-mode: redir-host
+    nameserver:
+      - 223.5.5.5
+      - 223.6.6.6
+      - https://223.5.5.5/resolve
+    fallback:
+      - 1.1.1.1
+      - 208.67.220.222:5353
+      - https://dns.rubyfish.cn/dns-query
+      - https://doh.opendns.com/dns-query
+      - tls://1.1.1.1:853
+    fallback-filter:
+      geoip: true
+tun:
+    enable: true
+    stack: gvisor
+    dns-hijack:
+      - 198.18.0.2:53
+    macOS-auto-route: true
+    macOS-auto-detect-interface: true
+    ```
+
+    就像下面这样
+
+    ![](https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930214503.png)
+
+    填好点右下角保存就行了。
+
+</code></pre>
+</li>
+<li>
+<p>回主界面打开Mixin和system proxy就ok了</p>
+<figure data-type="image" tabindex="8"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930214600.png" alt="" loading="lazy"></figure>
+<p>现在就是开启了虚拟网卡模式</p>
+<figure data-type="image" tabindex="9"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930214648.png" alt="" loading="lazy"></figure>
+<p>当你不想使用TUN模式了的时候就把Mixin关了就行</p>
+</li>
+</ol>
+<h2 id="补充">补充</h2>
+<p>如果显示Clash网卡无法连接，请更换Mixin中的DNS，或者你可以删掉fallback部分<br>
+如下：</p>
+<pre><code class="language-yaml">mixin:
+   dns:
+       enable: true
+       default-nameserver:
+         - 223.5.5.5
+         - 1.1.1.1
+       enhanced-mode: redir-host
+       nameserver:
+         - 223.5.5.5
+         - 223.6.6.6
+         - https://223.5.5.5/resolve
+   tun:
+       enable: true
+       stack: gvisor
+       dns-hijack:
+         - 198.18.0.2:53
+       macOS-auto-route: true
+       macOS-auto-detect-interface: true
+       ```
+
+
+
+
+
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E8%A1%A5%E5%85%85">补充</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://ldsoy.github.io/AnnanBlogs/post/heroku_cloudflare/">
+              <h3 class="post-title">
+                白嫖HeroKu，利用CloudFlare进行反向代理
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://ldsoy.github.io/AnnanBlogs//atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

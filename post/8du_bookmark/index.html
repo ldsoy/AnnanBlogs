@@ -1,164 +1,106 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://ldsoy.github.io/AnnanBlogs/</id>
-    <title>Annan&apos;s Blogs</title>
-    <updated>2021-10-26T20:33:05.512Z</updated>
-    <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://ldsoy.github.io/AnnanBlogs/"/>
-    <link rel="self" href="https://ldsoy.github.io/AnnanBlogs/atom.xml"/>
-    <subtitle>每天都要开心哦！</subtitle>
-    <logo>https://ldsoy.github.io/AnnanBlogs/images/avatar.png</logo>
-    <icon>https://ldsoy.github.io/AnnanBlogs/favicon.ico</icon>
-    <rights>All rights reserved 2021, Annan&apos;s Blogs</rights>
-    <entry>
-        <title type="html"><![CDATA[如何备份青龙面板的环境变量]]></title>
-        <id>https://ldsoy.github.io/AnnanBlogs/post/qinglong_env_backup/</id>
-        <link href="https://ldsoy.github.io/AnnanBlogs/post/qinglong_env_backup/">
-        </link>
-        <updated>2021-10-26T19:37:36.000Z</updated>
-        <summary type="html"><![CDATA[<p>每次重装完青龙面板，我们不得不面对的一个问题就是，环境变量还要重新配置，对于环境变量少的人来说，倒是简单，但是对于多的人来说，那就是头疼事儿了啊</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>每次重装完青龙面板，我们不得不面对的一个问题就是，环境变量还要重新配置，对于环境变量少的人来说，倒是简单，但是对于多的人来说，那就是头疼事儿了啊</p>
-<!-- more -->
-<p><mark>声明</mark><br>
-以下步骤皆以<a href="https://ldsoy.github.io/AnnanBlogs/post/install_qinglong/">https://ldsoy.github.io/AnnanBlogs/post/install_qinglong/</a>这个安装面板教程为前提</p>
-<h1 id="备份db文件夹下的envdb文件">备份db文件夹下的env.db文件</h1>
-<p>情况一：<br>
-安装青龙的时候，这个db文件夹一般都映射到宿主机了，直接去宿主机找就行了，找到里面的env.db文件，备份下，装好新容器直接替换就行了</p>
-<p>情况二：<br>
-如果没有映射db文件夹，那就想办法通过命令行进入青龙面板，顺嘴提一下，进入青龙面板的docker命令<br>
-<code>docker exec -it qinglong bash</code><br>
-进去了之后就找到db文件夹，进去找到env.db,<code>cat env.db</code>打印一下变量内容，然后选中复制，等装好新容器，就把复制的内容粘贴进env.db文件就行了</p>
-<p><mark>注意</mark><br>
-上文说的环境变量是下图圈中的这个，别搞错了，替换完了env.db,记得重启面板才会生效<br>
-<img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20211027040731.png" alt="" loading="lazy"></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[京东Cookie的获取（安卓＋PC）]]></title>
-        <id>https://ldsoy.github.io/AnnanBlogs/post/get_jingdongcookie/</id>
-        <link href="https://ldsoy.github.io/AnnanBlogs/post/get_jingdongcookie/">
-        </link>
-        <updated>2021-10-21T12:14:09.000Z</updated>
-        <summary type="html"><![CDATA[<p>这里提供两种获取京东Cookie的方式</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>这里提供两种获取京东Cookie的方式</p>
-<!-- more -->
-<h1 id="1安卓获取">1.安卓获取</h1>
-<ul>
-<li>下载 京豆.apk</li>
-<li><a href="https://sexyfox.lanzouw.com/ikS5Yvlrz9i">https://sexyfox.lanzouw.com/ikS5Yvlrz9i</a></li>
-<li>安装好</li>
-<li><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/1634819099908.jpg" alt="1634819107702" loading="lazy"></li>
-<li>点击 <code>获取京东CK</code> 然后输入手机号验证码，就弹出来Cookie了</li>
-</ul>
-<p><mark>提示：</mark><br>
-这个软件除了可以获取COOKIE外，还可以在桌面上添加京豆信息组件<br>
-预览图：<a href="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/1634819099908.jpg">点击预览</a></p>
-<p>感谢作者：<a href="https://github.com/wangjing71/JingBeanAppWidget">https://github.com/wangjing71/JingBeanAppWidget</a></p>
-<h1 id="2pc获取">2.PC获取</h1>
-<ul>
-<li>下载 <code>Get_COOKIE.zip</code> 文件并解压</li>
-<li>双击 <code>JDCookie获取工具-forWin.exe</code> 打开</li>
-<li>如果有错，就命令行中的提示，去下载跟你谷歌版本差不多的驱动</li>
-<li>查看谷歌版本<a href="chrome://settings/help">chrome://settings/help</a></li>
-<li>装好驱动，就会弹出来京东手机网页的登入，输入手机号验证码，登入成功，COOKIE就会显示在命令行，同时程序目录下也会出现一个txt文档，里面就是获取到的COOKIE</li>
-</ul>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[薅京东羊毛+青龙面板的安装]]></title>
-        <id>https://ldsoy.github.io/AnnanBlogs/post/install_qinglong/</id>
-        <link href="https://ldsoy.github.io/AnnanBlogs/post/install_qinglong/">
-        </link>
-        <updated>2021-10-17T11:21:01.000Z</updated>
-        <summary type="html"><![CDATA[<p>东东农场自动签到，自动签到领豆，自动给水果浇水·········</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>东东农场自动签到，自动签到领豆，自动给水果浇水·········</p>
-<!-- more -->
-<h1 id="1首先自备docker">1.首先自备Docker</h1>
-<h1 id="2安装青龙面板">2.安装青龙面板</h1>
-<h2 id="1拉取青龙镜像">1.拉取青龙镜像</h2>
-<p><code>docker pull whyour/qinglong:latest</code></p>
-<h2 id="2安装青龙面板-2">2.安装青龙面板</h2>
-<ul>
-<li>服务器安装</li>
-</ul>
-<pre><code>docker run -dit \
-   -v $PWD/ql/config:/ql/config \
-   -v $PWD/ql/log:/ql/log \
-   -v $PWD/ql/db:/ql/db \
-   -v $PWD/ql/scripts:/ql/scripts \
-   -p 5700:5700 \
-   --name qinglong \
-   --hostname qinglong \
-   --restart always \
-   whyour/qinglong:latest
-</code></pre>
-<ul>
-<li>N1盒子安装（旁路由设备）</li>
-</ul>
-<pre><code>docker run -dit \
-   -v /mnt/mmcblk2p4/qinglong/config:/ql/config \
-   -v /mnt/mmcblk2p4/qinglong/log:/ql/log \
-   -v /mnt/mmcblk2p4/qinglong/db:/ql/db \
-   -v /mnt/mmcblk2p4/qinglong/scripts:/ql/scripts \
-   --net host \
-   --name qinglong \
-   --hostname qinglong \
-   --restart always \
-   whyour/qinglong:latest
-</code></pre>
-<p>安装完成后开启5700的端口访问，即可用IP:5700访问青龙面板了</p>
-<h1 id="3安装必要依赖">3.安装必要依赖</h1>
-<p><code>docker exec -it qinglong bash -c &quot;pip3 install requests&quot;</code><br>
-<code>docker exec -it qinglong bash -c &quot;apk add python3 zlib-dev gcc jpeg-dev python3-dev musl-dev freetype-dev&quot;</code><br>
-下边这个宠汪汪是必装的<br>
-<code>docker exec -it qinglong bash -c &quot;pnpm i png-js&quot;</code><br>
-这个是宠汪汪活动的必要依赖，其他的依赖缺就装不缺就没啥。</p>
-<h1 id="4拉库">4.拉库</h1>
-<p>库的解释：就是一个脚本的集合，一个库里面有很多脚本，脚本对应的京东的活动<br>
-这里推荐一个我目前用的库<br>
-这是项目地址，里面有拉库的方法<br>
-<a href="https://github.com/zero205/JD_tencent_scf/tree/main">https://github.com/zero205/JD_tencent_scf/tree/main</a></p>
-<p>这是这个库的电报交流群<br>
-<a href="https://t.me/jd_zero_205">https://t.me/jd_zero_205</a></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[关于CFW无法代理uwp应用]]></title>
-        <id>https://ldsoy.github.io/AnnanBlogs/post/cfw_uwp/</id>
-        <link href="https://ldsoy.github.io/AnnanBlogs/post/cfw_uwp/">
-        </link>
-        <updated>2021-10-05T03:55:30.000Z</updated>
-        <summary type="html"><![CDATA[<p>正常情况下，clash for wondows 是无法代理到windows系统的UWP的应用的，UWP应用包括但不限于Microsoft Store，还有啥你可以自己搜下</p>
-<p>这种模式好像叫UWP应用回环</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>正常情况下，clash for wondows 是无法代理到windows系统的UWP的应用的，UWP应用包括但不限于Microsoft Store，还有啥你可以自己搜下</p>
-<p>这种模式好像叫UWP应用回环</p>
-<!-- more -->
-<ol>
-<li>
-<p>打开clash，点击</p>
-<figure data-type="image" tabindex="1"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20211005115842.png" alt="" loading="lazy"></figure>
-</li>
-<li>
-<p>进去后选择你需要代理的UWP应用，Save changes就行了</p>
-<figure data-type="image" tabindex="2"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20211005120254.png" alt="" loading="lazy"></figure>
-</li>
-</ol>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[8度书签整理]]></title>
-        <id>https://ldsoy.github.io/AnnanBlogs/post/8du_bookmark/</id>
-        <link href="https://ldsoy.github.io/AnnanBlogs/post/8du_bookmark/">
-        </link>
-        <updated>2021-10-05T03:50:07.000Z</updated>
-        <summary type="html"><![CDATA[<p>这是一份关于8度的书签整理<br>
-作者是youtube：8度</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>这是一份关于8度的书签整理<br>
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>8度书签整理 | Annan&#39;s Blogs</title>
+<link rel="shortcut icon" href="https://ldsoy.github.io/AnnanBlogs//favicon.ico?v=1635280360462">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://ldsoy.github.io/AnnanBlogs//styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="8度书签整理 | Annan&#39;s Blogs - Atom Feed" href="https://ldsoy.github.io/AnnanBlogs//atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="这是一份关于8度的书签整理
+作者是youtube：8度
+
+岛国爱情片
+岛国爱情片聚合需翻墙（观看免费的，100多个）
+岛国爱情之国内版免翻墙（完全免费的，看个不停）
+音乐播放器
+安卓版QMD（密码:gvja 免费下载无损歌曲和歌词 封面）
+..." />
+    <meta name="keywords" content="日常" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://ldsoy.github.io/AnnanBlogs/">
+  <img class="avatar" src="https://ldsoy.github.io/AnnanBlogs//images/avatar.png?v=1635280360462" alt="">
+  </a>
+  <h1 class="site-title">
+    Annan&#39;s Blogs
+  </h1>
+  <p class="site-description">
+    每天都要开心哦！
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://ldsoy.github.io/AnnanBlogs/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="https://ldsoy.github.io/AnnanBlogs/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="https://ldsoy.github.io/AnnanBlogs/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://ldsoy.github.io/AnnanBlogs/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              8度书签整理
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-10-05
+              </span>
+              <span>
+                24 min read
+              </span>
+              
+                <a href="https://ldsoy.github.io/AnnanBlogs/tag/sI2Onv0Hv/" class="post-tag">
+                  # 日常
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>这是一份关于8度的书签整理<br>
 作者是youtube：8度</p>
 <!-- more -->
 <h3 id="岛国爱情片">岛国爱情片</h3>
@@ -1216,267 +1158,178 @@
 <p><a href="https://receive-sms.cc/China-Phone-Number/">China phone</a></p>
 <p><a href="https://www.zusms.com/?__cf_chl_jschl_tk__=39369e0df5e5902ee3047c3f71239dafd2106d4b-1615893885-0-AUzPBbG8ynaLbSaWMA0An26qslM6YVdxvllnRTxBbCJatxY_LwHMw5-SBAJqnwaat_7pBIgYPdbFg9MUTtRvl-YVW6sjuXwqxUzZIji4IVCz6v5MYDH1DdIVGgM7BFVjgDEXoP-hYgW2uSgU3ZXA1hPSbq80eOa0hFfzzffhHVBeI4F9kyAS9j_s5pUYDfI2MJONjygL9aSU9kq08APE6344mgDUTr9vwLn4yr5SDk5Z8o9dTmESQEB4ZxXIVRW7TmRlgE78jQMfbRrYVBra5MJxpCR2w7NfUv7gkNxwhOHZvwUzH0Fc9sHy6s2xvPm9Aw">免费接短信</a></p>
 <p><a href="https://yunjiema.net/zhongguohaoma/">中国手机号码</a></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[N1盒子OpenWrt局域网共享硬盘]]></title>
-        <id>https://ldsoy.github.io/AnnanBlogs/post/openwrt_smba/</id>
-        <link href="https://ldsoy.github.io/AnnanBlogs/post/openwrt_smba/">
-        </link>
-        <updated>2021-10-05T03:38:08.000Z</updated>
-        <summary type="html"><![CDATA[<p>关于Openwrt系统怎么共享已经挂载的硬盘到局域网</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>关于Openwrt系统怎么共享已经挂载的硬盘到局域网</p>
-<!-- more -->
-<ol>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
 <li>
-<p>先去你<code>挂载点</code>，看看硬盘挂上没，顺便记下<code>目录</code>，我这里是使用我的一个300G硬盘做的演示</p>
-<figure data-type="image" tabindex="1"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20211005113914.png" alt="" loading="lazy"></figure>
-</li>
-<li>
-<p>然后找到<code>网络共享</code></p>
-<figure data-type="image" tabindex="2"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20211005114100.png" alt="" loading="lazy"></figure>
-<p>主机名随便填<br>
-勾选共享家目录 启用macOS兼容共享<br>
-剩下不用管</p>
-</li>
-<li>
-<p>按我的图片弄下</p>
-<figure data-type="image" tabindex="3"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20211005114210.png" alt="" loading="lazy"></figure>
-<p>那个目录就是挂载点那个目录，名称随便填<br>
-勾选可浏览 强制root 允许匿名<br>
-剩下不要动</p>
-</li>
-</ol>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[论当代大学生半夜饿了吃了一桶酸辣粉]]></title>
-        <id>https://ldsoy.github.io/AnnanBlogs/post/suanlafen/</id>
-        <link href="https://ldsoy.github.io/AnnanBlogs/post/suanlafen/">
-        </link>
-        <updated>2021-10-03T23:45:47.000Z</updated>
-        <summary type="html"><![CDATA[<p>重点：<br>
-酸辣粉真好吃😋<br>
-酸辣粉真好吃😋<br>
-酸辣粉真好吃😋</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>重点：<br>
-酸辣粉真好吃😋<br>
-酸辣粉真好吃😋<br>
-酸辣粉真好吃😋</p>
-<!-- more -->
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Clash For Windows启用虚拟网卡TUN模式]]></title>
-        <id>https://ldsoy.github.io/AnnanBlogs/post/cfw_tun/</id>
-        <link href="https://ldsoy.github.io/AnnanBlogs/post/cfw_tun/">
-        </link>
-        <updated>2021-09-30T13:25:58.000Z</updated>
-        <summary type="html"><![CDATA[<p>Clash for windows以下简称为cfw，这个软件的作者提到tun模式在windows上是支持最好的，所以在此说一下怎么打开虚拟网卡tun模式</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>Clash for windows以下简称为cfw，这个软件的作者提到tun模式在windows上是支持最好的，所以在此说一下怎么打开虚拟网卡tun模式</p>
-<!-- more -->
-<ol>
-<li>
-<p>先要下载支持tun的组件，去这里下<a href="https://www.wintun.net">https://www.wintun.net</a></p>
-<figure data-type="image" tabindex="1"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930213149.png" alt="" loading="lazy"></figure>
-<p>下载完是一个压缩包，里面有64的有x86的，找到跟你CFW对应版本的wintun.dll</p>
-</li>
-</ol>
-<hr>
-<ol start="2">
-<li>
-<p>把wintun.dll放进你们配置文件目录，点一下我标注的Open Folder就会弹出一个文件夹，那就是配置文件目录</p>
-<figure data-type="image" tabindex="2"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930213246.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="3"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930213301.png" alt="" loading="lazy"></figure>
-</li>
-</ol>
-<hr>
-<ol start="3">
-<li>
-<p>启用Service Mode，并安装</p>
-<figure data-type="image" tabindex="4"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930213417.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="5"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930213427.png" alt="" loading="lazy"></figure>
-<p>弄好后，Service Mode会变成雾蓝色的地球</p>
-<figure data-type="image" tabindex="6"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930213447.png" alt="" loading="lazy"></figure>
-<p>并且的你的配置文件的目录，会多一个Service的文件夹</p>
-</li>
-<li>
-<p>到Settings配置Profile Mixin</p>
-<figure data-type="image" tabindex="7"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930213607.png" alt="" loading="lazy"></figure>
-<p>打开后，把下面的配置填进去</p>
-<pre><code class="language-yaml">mixin:
-dns:
-    enable: true
-    default-nameserver:
-      - 223.5.5.5
-      - 1.1.1.1
-    enhanced-mode: redir-host
-    nameserver:
-      - 223.5.5.5
-      - 223.6.6.6
-      - https://223.5.5.5/resolve
-    fallback:
-      - 1.1.1.1
-      - 208.67.220.222:5353
-      - https://dns.rubyfish.cn/dns-query
-      - https://doh.opendns.com/dns-query
-      - tls://1.1.1.1:853
-    fallback-filter:
-      geoip: true
-tun:
-    enable: true
-    stack: gvisor
-    dns-hijack:
-      - 198.18.0.2:53
-    macOS-auto-route: true
-    macOS-auto-detect-interface: true
-    ```
-
-    就像下面这样
-
-    ![](https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930214503.png)
-
-    填好点右下角保存就行了。
-
-</code></pre>
-</li>
-<li>
-<p>回主界面打开Mixin和system proxy就ok了</p>
-<figure data-type="image" tabindex="8"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930214600.png" alt="" loading="lazy"></figure>
-<p>现在就是开启了虚拟网卡模式</p>
-<figure data-type="image" tabindex="9"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930214648.png" alt="" loading="lazy"></figure>
-<p>当你不想使用TUN模式了的时候就把Mixin关了就行</p>
-</li>
-</ol>
-<h2 id="补充">补充</h2>
-<p>如果显示Clash网卡无法连接，请更换Mixin中的DNS，或者你可以删掉fallback部分<br>
-如下：</p>
-<pre><code class="language-yaml">mixin:
-   dns:
-       enable: true
-       default-nameserver:
-         - 223.5.5.5
-         - 1.1.1.1
-       enhanced-mode: redir-host
-       nameserver:
-         - 223.5.5.5
-         - 223.6.6.6
-         - https://223.5.5.5/resolve
-   tun:
-       enable: true
-       stack: gvisor
-       dns-hijack:
-         - 198.18.0.2:53
-       macOS-auto-route: true
-       macOS-auto-detect-interface: true
-       ```
-
-
-
-
-
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[白嫖HeroKu，利用CloudFlare进行反向代理]]></title>
-        <id>https://ldsoy.github.io/AnnanBlogs/post/heroku_cloudflare/</id>
-        <link href="https://ldsoy.github.io/AnnanBlogs/post/heroku_cloudflare/">
-        </link>
-        <updated>2021-09-30T12:27:51.000Z</updated>
-        <summary type="html"><![CDATA[<p>白嫖heroKu，并不是vps，应该是docker</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>白嫖heroKu，并不是vps，应该是docker</p>
-<!-- more -->
-<p>1.为了省去HeroKu自己搭建V2ray的环境，所以直接找GitHub的现成的项目就行<br>
-去这里</p>
-<figure data-type="image" tabindex="1"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930202919.png" alt="" loading="lazy"></figure>
-<p>App name由小写字母和数字组成，输入完点deploy，如果你没有Heroku账号就注册个，邮箱就能注册</p>
-<figure data-type="image" tabindex="2"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930203101.png" alt="" loading="lazy"></figure>
-<p>进去了点Settings</p>
-<figure data-type="image" tabindex="3"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930203139.png" alt="" loading="lazy"></figure>
-<p>进入settings，记住下面的那个域名和UUID</p>
-<figure data-type="image" tabindex="4"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930203207.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="5"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930203223.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="6"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930203232.png" alt="" loading="lazy"></figure>
-<p>现在可以填入你的V2ray自定义的节点了</p>
-<figure data-type="image" tabindex="7"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930203303.png" alt="" loading="lazy"></figure>
-<p>填好就是可以正常科学上网了，但是呢，这么是非常慢的，所以得进行反代理提速</p>
-<hr>
-<p>2.打开<a href="https://dash.cloudflare.com/">https://dash.cloudflare.com/</a>，没有就注册个<br>
-<img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930203451.png" alt="" loading="lazy"><br>
-进去点创建Worker</p>
-<p><strong>接下来看仔细咯</strong></p>
-<p>复制下面这段代码</p>
-<pre><code class="language-java">addEventListener(
-	&quot;fetch&quot;,event =&gt; {
-		let url=new URL(event.request.url);
-		url.hostname=&quot;域名&quot;;
-		let request=new Request(url,event.request);
-		event. respondWith(
-			fetch(request)
-		)
-	}
-)
-</code></pre>
-<p>把他的代码都删了，替换成上面这段代码,<code>域名</code>两个字改成你自己的域名<br>
-<img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930204100.png" alt="" loading="lazy"></p>
-<p>当右边变成如图所示的<code>Bad Request</code>，就代表好了<br>
-然后复制右边那个我打码部分的域名，那个就是反向代理加速完的域名，这个域名一会填到<code>伪装域名</code>那里</p>
-<p>然而，这个时候测速，你会发现还是很慢，那是因为反向代理的ip并不是你这里最快的IP，所以要进行IP优选</p>
-<hr>
-<p>3.IP优选<a href="https://github.com/badafans/better-cloudflare-ip/releases">https://github.com/badafans/better-cloudflare-ip/releases</a>，下载那个Windows版本<br>
-<img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930205758.png" alt="" loading="lazy"></p>
-<p>下载好解压，运行<code>CF优选IP.bat</code>,Win10可以直接运行，win7看使用说明，有解决办法</p>
-<figure data-type="image" tabindex="8"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930205908.png" alt="" loading="lazy"></figure>
-<p>一个免费的vps，你就别期望太高了，50就行了，如果50Mbps还是找不到合适的IP，就再少点</p>
-<p>把优选到的IP，替换那个地址，第二步反向代理得到的域名填入伪装域名，如下图<br>
-<img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930210912.png" alt="" loading="lazy"></p>
-<p><strong>搞定收工</strong></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[JDK11的配置问题]]></title>
-        <id>https://ldsoy.github.io/AnnanBlogs/post/jdk11_config/</id>
-        <link href="https://ldsoy.github.io/AnnanBlogs/post/jdk11_config/">
-        </link>
-        <updated>2021-09-30T11:03:31.000Z</updated>
-        <summary type="html"><![CDATA[<p>事件过程<br>
-今天我把电脑上的JDK14和16都卸载了，今天导入了老师说的那个项目<br>
-https://gitee.com/52itstyle/smart-parking<br>
-导入的IDEA里面用JDK16，死活找不到<strong>Toools.jar</strong>,<br>
-应该不是自身配置的问题，应该是JDK的特性问题，<br>
-然后用的JDK14就很正常，但是我在系统变量里面配置好了，但是再cmd里面还是找不到cmd</p>
-<p>导致我都给卸载了，卸载也是有讲究的</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>事件过程<br>
-今天我把电脑上的JDK14和16都卸载了，今天导入了老师说的那个项目<br>
-https://gitee.com/52itstyle/smart-parking<br>
-导入的IDEA里面用JDK16，死活找不到<strong>Toools.jar</strong>,<br>
-应该不是自身配置的问题，应该是JDK的特性问题，<br>
-然后用的JDK14就很正常，但是我在系统变量里面配置好了，但是再cmd里面还是找不到cmd</p>
-<p>导致我都给卸载了，卸载也是有讲究的</p>
-<!-- more -->
-<h2 id="jdk的卸载">JDK的卸载</h2>
-<ol>
-<li>去系统的卸载里面去卸载JDK</li>
-<li>在“运行”中输入Regedit，打开注册表编辑器，找到HKEY_LOCAL_MACHINE/SOFTWARE/JavaSoft ，将JavaSoft文件夹及其子目录全部删除。</li>
-</ol>
-<hr>
-<h2 id="jdk的安装">JDK的安装</h2>
-<ol>
-<li>去官网下载JDK11吧，LTS是长期支持版本，下64位的<code>.exe</code>文件</li>
-<li>安装，路径想改就改，到时候知道装哪里就行，剩下就一直下一步</li>
-<li>配置环境变量:此电脑→属性→高级系统属性→高级→环境变量→系统变量
 <ul>
-<li>增加变量 JAVA_HOME 路径就是你的安装路径<code>D:\Program Files\Java\jdk-11.0.12</code></li>
-<li>Path里面增加一条 <code>%JAVA_HOME%\bin;</code></li>
+<li>
+<ul>
+<li><a href="#%E5%B2%9B%E5%9B%BD%E7%88%B1%E6%83%85%E7%89%87">岛国爱情片</a></li>
+<li><a href="#%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8">音乐播放器</a></li>
+<li><a href="#%E7%A0%B4%E8%A7%A3%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD">破解软件下载</a></li>
+<li><a href="#%E5%81%9A%E8%A7%86%E9%A2%91%E4%BD%BF%E7%94%A8%E7%9A%84%E8%BD%AF%E4%BB%B6%E5%92%8C%E7%BD%91%E5%9D%80">做视频使用的软件和网址</a></li>
+<li><a href="#%E7%B3%BB%E7%BB%9F%E5%92%8Coffice">系统和office</a></li>
+<li><a href="#%E8%A7%86%E9%A2%91%E7%B4%A0%E6%9D%90">视频素材</a></li>
+<li><a href="#%E5%9B%BE%E7%89%87%E7%B4%A0%E6%9D%90">图片素材</a></li>
+<li><a href="#%E9%9F%B3%E6%95%88%E7%B4%A0%E6%9D%90">音效素材</a></li>
+<li><a href="#%E6%8F%92%E7%94%BB%E7%B4%A0%E6%9D%90">插画素材</a></li>
+<li><a href="#gif%E5%8A%A8%E5%9B%BE">gif动图</a></li>
+<li><a href="#png%E7%B4%A0%E6%9D%90">png素材</a></li>
+<li><a href="#%E7%BD%91%E7%9B%98%E8%B5%84%E6%BA%90">网盘资源</a></li>
+<li><a href="#%E5%8A%A8%E6%BC%AB%E8%B5%84%E6%BA%90">动漫资源</a></li>
+<li><a href="#%E5%BD%B1%E8%A7%86%E8%B5%84%E6%BA%90">影视资源</a></li>
+<li><a href="#%E8%B5%84%E6%BA%90%E5%AF%BC%E8%88%AA">资源导航</a></li>
+<li><a href="#%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E">搜索引擎</a></li>
+<li><a href="#%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7">实用工具</a></li>
+<li><a href="#%E8%87%AA%E5%AD%A6%E7%BD%91%E7%AB%99">自学网站</a></li>
+<li><a href="#%E8%AE%BE%E8%AE%A1%E6%A8%A1%E6%9D%BF">设计模板</a></li>
+<li><a href="#ppt%E6%A8%A1%E6%9D%BF">PPT模板</a></li>
+<li><a href="#%E7%AE%80%E5%8E%86%E6%A8%A1%E6%9D%BF">简历模板</a></li>
+<li><a href="#%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9">图片压缩</a></li>
+<li><a href="#%E5%9B%BE%E7%89%87%E6%94%BE%E5%A4%A7">图片放大</a></li>
+<li><a href="#%E5%9C%A8%E7%BA%BF%E6%8A%A0%E5%9B%BE">在线抠图</a></li>
+<li><a href="#%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2">格式转换</a></li>
+<li><a href="#%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD">视频下载</a></li>
+<li><a href="#%E9%9F%B3%E9%A2%91%E4%B8%8B%E8%BD%BD">音频下载</a></li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0">数据平台</a></li>
+<li><a href="#%E8%B5%9A%E9%92%B1%E7%BD%91%E7%AB%99">赚钱网站</a></li>
+<li><a href="#%E8%A1%8C%E4%B8%9A%E6%8A%A5%E5%91%8A">行业报告</a></li>
+<li><a href="#%E6%9C%BA%E5%9C%BA">机场</a></li>
+<li><a href="#google">Google</a></li>
+<li><a href="#%E7%94%9F%E6%B4%BB">生活</a></li>
+<li><a href="#%E6%9F%A5%E8%AF%A2">查询</a></li>
+<li><a href="#%E5%81%A5%E5%BA%B7">健康</a></li>
+<li><a href="#%E6%96%B0%E9%97%BB">新闻</a></li>
+<li><a href="#%E5%9C%A8%E7%BA%BF%E7%94%B5%E5%BD%B1">在线电影</a></li>
+<li><a href="#%E5%A4%96%E7%BD%91">外网</a></li>
+<li><a href="#%E5%BD%B1%E8%A7%86">影视</a></li>
+<li><a href="#%E8%B5%84%E6%BA%90">资源</a></li>
+<li><a href="#%E5%85%B6%E4%BB%96">其他</a></li>
+<li><a href="#%E6%96%B0%E9%97%BB-2">新闻</a></li>
+<li><a href="#%E5%B7%A5%E5%85%B7">工具</a></li>
+<li><a href="#%E7%9F%AD%E7%BD%91%E5%9D%80">短网址</a></li>
+<li><a href="#github">GitHub</a></li>
+<li><a href="#%E5%BE%AE%E8%BD%AF">微软</a></li>
+<li><a href="#%E5%85%B6%E4%BB%96-2">其他</a></li>
+<li><a href="#%E4%B8%B4%E6%97%B6%E9%82%AE%E7%AE%B1">临时邮箱</a></li>
+<li><a href="#%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2-2">格式转换</a></li>
+<li><a href="#%E5%AD%A6%E4%B9%A0">学习</a></li>
+<li><a href="#%E8%AE%BE%E8%AE%A1">设计</a></li>
+<li><a href="#%E8%BD%AF%E4%BB%B6%E8%B5%84%E6%BA%90">软件资源</a></li>
+<li><a href="#3d%E8%AE%BE%E8%AE%A1">3D设计</a></li>
+<li><a href="#%E5%B9%B3%E9%9D%A2%E8%AE%BE%E8%AE%A1">平面设计</a></li>
+<li><a href="#%E5%BD%B1%E8%A7%86%E8%AE%BE%E8%AE%A1">影视设计</a></li>
+<li><a href="#%E9%85%8D%E8%89%B2%E7%BD%91">配色网</a></li>
+<li><a href="#%E6%96%87%E5%AD%97%E7%BD%91">文字网</a></li>
+<li><a href="#%E5%9B%BE%E7%89%87%E7%B4%A0%E6%9D%90-2">图片素材</a></li>
+<li><a href="#ps%E7%B4%A0%E6%9D%90%E7%BD%91">PS素材网</a></li>
+<li><a href="#ppt">PPT</a></li>
+<li><a href="#%E6%91%84%E5%BD%B1%E7%B1%BB">摄影类</a></li>
+<li><a href="#%E6%8B%93%E6%89%91%E5%9B%BE">拓扑图</a></li>
+<li><a href="#%E5%9B%BE%E6%A0%87">图标</a></li>
+<li><a href="#%E8%AE%BE%E8%AE%A1%E5%B8%88">设计师</a></li>
+<li><a href="#h5">H5</a></li>
+<li><a href="#%E6%96%87%E6%A1%A3">文档</a></li>
+<li><a href="#%E7%BC%96%E7%A8%8B">编程</a></li>
+<li><a href="#%E6%BC%94%E8%AE%B2">演讲</a></li>
+<li><a href="#%E6%95%99%E8%82%B2">教育</a></li>
+<li><a href="#%E4%B9%A6%E7%B1%8D">书籍</a></li>
+<li><a href="#%E7%94%B5%E5%BD%B1">电影</a></li>
+<li><a href="#%E4%B8%8B%E8%BD%BD">下载</a></li>
+<li><a href="#%E8%A7%A3%E6%9E%90">解析</a></li>
+<li><a href="#%E5%85%B6%E4%BB%96-3">其他</a></li>
+<li><a href="#%E8%B5%84%E6%BA%90-2">资源</a></li>
+<li><a href="#%E7%BB%BC%E5%90%88">综合</a></li>
+<li><a href="#%E6%89%8B%E6%9C%BAapp">手机APP</a></li>
+<li><a href="#%E6%90%9C%E7%B4%A2">搜索</a></li>
+<li><a href="#%E5%AF%BC%E8%88%AA">导航</a></li>
+<li><a href="#%E8%AE%BA%E5%9D%9B">论坛</a></li>
+<li><a href="#%E5%BC%80%E6%BA%90">开源</a></li>
+<li><a href="#%E7%B4%A0%E6%9D%90">素材</a></li>
+<li><a href="#%E6%91%84%E5%BD%B1">摄影</a></li>
+<li><a href="#%E5%BD%B1%E9%9F%B3">影音</a></li>
+<li><a href="#%E7%BB%BC%E5%90%88-2">综合</a></li>
+<li><a href="#%E5%9B%BE%E6%A0%87-2">图标</a></li>
+<li><a href="#%E5%95%86%E7%94%A8">商用</a></li>
+<li><a href="#12023252628303234%E5%95%86%E7%94%A81~51028313235%E6%8E%A8%E8%8D%90%E7%BD%91%E7%AB%99">1~20，23，25，26，28，30，32~34商用,1~5,10,28,31,32,35推荐网站</a></li>
+<li><a href="#1311161920%E6%9C%89cc0%E5%8D%8F%E8%AE%AE">1~3，11~16，19，20有CC0协议</a></li>
+<li><a href="#%E4%BA%91u%E7%9B%98">云U盘</a></li>
+<li><a href="#%E6%89%8B%E6%9C%BA%E6%8E%A5%E7%A0%81">手机接码</a></li>
 </ul>
 </li>
-</ol>
-]]></content>
-    </entry>
-</feed>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://ldsoy.github.io/AnnanBlogs/post/openwrt_smba/">
+              <h3 class="post-title">
+                N1盒子OpenWrt局域网共享硬盘
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://ldsoy.github.io/AnnanBlogs//atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
