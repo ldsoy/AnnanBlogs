@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ldsoy.github.io/AnnanBlogs/</id>
     <title>Annan&apos;s Blogs</title>
-    <updated>2021-10-26T15:10:15.370Z</updated>
+    <updated>2021-10-26T20:20:38.958Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ldsoy.github.io/AnnanBlogs/"/>
     <link rel="self" href="https://ldsoy.github.io/AnnanBlogs/atom.xml"/>
@@ -10,6 +10,30 @@
     <logo>https://ldsoy.github.io/AnnanBlogs/images/avatar.png</logo>
     <icon>https://ldsoy.github.io/AnnanBlogs/favicon.ico</icon>
     <rights>All rights reserved 2021, Annan&apos;s Blogs</rights>
+    <entry>
+        <title type="html"><![CDATA[如何备份青龙面板的环境变量]]></title>
+        <id>https://ldsoy.github.io/AnnanBlogs/post/qinglong_env/</id>
+        <link href="https://ldsoy.github.io/AnnanBlogs/post/qinglong_env/">
+        </link>
+        <updated>2021-10-26T19:37:36.000Z</updated>
+        <summary type="html"><![CDATA[<p>每次重装完青龙面板，我们不得不面对的一个问题就是，环境变量还要重新配置，对于环境变量少的人来说，倒是简单，但是对于多的人来说，那就是头疼事儿了啊</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>每次重装完青龙面板，我们不得不面对的一个问题就是，环境变量还要重新配置，对于环境变量少的人来说，倒是简单，但是对于多的人来说，那就是头疼事儿了啊</p>
+<!-- more -->
+<p><mark>声明</mark><br>
+以下步骤皆以<a href="https://ldsoy.github.io/AnnanBlogs/post/install_qinglong/">https://ldsoy.github.io/AnnanBlogs/post/install_qinglong/</a>这个安装面板教程为前提</p>
+<h1 id="备份db文件夹下的envdb文件">备份db文件夹下的env.db文件</h1>
+<p>情况一：<br>
+安装青龙的时候，这个db文件夹一般都映射到宿主机了，直接去宿主机找就行了，找到里面的env.db文件，备份下，装好新容器直接替换就行了</p>
+<p>情况二：<br>
+如果没有映射db文件夹，那就想办法通过命令行进入青龙面板，顺嘴提一下，进入青龙面板的docker命令<br>
+<code>docker exec -it qinglong bash</code><br>
+进去了之后就找到db文件夹，进去找到env.db,<code>cat env.db</code>打印一下变量内容，然后选中复制，等装好新容器，就把复制的内容粘贴进env.db文件就行了</p>
+<p><mark>注意</mark><br>
+上文说的环境变量是下图圈中的这个，别搞错了，替换完了env.db,记得重启面板才会生效<br>
+<img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20211027040731.png" alt="" loading="lazy"></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[京东Cookie的获取（安卓＋PC）]]></title>
         <id>https://ldsoy.github.io/AnnanBlogs/post/get_jingdongcookie/</id>
@@ -1453,26 +1477,6 @@ https://gitee.com/52itstyle/smart-parking<br>
 </ul>
 </li>
 </ol>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Welcome to Annan's blog]]></title>
-        <id>https://ldsoy.github.io/AnnanBlogs/post/hello-annan/</id>
-        <link href="https://ldsoy.github.io/AnnanBlogs/post/hello-annan/">
-        </link>
-        <updated>2018-12-11T16:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p><strong>Hello！</strong><br>
-👏  欢迎来到安南的博客<br>
-✍️  这里可能记录了安南的生活、心情、知识、笔记、创意... ...<br>
-💫 希望可以给你带来灵感</p>
-<p>😘 Enjoy~</p>
-]]></summary>
-        <content type="html"><![CDATA[<p><strong>Hello！</strong><br>
-👏  欢迎来到安南的博客<br>
-✍️  这里可能记录了安南的生活、心情、知识、笔记、创意... ...<br>
-💫 希望可以给你带来灵感</p>
-<p>😘 Enjoy~</p>
-<!-- more -->
 ]]></content>
     </entry>
 </feed>
