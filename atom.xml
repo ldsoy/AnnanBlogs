@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ldsoy.github.io/AnnanBlogs/</id>
     <title>Annan&apos;s Blogs</title>
-    <updated>2021-10-26T20:37:31.025Z</updated>
+    <updated>2021-10-27T10:27:12.437Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ldsoy.github.io/AnnanBlogs/"/>
     <link rel="self" href="https://ldsoy.github.io/AnnanBlogs/atom.xml"/>
@@ -10,6 +10,65 @@
     <logo>https://ldsoy.github.io/AnnanBlogs/images/avatar.png</logo>
     <icon>https://ldsoy.github.io/AnnanBlogs/favicon.ico</icon>
     <rights>All rights reserved 2021, Annan&apos;s Blogs</rights>
+    <entry>
+        <title type="html"><![CDATA[String总结]]></title>
+        <id>https://ldsoy.github.io/AnnanBlogs/post/string_zongjie/</id>
+        <link href="https://ldsoy.github.io/AnnanBlogs/post/string_zongjie/">
+        </link>
+        <updated>2021-10-27T07:57:19.000Z</updated>
+        <summary type="html"><![CDATA[<p>记录一些关于String的知识点</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>记录一些关于String的知识点</p>
+<!-- more -->
+<h1 id="总结">总结</h1>
+<ol>
+<li>字符串都是对象</li>
+<li>字符串一旦初始化就无法修改，因为字符串时是常量</li>
+<li>通过String类的构造函数传参，可以将字节数组或者字符数组转换成字符串<pre><code class="language-java">char [] arr = {'a','b','c','d'};
+String str = new String(arr);
+String str = new String(arr,0,2);
+//0的位置是偏移量，也就是起始位置的角标
+//2的位置从偏移量往后截取多少长度的字符串，这里起始位置也占一个长度
+/*JKD文档的解释
+String(char[] value, int offset, int count)
+分配一个新的 String ，其中包含字符数组参数的子阵列中的字符。*/
+</code></pre>
+</li>
+</ol>
+<h1 id="面试题">面试题</h1>
+<pre><code class="language-java">//-----------------------
+		System.out.println(&quot;++++++++++++++++多个引用指向同一个字符串+++++++++++++++++++&quot;);
+		String s1 = &quot;ldsoy&quot;;
+		String s2 = &quot;ldsoy&quot;;
+		
+		System.out.println(s1 == s2);
+		System.out.println(s1.equals(s2));
+		
+		System.out.println(&quot;++++++++++++++++两个内容相同创建方式不同对的字符串+++++++++++++++++++&quot;);
+		String s3 = &quot;abc&quot;;
+		char [] arrc= {'a','b','c','d','e','f'};
+		String s4 = new String(arrc,0,3);
+		
+		
+		System.out.println(s3);
+		System.out.println(s4);
+		System.out.println(s3 == s4);
+		System.out.println(s3.equals(s4));
+
+//结果
+++++++++++++++++多个引用指向同一个字符串+++++++++++++++++++
+true
+true
+++++++++++++++++两个内容相同创建方式不同对的字符串+++++++++++++++++++
+abc
+abc
+false
+true
+</code></pre>
+<p>面试题总结，s1 == s2这个是true是因为两个对象的引用都指向了同一个字符串，这个字符串在方法去的常量池中，s1.equals(s2)这个方法本是比较的两个对象地址，但是由于String类重写了这个方法写成了两个字符串的字面比较相同返回true</p>
+<p>下面的s3 == s4是fales，是因为s3的字符串本身就存在与常量池中，s4是调用了String的构造方法又新生成的一个字符串对象，所以两个字符串对象是不一样的，s3.equals(s4)是true同上s1.equals(s2)的比较</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[如何备份青龙面板的环境变量]]></title>
         <id>https://ldsoy.github.io/AnnanBlogs/post/qinglong_env_backup/</id>
@@ -1436,47 +1495,6 @@ tun:
 <p>把优选到的IP，替换那个地址，第二步反向代理得到的域名填入伪装域名，如下图<br>
 <img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930210912.png" alt="" loading="lazy"></p>
 <p><strong>搞定收工</strong></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[JDK11的配置问题]]></title>
-        <id>https://ldsoy.github.io/AnnanBlogs/post/jdk11_config/</id>
-        <link href="https://ldsoy.github.io/AnnanBlogs/post/jdk11_config/">
-        </link>
-        <updated>2021-09-30T11:03:31.000Z</updated>
-        <summary type="html"><![CDATA[<p>事件过程<br>
-今天我把电脑上的JDK14和16都卸载了，今天导入了老师说的那个项目<br>
-https://gitee.com/52itstyle/smart-parking<br>
-导入的IDEA里面用JDK16，死活找不到<strong>Toools.jar</strong>,<br>
-应该不是自身配置的问题，应该是JDK的特性问题，<br>
-然后用的JDK14就很正常，但是我在系统变量里面配置好了，但是再cmd里面还是找不到cmd</p>
-<p>导致我都给卸载了，卸载也是有讲究的</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>事件过程<br>
-今天我把电脑上的JDK14和16都卸载了，今天导入了老师说的那个项目<br>
-https://gitee.com/52itstyle/smart-parking<br>
-导入的IDEA里面用JDK16，死活找不到<strong>Toools.jar</strong>,<br>
-应该不是自身配置的问题，应该是JDK的特性问题，<br>
-然后用的JDK14就很正常，但是我在系统变量里面配置好了，但是再cmd里面还是找不到cmd</p>
-<p>导致我都给卸载了，卸载也是有讲究的</p>
-<!-- more -->
-<h2 id="jdk的卸载">JDK的卸载</h2>
-<ol>
-<li>去系统的卸载里面去卸载JDK</li>
-<li>在“运行”中输入Regedit，打开注册表编辑器，找到HKEY_LOCAL_MACHINE/SOFTWARE/JavaSoft ，将JavaSoft文件夹及其子目录全部删除。</li>
-</ol>
-<hr>
-<h2 id="jdk的安装">JDK的安装</h2>
-<ol>
-<li>去官网下载JDK11吧，LTS是长期支持版本，下64位的<code>.exe</code>文件</li>
-<li>安装，路径想改就改，到时候知道装哪里就行，剩下就一直下一步</li>
-<li>配置环境变量:此电脑→属性→高级系统属性→高级→环境变量→系统变量
-<ul>
-<li>增加变量 JAVA_HOME 路径就是你的安装路径<code>D:\Program Files\Java\jdk-11.0.12</code></li>
-<li>Path里面增加一条 <code>%JAVA_HOME%\bin;</code></li>
-</ul>
-</li>
-</ol>
 ]]></content>
     </entry>
 </feed>
