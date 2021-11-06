@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ldsoy.github.io/AnnanBlogs/</id>
     <title>Annan&apos;s Blogs</title>
-    <updated>2021-11-06T13:03:40.370Z</updated>
+    <updated>2021-11-06T13:37:25.013Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ldsoy.github.io/AnnanBlogs/"/>
     <link rel="self" href="https://ldsoy.github.io/AnnanBlogs/atom.xml"/>
@@ -10,6 +10,40 @@
     <logo>https://ldsoy.github.io/AnnanBlogs/images/avatar.png</logo>
     <icon>https://ldsoy.github.io/AnnanBlogs/favicon.ico</icon>
     <rights>All rights reserved 2021, Annan&apos;s Blogs</rights>
+    <entry>
+        <title type="html"><![CDATA[青龙内部互助通用脚本]]></title>
+        <id>https://ldsoy.github.io/AnnanBlogs/post/code_huzhu/</id>
+        <link href="https://ldsoy.github.io/AnnanBlogs/post/code_huzhu/">
+        </link>
+        <updated>2021-11-06T13:29:44.000Z</updated>
+        <summary type="html"><![CDATA[<p>脚本来自Q群：<a href="https://jq.qq.com/?_wv=1027&amp;k=lRRwo4UM">644288320</a></p>
+<p>测试仓库：faker2（全称：shufflewzc_faker2）</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>脚本来自Q群：<a href="https://jq.qq.com/?_wv=1027&amp;k=lRRwo4UM">644288320</a></p>
+<p>测试仓库：faker2（全称：shufflewzc_faker2）</p>
+<!-- more -->
+<p>1.下载两个脚本</p>
+<p>览奏云：<a href="https://sexyfox.lanzouw.com/i3GYIw8bthc">https://sexyfox.lanzouw.com/i3GYIw8bthc</a></p>
+<p>2.去宿主机青龙的映射文件夹下</p>
+<p><code>code.sh</code>直接丢scripts文件夹（如果你用的shufflewzc_faker2这个库，那就不用改，如果用的别的库，记得改下脚本前缀）</p>
+<p>怎么改见<code>code.sh</code>脚本的9-19行,这里我拿过来给你们看看，如果预设的仓库没有，你就自己添加一条，<code>repo8='XXXXXXXX'</code>,顺便把<code>repo=$repo8</code></p>
+<pre><code class="language-js">## 预设的仓库及默认调用仓库设置
+## 将&quot;repo=$repo1&quot;改成repo=$repo2&quot;或其他，以默认调用其他仓库脚本日志
+## 也可自行搜索本脚本内的&quot;name_js=(&quot;和&quot;name_js_only&quot;,将&quot;repo&quot;改成&quot;repo2&quot;或其他，用以自
+由组合调用仓库的脚本日志
+repo1='panghu999_jd_scripts'                       #预设的 panghu999 仓库
+repo2='JDHelloWorld_jd_scripts'                    #预设的 JDHelloWorld 仓库
+repo3='he1pu_JDHelp'                               #预设的 he1pu 仓库
+repo4='yuannian1112_jd_scripts'                    #预设的 yuannian1112_jd_scripts 仓库
+repo5='Wenmoux_scripts_wen_chinnkarahoi'           #预设的 Wenmoux 仓库，用于读取口袋书店互助码。需提前拉取温某人的仓库或口袋书店脚本并完整运行。
+repo6='Aaron-lv_sync_jd_scripts'                   #预设的 Aaron-lv 仓库
+repo7='shufflewzc_faker2'                          #预设的 shufflewzc_faker2 仓库
+repo=$repo7                                        #默认调用 shufflewzc_faker2 仓库脚本日志
+</code></pre>
+<p><code>task_before.sh</code>这个脚本直接丢config文件夹覆盖同名脚本</p>
+<p>3.去青龙面板添加一个定时任务<code>task code.sh</code>,就完了，运行频率看你自己，我设置的 <code>11 0,23 * * *</code></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[云服务器安装nvjdc面板（配合青龙使用）]]></title>
         <id>https://ldsoy.github.io/AnnanBlogs/post/nvjdc_install_qinglong/</id>
@@ -1404,24 +1438,6 @@ true
 剩下不要动</p>
 </li>
 </ol>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[论当代大学生半夜饿了吃了一桶酸辣粉]]></title>
-        <id>https://ldsoy.github.io/AnnanBlogs/post/suanlafen/</id>
-        <link href="https://ldsoy.github.io/AnnanBlogs/post/suanlafen/">
-        </link>
-        <updated>2021-10-03T23:45:47.000Z</updated>
-        <summary type="html"><![CDATA[<p>重点：<br>
-酸辣粉真好吃😋<br>
-酸辣粉真好吃😋<br>
-酸辣粉真好吃😋</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>重点：<br>
-酸辣粉真好吃😋<br>
-酸辣粉真好吃😋<br>
-酸辣粉真好吃😋</p>
-<!-- more -->
 ]]></content>
     </entry>
 </feed>

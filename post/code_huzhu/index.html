@@ -2,19 +2,21 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>京东青龙脚本库 | Annan&#39;s Blogs</title>
+<title>青龙内部互助通用脚本 | Annan&#39;s Blogs</title>
 <link rel="shortcut icon" href="https://ldsoy.github.io/AnnanBlogs//favicon.ico?v=1636205842529">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://ldsoy.github.io/AnnanBlogs//styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="京东青龙脚本库 | Annan&#39;s Blogs - Atom Feed" href="https://ldsoy.github.io/AnnanBlogs//atom.xml">
+<link rel="alternate" type="application/atom+xml" title="青龙内部互助通用脚本 | Annan&#39;s Blogs - Atom Feed" href="https://ldsoy.github.io/AnnanBlogs//atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="记录常见的青龙脚本库
+    <meta name="description" content="脚本来自Q群：644288320
+测试仓库：faker2（全称：shufflewzc_faker2）
 
-Faker
-ql repo https://ghproxy.com/https://github.com/shufflewzc/faker2.git &quot;jd_|jx_|gua_|jddj_|getJDCoo..." />
+1.下载两个脚本
+览奏云：https://sexyfox.lanzouw.com/i3GYIw8bthc
+2.去宿主机青龙的映射文件夹下..." />
     <meta name="keywords" content="京东" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -77,14 +79,14 @@ ql repo https://ghproxy.com/https://github.com/shufflewzc/faker2.git &quot;jd_|j
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              京东青龙脚本库
+              青龙内部互助通用脚本
             </h2>
             <div class="post-info">
               <span>
-                2021-10-29
+                2021-11-06
               </span>
               <span>
-                1 min read
+                2 min read
               </span>
               
                 <a href="https://ldsoy.github.io/AnnanBlogs/tag/203OwxXEM/" class="post-tag">
@@ -95,14 +97,29 @@ ql repo https://ghproxy.com/https://github.com/shufflewzc/faker2.git &quot;jd_|j
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <p>记录常见的青龙脚本库</p>
+                <p>脚本来自Q群：<a href="https://jq.qq.com/?_wv=1027&amp;k=lRRwo4UM">644288320</a></p>
+<p>测试仓库：faker2（全称：shufflewzc_faker2）</p>
 <!-- more -->
-<p>Faker</p>
-<pre><code class="language-java">ql repo https://ghproxy.com/https://github.com/shufflewzc/faker2.git &quot;jd_|jx_|gua_|jddj_|getJDCookie&quot; &quot;activity|backUp&quot; &quot;^jd[^_]|USER|ZooFaker_Necklace.js|JDJRValidator_Pure|sign_graphics_validate&quot;
+<p>1.下载两个脚本</p>
+<p>览奏云：<a href="https://sexyfox.lanzouw.com/i3GYIw8bthc">https://sexyfox.lanzouw.com/i3GYIw8bthc</a></p>
+<p>2.去宿主机青龙的映射文件夹下</p>
+<p><code>code.sh</code>直接丢scripts文件夹（如果你用的shufflewzc_faker2这个库，那就不用改，如果用的别的库，记得改下脚本前缀）</p>
+<p>怎么改见<code>code.sh</code>脚本的9-19行,这里我拿过来给你们看看，如果预设的仓库没有，你就自己添加一条，<code>repo8='XXXXXXXX'</code>,顺便把<code>repo=$repo8</code></p>
+<pre><code class="language-js">## 预设的仓库及默认调用仓库设置
+## 将&quot;repo=$repo1&quot;改成repo=$repo2&quot;或其他，以默认调用其他仓库脚本日志
+## 也可自行搜索本脚本内的&quot;name_js=(&quot;和&quot;name_js_only&quot;,将&quot;repo&quot;改成&quot;repo2&quot;或其他，用以自
+由组合调用仓库的脚本日志
+repo1='panghu999_jd_scripts'                       #预设的 panghu999 仓库
+repo2='JDHelloWorld_jd_scripts'                    #预设的 JDHelloWorld 仓库
+repo3='he1pu_JDHelp'                               #预设的 he1pu 仓库
+repo4='yuannian1112_jd_scripts'                    #预设的 yuannian1112_jd_scripts 仓库
+repo5='Wenmoux_scripts_wen_chinnkarahoi'           #预设的 Wenmoux 仓库，用于读取口袋书店互助码。需提前拉取温某人的仓库或口袋书店脚本并完整运行。
+repo6='Aaron-lv_sync_jd_scripts'                   #预设的 Aaron-lv 仓库
+repo7='shufflewzc_faker2'                          #预设的 shufflewzc_faker2 仓库
+repo=$repo7                                        #默认调用 shufflewzc_faker2 仓库脚本日志
 </code></pre>
-<p>Zero_205</p>
-<pre><code class="language-java">ql repo https://github.com/zero205/JD_tencent_scf.git &quot;jd_|jx_|getJDCookie&quot; &quot;backUp|icon&quot; &quot;^jd[^_]|USER|sendNotify|sign_graphics_validate|JDJR|JDSign&quot; &quot;main&quot;
-</code></pre>
+<p><code>task_before.sh</code>这个脚本直接丢config文件夹覆盖同名脚本</p>
+<p>3.去青龙面板添加一个定时任务<code>task code.sh</code>,就完了，运行频率看你自己，我设置的 <code>11 0,23 * * *</code></p>
 
               </div>
               <div class="toc-container">
@@ -115,9 +132,9 @@ ql repo https://ghproxy.com/https://github.com/shufflewzc/faker2.git &quot;jd_|j
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://ldsoy.github.io/AnnanBlogs/post/string_zongjie/">
+            <a href="https://ldsoy.github.io/AnnanBlogs/post/nvjdc_install_qinglong/">
               <h3 class="post-title">
-                String总结
+                云服务器安装nvjdc面板（配合青龙使用）
               </h3>
             </a>
           </div>
