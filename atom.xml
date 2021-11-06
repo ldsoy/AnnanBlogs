@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ldsoy.github.io/AnnanBlogs/</id>
     <title>Annan&apos;s Blogs</title>
-    <updated>2021-11-05T05:30:50.431Z</updated>
+    <updated>2021-11-06T12:14:35.421Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ldsoy.github.io/AnnanBlogs/"/>
     <link rel="self" href="https://ldsoy.github.io/AnnanBlogs/atom.xml"/>
@@ -10,6 +10,84 @@
     <logo>https://ldsoy.github.io/AnnanBlogs/images/avatar.png</logo>
     <icon>https://ldsoy.github.io/AnnanBlogs/favicon.ico</icon>
     <rights>All rights reserved 2021, Annan&apos;s Blogs</rights>
+    <entry>
+        <title type="html"><![CDATA[云服务器安装nvjdc面板（配合青龙使用）]]></title>
+        <id>https://ldsoy.github.io/AnnanBlogs/post/nvjdc_install_qinglong/</id>
+        <link href="https://ldsoy.github.io/AnnanBlogs/post/nvjdc_install_qinglong/">
+        </link>
+        <updated>2021-11-06T10:38:16.000Z</updated>
+        <summary type="html"><![CDATA[<p>感谢作者：<a href="https://github.com/NolanHzy/nvjdc">https://github.com/NolanHzy/nvjdc</a><br>
+安装环境：centos 7.6<br>
+配置：2h4g<br>
+面板功能：手机号登入自动获取京东ck，并自动更新到青龙面板</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>感谢作者：<a href="https://github.com/NolanHzy/nvjdc">https://github.com/NolanHzy/nvjdc</a><br>
+安装环境：centos 7.6<br>
+配置：2h4g<br>
+面板功能：手机号登入自动获取京东ck，并自动更新到青龙面板</p>
+<!-- more -->
+<h2 id="安装">安装</h2>
+<p>1.首先进入你的宿主机，不是青龙容器<br>
+2.创建一个目录放配置以及chromium（建议直接在 / 目录下创建，不能在青龙映射到宿主机的文件夹创建）</p>
+<pre><code>cd /
+</code></pre>
+<pre><code>mkdir nolanjdc &amp;&amp; cd nolanjdc
+</code></pre>
+<p>3.下载config.json 配置文件(先下载好，一会再说怎么修改)</p>
+<pre><code>wget -O Config.json  https://raw.githubusercontent.com/NolanHzy/nvjdc/main/Config.json
+</code></pre>
+<p>国内请使用</p>
+<pre><code>wget -O Config.json   https://ghproxy.com/https://raw.githubusercontent.com/NolanHzy/nvjdc/main/Config.json
+</code></pre>
+<p>4 .创建chromium文件夹并进入</p>
+<pre><code>mkdir -p  .local-chromium/Linux-884014 &amp;&amp; cd .local-chromium/Linux-884014
+</code></pre>
+<p>5.下载 chromium</p>
+<pre><code>wget https://mirrors.huaweicloud.com/chromium-browser-snapshots/Linux_x64/884014/chrome-linux.zip &amp;&amp; unzip chrome-linux.zip
+</code></pre>
+<p>6.删除刚刚下载的压缩包,并回到上级目录</p>
+<pre><code>rm  -f chrome-linux.zip
+</code></pre>
+<pre><code>cd  /nolanjdc
+</code></pre>
+<p>7.拉镜像(拉镜像的时候，如果拉不动，就检查一下你有没有装shellclash类似的代理软件，先把代理软件关了，再拉，因为一般国内的云服务器的docker的镜像都是用的国内163的镜像，如果开代理软件就会导致镜像从国外拉去，可能会是失败)</p>
+<pre><code>sudo docker pull nolanhzy/nvjdc:0.5
+</code></pre>
+<p>8.启动镜像（这里是把80端口映射到了宿主机的5701端口，你们根据自己的情况改）</p>
+<pre><code>sudo docker run   --name nolanjdc -p 5701:80 -d  -v  &quot;$(pwd)&quot;/Config.json:/app/Config/Config.json:ro \
+-v &quot;$(pwd)&quot;/.local-chromium:/app/.local-chromium  \
+-it --privileged=true  nolanhzy/nvjdc:0.5 
+</code></pre>
+<p>9.配置第三步下好的Config.json文件</p>
+<pre><code class="language-java">&quot;Config&quot;: [
+    {
+      //序号必填从1 开始
+      &quot;QLkey&quot;: 1,                                            //如果就一个容器，就不用改
+      //服务器名称
+      &quot;QLName&quot;: &quot;容器一（腾讯轻量云）&quot;,    //随便起个名字
+      //青龙地址
+      &quot;QLurl&quot;: &quot;http://xx.xx.xx.xx:5700&quot;,    //这是你的青龙地址
+      //青龙2,9 OpenApi Client ID
+      &quot;QL_CLIENTID&quot;: &quot;xxxxx&quot;,             //去青龙面板系统设置-应用设置里面添加一个应用，名称随便填，权限给个环境变量，如果不行就都给，弄好应用把Client ID弄这里
+      //青龙2,9 OpenApi Client Secret
+      &quot;QL_SECRET&quot;: &quot;xxxxxxxx&quot;,          //Client Secret弄这里
+      //CK最大数量
+      &quot;QL_CAPACITY&quot;: 30,                  //你想让你这个容器跑多少账号
+      &quot;QRurl&quot;: &quot;&quot;                          
+    }
+</code></pre>
+<p>10.配置好，重启容器,检查日志输出</p>
+<pre><code>docker restart nolanjdc
+</code></pre>
+<pre><code>docker logs -f nolanjdc 
+</code></pre>
+<p>如果出现下面这样就好了</p>
+<pre><code>True
+检查成功
+NETJDC started
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[京东青龙脚本库]]></title>
         <id>https://ldsoy.github.io/AnnanBlogs/post/qinglong_getjs/</id>
@@ -1343,119 +1421,6 @@ true
 酸辣粉真好吃😋<br>
 酸辣粉真好吃😋</p>
 <!-- more -->
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Clash For Windows启用虚拟网卡TUN模式]]></title>
-        <id>https://ldsoy.github.io/AnnanBlogs/post/cfw_tun/</id>
-        <link href="https://ldsoy.github.io/AnnanBlogs/post/cfw_tun/">
-        </link>
-        <updated>2021-09-30T13:25:58.000Z</updated>
-        <summary type="html"><![CDATA[<p>Clash for windows以下简称为cfw，这个软件的作者提到tun模式在windows上是支持最好的，所以在此说一下怎么打开虚拟网卡tun模式</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>Clash for windows以下简称为cfw，这个软件的作者提到tun模式在windows上是支持最好的，所以在此说一下怎么打开虚拟网卡tun模式</p>
-<!-- more -->
-<ol>
-<li>
-<p>先要下载支持tun的组件，去这里下<a href="https://www.wintun.net">https://www.wintun.net</a></p>
-<figure data-type="image" tabindex="1"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930213149.png" alt="" loading="lazy"></figure>
-<p>下载完是一个压缩包，里面有64的有x86的，找到跟你CFW对应版本的wintun.dll</p>
-</li>
-</ol>
-<hr>
-<ol start="2">
-<li>
-<p>把wintun.dll放进你们配置文件目录，点一下我标注的Open Folder就会弹出一个文件夹，那就是配置文件目录</p>
-<figure data-type="image" tabindex="2"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930213246.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="3"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930213301.png" alt="" loading="lazy"></figure>
-</li>
-</ol>
-<hr>
-<ol start="3">
-<li>
-<p>启用Service Mode，并安装</p>
-<figure data-type="image" tabindex="4"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930213417.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="5"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930213427.png" alt="" loading="lazy"></figure>
-<p>弄好后，Service Mode会变成雾蓝色的地球</p>
-<figure data-type="image" tabindex="6"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930213447.png" alt="" loading="lazy"></figure>
-<p>并且的你的配置文件的目录，会多一个Service的文件夹</p>
-</li>
-<li>
-<p>到Settings配置Profile Mixin</p>
-<figure data-type="image" tabindex="7"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930213607.png" alt="" loading="lazy"></figure>
-<p>打开后，把下面的配置填进去</p>
-<pre><code class="language-yaml">mixin:
-dns:
-    enable: true
-    default-nameserver:
-      - 223.5.5.5
-      - 1.1.1.1
-    enhanced-mode: redir-host
-    nameserver:
-      - 223.5.5.5
-      - 223.6.6.6
-      - https://223.5.5.5/resolve
-    fallback:
-      - 1.1.1.1
-      - 208.67.220.222:5353
-      - https://dns.rubyfish.cn/dns-query
-      - https://doh.opendns.com/dns-query
-      - tls://1.1.1.1:853
-    fallback-filter:
-      geoip: true
-tun:
-    enable: true
-    stack: gvisor
-    dns-hijack:
-      - 198.18.0.2:53
-    macOS-auto-route: true
-    macOS-auto-detect-interface: true
-    ```
-
-    就像下面这样
-
-    ![](https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930214503.png)
-
-    填好点右下角保存就行了。
-
-</code></pre>
-</li>
-<li>
-<p>回主界面打开Mixin和system proxy就ok了</p>
-<figure data-type="image" tabindex="8"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930214600.png" alt="" loading="lazy"></figure>
-<p>现在就是开启了虚拟网卡模式</p>
-<figure data-type="image" tabindex="9"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20210930214648.png" alt="" loading="lazy"></figure>
-<p>当你不想使用TUN模式了的时候就把Mixin关了就行</p>
-</li>
-</ol>
-<h2 id="补充">补充</h2>
-<p>如果显示Clash网卡无法连接，请更换Mixin中的DNS，或者你可以删掉fallback部分<br>
-如下：</p>
-<pre><code class="language-yaml">mixin:
-   dns:
-       enable: true
-       default-nameserver:
-         - 223.5.5.5
-         - 1.1.1.1
-       enhanced-mode: redir-host
-       nameserver:
-         - 223.5.5.5
-         - 223.6.6.6
-         - https://223.5.5.5/resolve
-   tun:
-       enable: true
-       stack: gvisor
-       dns-hijack:
-         - 198.18.0.2:53
-       macOS-auto-route: true
-       macOS-auto-detect-interface: true
-       ```
-
-
-
-
-
-</code></pre>
 ]]></content>
     </entry>
 </feed>

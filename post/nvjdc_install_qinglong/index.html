@@ -2,19 +2,23 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>如何备份青龙面板的环境变量 | Annan&#39;s Blogs</title>
+<title>云服务器安装nvjdc面板（配合青龙使用） | Annan&#39;s Blogs</title>
 <link rel="shortcut icon" href="https://ldsoy.github.io/AnnanBlogs//favicon.ico?v=1636200870434">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://ldsoy.github.io/AnnanBlogs//styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="如何备份青龙面板的环境变量 | Annan&#39;s Blogs - Atom Feed" href="https://ldsoy.github.io/AnnanBlogs//atom.xml">
+<link rel="alternate" type="application/atom+xml" title="云服务器安装nvjdc面板（配合青龙使用） | Annan&#39;s Blogs - Atom Feed" href="https://ldsoy.github.io/AnnanBlogs//atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="每次重装完青龙面板，我们不得不面对的一个问题就是，环境变量还要重新配置，对于环境变量少的人来说，倒是简单，但是对于多的人来说，那就是头疼事儿了啊
+    <meta name="description" content="感谢作者：https://github.com/NolanHzy/nvjdc
+安装环境：centos 7.6
+配置：2h4g
+面板功能：手机号登入自动获取京东ck，并自动更新到青龙面板
 
-声明
-以下步骤皆以https://ldsoy.github.io/AnnanBlogs/po..." />
+安装
+1.首先进入你的宿主机，不是青龙容器
+2.创建..." />
     <meta name="keywords" content="京东" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -77,14 +81,14 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              如何备份青龙面板的环境变量
+              云服务器安装nvjdc面板（配合青龙使用）
             </h2>
             <div class="post-info">
               <span>
-                2021-10-27
+                2021-11-06
               </span>
               <span>
-                2 min read
+                3 min read
               </span>
               
                 <a href="https://ldsoy.github.io/AnnanBlogs/tag/203OwxXEM/" class="post-tag">
@@ -95,25 +99,80 @@
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <p>每次重装完青龙面板，我们不得不面对的一个问题就是，环境变量还要重新配置，对于环境变量少的人来说，倒是简单，但是对于多的人来说，那就是头疼事儿了啊</p>
+                <p>感谢作者：<a href="https://github.com/NolanHzy/nvjdc">https://github.com/NolanHzy/nvjdc</a><br>
+安装环境：centos 7.6<br>
+配置：2h4g<br>
+面板功能：手机号登入自动获取京东ck，并自动更新到青龙面板</p>
 <!-- more -->
-<p><mark>声明</mark><br>
-以下步骤皆以<a href="https://ldsoy.github.io/AnnanBlogs/post/install_qinglong/">https://ldsoy.github.io/AnnanBlogs/post/install_qinglong/</a>这个安装面板教程为前提</p>
-<h1 id="备份db文件夹下的envdb文件">备份db文件夹下的env.db文件</h1>
-<p>情况一：<br>
-安装青龙的时候，这个db文件夹一般都映射到宿主机了，直接去宿主机找就行了，找到里面的env.db文件，备份下，装好新容器直接替换就行了</p>
-<p>情况二：<br>
-如果没有映射db文件夹，那就想办法通过命令行进入青龙面板，顺嘴提一下，进入青龙面板的docker命令<br>
-<code>docker exec -it qinglong bash</code><br>
-进去了之后就找到db文件夹，进去找到env.db,<code>cat env.db</code>打印一下变量内容，然后选中复制，等装好新容器，就把复制的内容粘贴进env.db文件就行了</p>
-<p><mark>注意</mark><br>
-上文说的环境变量是下图圈中的这个，别搞错了，替换完了env.db,记得重启面板才会生效<br>
-<img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20211027040731.png" alt="" loading="lazy"></p>
+<h2 id="安装">安装</h2>
+<p>1.首先进入你的宿主机，不是青龙容器<br>
+2.创建一个目录放配置以及chromium（建议直接在 / 目录下创建，不能在青龙映射到宿主机的文件夹创建）</p>
+<pre><code>cd /
+</code></pre>
+<pre><code>mkdir nolanjdc &amp;&amp; cd nolanjdc
+</code></pre>
+<p>3.下载config.json 配置文件(先下载好，一会再说怎么修改)</p>
+<pre><code>wget -O Config.json  https://raw.githubusercontent.com/NolanHzy/nvjdc/main/Config.json
+</code></pre>
+<p>国内请使用</p>
+<pre><code>wget -O Config.json   https://ghproxy.com/https://raw.githubusercontent.com/NolanHzy/nvjdc/main/Config.json
+</code></pre>
+<p>4 .创建chromium文件夹并进入</p>
+<pre><code>mkdir -p  .local-chromium/Linux-884014 &amp;&amp; cd .local-chromium/Linux-884014
+</code></pre>
+<p>5.下载 chromium</p>
+<pre><code>wget https://mirrors.huaweicloud.com/chromium-browser-snapshots/Linux_x64/884014/chrome-linux.zip &amp;&amp; unzip chrome-linux.zip
+</code></pre>
+<p>6.删除刚刚下载的压缩包,并回到上级目录</p>
+<pre><code>rm  -f chrome-linux.zip
+</code></pre>
+<pre><code>cd  /nolanjdc
+</code></pre>
+<p>7.拉镜像(拉镜像的时候，如果拉不动，就检查一下你有没有装shellclash类似的代理软件，先把代理软件关了，再拉，因为一般国内的云服务器的docker的镜像都是用的国内163的镜像，如果开代理软件就会导致镜像从国外拉去，可能会是失败)</p>
+<pre><code>sudo docker pull nolanhzy/nvjdc:0.5
+</code></pre>
+<p>8.启动镜像（这里是把80端口映射到了宿主机的5701端口，你们根据自己的情况改）</p>
+<pre><code>sudo docker run   --name nolanjdc -p 5701:80 -d  -v  &quot;$(pwd)&quot;/Config.json:/app/Config/Config.json:ro \
+-v &quot;$(pwd)&quot;/.local-chromium:/app/.local-chromium  \
+-it --privileged=true  nolanhzy/nvjdc:0.5 
+</code></pre>
+<p>9.配置第三步下好的Config.json文件</p>
+<pre><code class="language-java">&quot;Config&quot;: [
+    {
+      //序号必填从1 开始
+      &quot;QLkey&quot;: 1,                                            //如果就一个容器，就不用改
+      //服务器名称
+      &quot;QLName&quot;: &quot;容器一（腾讯轻量云）&quot;,    //随便起个名字
+      //青龙地址
+      &quot;QLurl&quot;: &quot;http://xx.xx.xx.xx:5700&quot;,    //这是你的青龙地址
+      //青龙2,9 OpenApi Client ID
+      &quot;QL_CLIENTID&quot;: &quot;xxxxx&quot;,             //去青龙面板系统设置-应用设置里面添加一个应用，名称随便填，权限给个环境变量，如果不行就都给，弄好应用把Client ID弄这里
+      //青龙2,9 OpenApi Client Secret
+      &quot;QL_SECRET&quot;: &quot;xxxxxxxx&quot;,          //Client Secret弄这里
+      //CK最大数量
+      &quot;QL_CAPACITY&quot;: 30,                  //你想让你这个容器跑多少账号
+      &quot;QRurl&quot;: &quot;&quot;                          
+    }
+</code></pre>
+<p>10.配置好，重启容器,检查日志输出</p>
+<pre><code>docker restart nolanjdc
+</code></pre>
+<pre><code>docker logs -f nolanjdc 
+</code></pre>
+<p>如果出现下面这样就好了</p>
+<pre><code>True
+检查成功
+NETJDC started
+</code></pre>
 
               </div>
               <div class="toc-container">
                 <ul class="markdownIt-TOC">
-<li><a href="#%E5%A4%87%E4%BB%BDdb%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8B%E7%9A%84envdb%E6%96%87%E4%BB%B6">备份db文件夹下的env.db文件</a></li>
+<li>
+<ul>
+<li><a href="#%E5%AE%89%E8%A3%85">安装</a></li>
+</ul>
+</li>
 </ul>
 
               </div>
@@ -124,9 +183,9 @@
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://ldsoy.github.io/AnnanBlogs/post/get_jingdongcookie/">
+            <a href="https://ldsoy.github.io/AnnanBlogs/post/qinglong_getjs/">
               <h3 class="post-title">
-                京东Cookie的获取（安卓＋PC）
+                京东青龙脚本库
               </h3>
             </a>
           </div>
