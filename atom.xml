@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ldsoy.github.io/AnnanBlogs/</id>
     <title>Annan&apos;s Blogs</title>
-    <updated>2021-11-07T10:54:06.994Z</updated>
+    <updated>2021-11-07T10:58:16.217Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ldsoy.github.io/AnnanBlogs/"/>
     <link rel="self" href="https://ldsoy.github.io/AnnanBlogs/atom.xml"/>
@@ -17,10 +17,10 @@
         </link>
         <updated>2021-11-07T10:11:21.000Z</updated>
         <summary type="html"><![CDATA[<p>大致原理：就是通过匹配关键字的方式来判断是否通知<br>
-下面教程：看着代码很多，但是只用到几句，主要看我文字描述，我文字描述提到那几句代码了，你再看代码</p>
+下面教程：教程代码很长，但几乎都没用，你只看我的文字描述，那里提到那一句代码了，你就去看看，绝对能看明白</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>大致原理：就是通过匹配关键字的方式来判断是否通知<br>
-下面教程：看着代码很多，但是只用到几句，主要看我文字描述，我文字描述提到那几句代码了，你再看代码</p>
+下面教程：教程代码很长，但几乎都没用，你只看我的文字描述，那里提到那一句代码了，你就去看看，绝对能看明白</p>
 <!-- more -->
 <p>在这之前先看下某个通知对应的变量</p>
 <pre><code>宠汪汪积分兑换有就换版         //这是标题，对应变量text
@@ -147,7 +147,7 @@
 <h1 id="成品例子">成品例子</h1>
 <pre><code class="language-js">function pushPlusNotify(text, desp) {
   return new Promise((resolve) =&gt; {
-    if (PUSH_PLUS_TOKEN &amp;&amp; text.indexOf(&quot;资产&quot;) != -1) {  
+    if (PUSH_PLUS_TOKEN &amp;&amp; text.indexOf(&quot;资产&quot;) != -1) {  //通知 标题 中有资产的
       desp = desp.replace(/[\n\r]/g, '&lt;br&gt;'); // 默认为html, 不支持plaintext
       const body = {
         token: `${PUSH_PLUS_TOKEN}`,
@@ -196,7 +196,7 @@
       });
     } 
       
-    else if (PUSH_PLUS_TOKEN &amp;&amp; text.indexOf(&quot;关键字N&quot;) != -1) {
+    else if (PUSH_PLUS_TOKEN &amp;&amp; desp.indexOf(&quot;关键字N&quot;) != -1) { //通知 内容 中有关键字N的
       desp = desp.replace(/[\n\r]/g, '&lt;br&gt;'); // 默认为html, 不支持plaintext
       const body = {
         token: `${PUSH_PLUS_TOKEN}`,
