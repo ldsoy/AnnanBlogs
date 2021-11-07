@@ -2,23 +2,22 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>String总结 | Annan&#39;s Blogs</title>
+<title>代挂须知 | Annan&#39;s Blogs</title>
 <link rel="shortcut icon" href="https://ldsoy.github.io/AnnanBlogs//favicon.ico?v=1636267662784">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://ldsoy.github.io/AnnanBlogs//styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="String总结 | Annan&#39;s Blogs - Atom Feed" href="https://ldsoy.github.io/AnnanBlogs//atom.xml">
+<link rel="alternate" type="application/atom+xml" title="代挂须知 | Annan&#39;s Blogs - Atom Feed" href="https://ldsoy.github.io/AnnanBlogs//atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="记录一些关于String的知识点
+    <meta name="description" content="特别注意：
+本项目脚本收集于互联网。为了您的财产安全，请关闭京东免密支付。
+(关闭免密支付：进京东-我的-设置-支付设置-小额免密-关闭)
 
-总结
-
-字符串都是对象
-字符串一旦初始化就无法修改，因为字符串时是常量
-通过String类的构造函数传参，可以将字节数组或者字符数组转换成字符串char [] arr = {'a','b','c','d'..." />
-    <meta name="keywords" content="Java" />
+关于我（性格：佛系青年）
+本人大四学生党一枚，挂这个纯属就是为了玩（不能浪费自己的云服务器昂，榨干..." />
+    <meta name="keywords" content="京东" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
@@ -80,79 +79,50 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              String总结
+              代挂须知
             </h2>
             <div class="post-info">
               <span>
-                2021-10-27
+                2021-11-07
               </span>
               <span>
                 2 min read
               </span>
               
-                <a href="https://ldsoy.github.io/AnnanBlogs/tag/jLtMkUXn5/" class="post-tag">
-                  # Java
+                <a href="https://ldsoy.github.io/AnnanBlogs/tag/203OwxXEM/" class="post-tag">
+                  # 京东
                 </a>
               
             </div>
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <p>记录一些关于String的知识点</p>
+                <h1 id="特别注意">特别注意：</h1>
+<p>本项目脚本收集于互联网。为了您的财产安全，请关闭京东免密支付。<br>
+(关闭免密支付：进京东-我的-设置-支付设置-小额免密-关闭)</p>
 <!-- more -->
-<h1 id="总结">总结</h1>
-<ol>
-<li>字符串都是对象</li>
-<li>字符串一旦初始化就无法修改，因为字符串时是常量</li>
-<li>通过String类的构造函数传参，可以将字节数组或者字符数组转换成字符串<pre><code class="language-java">char [] arr = {'a','b','c','d'};
-String str = new String(arr);
-String str = new String(arr,0,2);
-//0的位置是偏移量，也就是起始位置的角标
-//2的位置从偏移量往后截取多少长度的字符串，这里起始位置也占一个长度
-/*JKD文档的解释
-String(char[] value, int offset, int count)
-分配一个新的 String ，其中包含字符数组参数的子阵列中的字符。*/
-</code></pre>
-</li>
-</ol>
-<h1 id="面试题">面试题</h1>
-<pre><code class="language-java">//-----------------------
-		System.out.println(&quot;++++++++++++++++多个引用指向同一个字符串+++++++++++++++++++&quot;);
-		String s1 = &quot;ldsoy&quot;;
-		String s2 = &quot;ldsoy&quot;;
-		
-		System.out.println(s1 == s2);
-		System.out.println(s1.equals(s2));
-		
-		System.out.println(&quot;++++++++++++++++两个内容相同创建方式不同对的字符串+++++++++++++++++++&quot;);
-		String s3 = &quot;abc&quot;;
-		char [] arrc= {'a','b','c','d','e','f'};
-		String s4 = new String(arrc,0,3);
-		
-		
-		System.out.println(s3);
-		System.out.println(s4);
-		System.out.println(s3 == s4);
-		System.out.println(s3.equals(s4));
-
-//结果
-++++++++++++++++多个引用指向同一个字符串+++++++++++++++++++
-true
-true
-++++++++++++++++两个内容相同创建方式不同对的字符串+++++++++++++++++++
-abc
-abc
-false
-true
-</code></pre>
-<p>面试题总结，s1 == s2这个是true是因为两个对象的引用都指向了同一个字符串，这个字符串在方法去的常量池中，s1.equals(s2)这个方法本是比较的两个对象地址，但是由于String类重写了这个方法写成了两个字符串的字面比较相同返回true</p>
-<p>下面的s3 == s4是fales，是因为s3的字符串本身就存在与常量池中，s4是调用了String的构造方法又新生成的一个字符串对象，所以两个字符串对象是不一样的，s3.equals(s4)是true同上s1.equals(s2)的比较</p>
+<h1 id="关于我性格佛系青年">关于我（性格：佛系青年）</h1>
+<p>本人大四学生党一枚，挂这个纯属就是为了玩（不能浪费自己的云服务器昂，榨干它），顺便做做测试，测试下这个容器最多能跑多少个账号，还有就是，我看到咸鱼上有收费代挂的，几块到十几块一个月的，这么算下来，挂30个账号，一个月最多就是300块钱，但是太麻烦了，还得维护，每个月30个账号的失效和更新，各种问题，太浪费时间，我就想着搭建一个平台让你们自己每个月更新自己的账号，从而实现相对的自动，相对我也轻松点</p>
+<h1 id="怎么登入">怎么登入：</h1>
+<p>进入代挂地址<a href="http://82.157.50.117:5701/">http://82.157.50.117:5701/</a>（哈哈，域名都懒得绑了，直接服务器＋端口,窝太懒了）,输入手机号和验证码，选择第一个容器登入就行了</p>
+<p>注意：如果想要查看每天的京豆和红包，请在登入后点击<code>复制CK</code>,备用，下面会用到，如果对每天获得京豆没兴趣，就是想着挂着就行，请忽略下面教程，但是要记得每个月来这里登入一下，因为每个账号时效大概在30天左右</p>
+<h1 id="查看每天刷的京豆和红包目前仅支持安卓">查看每天刷的京豆和红包（目前仅支持安卓）</h1>
+<p>1.下载 京豆app<br>
+蓝奏云：<a href="https://sexyfox.lanzouw.com/iiY0Ow91lyh">https://sexyfox.lanzouw.com/iiY0Ow91lyh</a><br>
+2.打开软件，点击<code>主账号</code>，把上面复制到的CK粘贴进去，点击更新账号1的CK<br>
+3.回到桌面上添加一个这个app的桌面组件<br>
+<img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20211107142413.png" alt="" loading="lazy"><br>
+这是正常显示，点击右边的哪个豆豆会刷新豆豆数量</p>
+<p>如果显示以下的样子，那就说明你的账号过期了，需要你重新登入下，然后再复制CK，粘贴到这个APP里面<br>
+<img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20211107142749.png" alt="" loading="lazy"></p>
 
               </div>
               <div class="toc-container">
                 <ul class="markdownIt-TOC">
-<li><a href="#%E6%80%BB%E7%BB%93">总结</a></li>
-<li><a href="#%E9%9D%A2%E8%AF%95%E9%A2%98">面试题</a></li>
+<li><a href="#%E7%89%B9%E5%88%AB%E6%B3%A8%E6%84%8F">特别注意：</a></li>
+<li><a href="#%E5%85%B3%E4%BA%8E%E6%88%91%E6%80%A7%E6%A0%BC%E4%BD%9B%E7%B3%BB%E9%9D%92%E5%B9%B4">关于我（性格：佛系青年）</a></li>
+<li><a href="#%E6%80%8E%E4%B9%88%E7%99%BB%E5%85%A5">怎么登入：</a></li>
+<li><a href="#%E6%9F%A5%E7%9C%8B%E6%AF%8F%E5%A4%A9%E5%88%B7%E7%9A%84%E4%BA%AC%E8%B1%86%E5%92%8C%E7%BA%A2%E5%8C%85%E7%9B%AE%E5%89%8D%E4%BB%85%E6%94%AF%E6%8C%81%E5%AE%89%E5%8D%93">查看每天刷的京豆和红包（目前仅支持安卓）</a></li>
 </ul>
 
               </div>
@@ -163,9 +133,9 @@ true
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://ldsoy.github.io/AnnanBlogs/post/qinglong_env_backup/">
+            <a href="https://ldsoy.github.io/AnnanBlogs/post/daigua_5701/">
               <h3 class="post-title">
-                如何备份青龙面板的环境变量
+                代挂须知
               </h3>
             </a>
           </div>
