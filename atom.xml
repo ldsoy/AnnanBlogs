@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ldsoy.github.io/AnnanBlogs/</id>
     <title>Annan&apos;s Blogs</title>
-    <updated>2021-11-07T10:50:35.291Z</updated>
+    <updated>2021-11-07T10:53:22.358Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ldsoy.github.io/AnnanBlogs/"/>
     <link rel="self" href="https://ldsoy.github.io/AnnanBlogs/atom.xml"/>
@@ -16,9 +16,11 @@
         <link href="https://ldsoy.github.io/AnnanBlogs/post/sendnotify_linshi/">
         </link>
         <updated>2021-11-07T10:11:21.000Z</updated>
-        <summary type="html"><![CDATA[<p>大致原理：就是通过匹配关键字的方式来判断是否通知</p>
+        <summary type="html"><![CDATA[<p>大致原理：就是通过匹配关键字的方式来判断是否通知<br>
+下面教程：看着代码很多，但是只用到几句，主要看我文字描述，我文字描述提到那几句代码了，你再看代码</p>
 ]]></summary>
-        <content type="html"><![CDATA[<p>大致原理：就是通过匹配关键字的方式来判断是否通知</p>
+        <content type="html"><![CDATA[<p>大致原理：就是通过匹配关键字的方式来判断是否通知<br>
+下面教程：看着代码很多，但是只用到几句，主要看我文字描述，我文字描述提到那几句代码了，你再看代码</p>
 <!-- more -->
 <p>在这之前先看下某个通知对应的变量</p>
 <pre><code>宠汪汪积分兑换有就换版         //这是标题，对应变量text
