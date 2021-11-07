@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ldsoy.github.io/AnnanBlogs/</id>
     <title>Annan&apos;s Blogs</title>
-    <updated>2021-11-07T06:47:53.036Z</updated>
+    <updated>2021-11-07T10:50:03.566Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ldsoy.github.io/AnnanBlogs/"/>
     <link rel="self" href="https://ldsoy.github.io/AnnanBlogs/atom.xml"/>
@@ -10,6 +10,252 @@
     <logo>https://ldsoy.github.io/AnnanBlogs/images/avatar.png</logo>
     <icon>https://ldsoy.github.io/AnnanBlogs/favicon.ico</icon>
     <rights>All rights reserved 2021, Annan&apos;s Blogs</rights>
+    <entry>
+        <title type="html"><![CDATA[青龙选择性通知暂行解决办法(修改sendnotify.js文件)]]></title>
+        <id>https://ldsoy.github.io/AnnanBlogs/post/sendnotify_linshi/</id>
+        <link href="https://ldsoy.github.io/AnnanBlogs/post/sendnotify_linshi/">
+        </link>
+        <updated>2021-11-07T10:11:21.000Z</updated>
+        <summary type="html"><![CDATA[<p>大致原理：就是通过匹配关键字的方式来判断是否通知</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>大致原理：就是通过匹配关键字的方式来判断是否通知</p>
+<!-- more -->
+<p>在这之前先看下某个通知对应的变量</p>
+<pre><code>宠汪汪积分兑换有就换版         //这是标题，对应变量text
+
+【京东账号5】 琪琪qiqw        //从这往下都是内容，对应变量desp
+【20京豆】兑换成功🎉
+【积分详情】消耗积分 350
+
+【京东账号11】 捉住米米
+【20京豆】兑换成功🎉
+【积分详情】消耗积分 360
+</code></pre>
+<p>找到plusplus通知部分的代码，这里我拿过来了</p>
+<pre><code class="language-js">function pushPlusNotify(text, desp) {
+  return new Promise((resolve) =&gt; {
+    if (PUSH_PLUS_TOKEN) {
+      desp = desp.replace(/[\n\r]/g, '&lt;br&gt;'); // 默认为html, 不支持plaintext
+      const body = {
+        token: `${PUSH_PLUS_TOKEN}`,
+        title: `${text}`,
+        content: `${desp}`,
+        topic: `${PUSH_PLUS_USER}`,
+      };
+      const options = {
+        url: `https://www.pushplus.plus/send`,
+        body: JSON.stringify(body),
+        headers: {
+          'Content-Type': ' application/json',
+        },
+        timeout,
+      };
+      $.post(options, (err, resp, data) =&gt; {
+        try {
+          if (err) {
+            console.log(
+              `push+发送${
+                PUSH_PLUS_USER ? '一对多' : '一对一'
+              }通知消息失败！！\n`,
+            );
+            console.log(err);
+          } else {
+            data = JSON.parse(data);
+            if (data.code === 200) {
+              console.log(
+                `push+发送${
+                  PUSH_PLUS_USER ? '一对多' : '一对一'
+                }通知消息完成。\n`,
+              );
+            } else {
+              console.log(
+                `push+发送${
+                  PUSH_PLUS_USER ? '一对多' : '一对一'
+                }通知消息失败：${data.msg}\n`,
+              );
+            }
+          }
+        } catch (e) {
+          $.logErr(e, resp);
+        } finally {
+          resolve(data);
+        }
+      });
+    } else {
+      resolve();
+    }
+  });
+}
+</code></pre>
+<p>如果你想通知标题中包含资产的通知，那你就修改第三句if语句为</p>
+<pre><code class="language-js">if (PUSH_PLUS_TOKEN &amp;&amp; text.indexOf(&quot;资产&quot;) != -1)
+</code></pre>
+<h3 id="重点">重点：</h3>
+<p>如果关键字在标题就用<code>text.indexOf(&quot;关键字&quot;) != -1</code>，如果关键字在内容就用<code>desp.indexOf(&quot;关键字&quot;) != -1</code></p>
+<p>如果你要通知多个通知，那么现在就得用else if语句匹配多个关键字了，多几个关键字，你就在if和else之间添加多少else if</p>
+<pre><code class="language-js">   else if (PUSH_PLUS_TOKEN &amp;&amp; text.indexOf(&quot;关键字N&quot;) != -1) {
+      desp = desp.replace(/[\n\r]/g, '&lt;br&gt;'); // 默认为html, 不支持plaintext
+      const body = {
+        token: `${PUSH_PLUS_TOKEN}`,
+        title: `${text}`,
+        content: `${desp}`,
+        topic: `${PUSH_PLUS_USER}`,
+      };
+      const options = {
+        url: `https://www.pushplus.plus/send`,
+        body: JSON.stringify(body),
+        headers: {
+          'Content-Type': ' application/json',
+        },
+        timeout,
+      };
+      $.post(options, (err, resp, data) =&gt; {
+        try {
+          if (err) {
+            console.log(
+              `push+发送${
+                PUSH_PLUS_USER ? '一对多' : '一对一'
+              }通知消息失败！！\n`,
+            );
+            console.log(err);
+          } else {
+            data = JSON.parse(data);
+            if (data.code === 200) {
+              console.log(
+                `push+发送${
+                  PUSH_PLUS_USER ? '一对多' : '一对一'
+                }通知消息完成。\n`,
+              );
+            } else {
+              console.log(
+                `push+发送${
+                  PUSH_PLUS_USER ? '一对多' : '一对一'
+                }通知消息失败：${data.msg}\n`,
+              );
+            }
+          }
+        } catch (e) {
+          $.logErr(e, resp);
+        } finally {
+          resolve(data);
+        }
+      });
+    }
+</code></pre>
+<h1 id="成品例子">成品例子</h1>
+<pre><code class="language-js">function pushPlusNotify(text, desp) {
+  return new Promise((resolve) =&gt; {
+    if (PUSH_PLUS_TOKEN &amp;&amp; text.indexOf(&quot;资产&quot;) != -1) {  
+      desp = desp.replace(/[\n\r]/g, '&lt;br&gt;'); // 默认为html, 不支持plaintext
+      const body = {
+        token: `${PUSH_PLUS_TOKEN}`,
+        title: `${text}`,
+        content: `${desp}`,
+        topic: `${PUSH_PLUS_USER}`,
+      };
+      const options = {
+        url: `https://www.pushplus.plus/send`,
+        body: JSON.stringify(body),
+        headers: {
+          'Content-Type': ' application/json',
+        },
+        timeout,
+      };
+      $.post(options, (err, resp, data) =&gt; {
+        try {
+          if (err) {
+            console.log(
+              `push+发送${
+                PUSH_PLUS_USER ? '一对多' : '一对一'
+              }通知消息失败！！\n`,
+            );
+            console.log(err);
+          } else {
+            data = JSON.parse(data);
+            if (data.code === 200) {
+              console.log(
+                `push+发送${
+                  PUSH_PLUS_USER ? '一对多' : '一对一'
+                }通知消息完成。\n`,
+              );
+            } else {
+              console.log(
+                `push+发送${
+                  PUSH_PLUS_USER ? '一对多' : '一对一'
+                }通知消息失败：${data.msg}\n`,
+              );
+            }
+          }
+        } catch (e) {
+          $.logErr(e, resp);
+        } finally {
+          resolve(data);
+        }
+      });
+    } 
+      
+    else if (PUSH_PLUS_TOKEN &amp;&amp; text.indexOf(&quot;关键字N&quot;) != -1) {
+      desp = desp.replace(/[\n\r]/g, '&lt;br&gt;'); // 默认为html, 不支持plaintext
+      const body = {
+        token: `${PUSH_PLUS_TOKEN}`,
+        title: `${text}`,
+        content: `${desp}`,
+        topic: `${PUSH_PLUS_USER}`,
+      };
+      const options = {
+        url: `https://www.pushplus.plus/send`,
+        body: JSON.stringify(body),
+        headers: {
+          'Content-Type': ' application/json',
+        },
+        timeout,
+      };
+      $.post(options, (err, resp, data) =&gt; {
+        try {
+          if (err) {
+            console.log(
+              `push+发送${
+                PUSH_PLUS_USER ? '一对多' : '一对一'
+              }通知消息失败！！\n`,
+            );
+            console.log(err);
+          } else {
+            data = JSON.parse(data);
+            if (data.code === 200) {
+              console.log(
+                `push+发送${
+                  PUSH_PLUS_USER ? '一对多' : '一对一'
+                }通知消息完成。\n`,
+              );
+            } else {
+              console.log(
+                `push+发送${
+                  PUSH_PLUS_USER ? '一对多' : '一对一'
+                }通知消息失败：${data.msg}\n`,
+              );
+            }
+          }
+        } catch (e) {
+          $.logErr(e, resp);
+        } finally {
+          resolve(data);
+        }
+      });
+    }
+      
+    else {
+      resolve();
+    }
+  });
+}
+</code></pre>
+<p>注意代码插入的位置,在下面这段else代码的上面插入else if</p>
+<pre><code class="language-js">    else {
+      resolve();
+    }
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[代挂须知]]></title>
         <id>https://ldsoy.github.io/AnnanBlogs/post/daigua_570/</id>
@@ -373,30 +619,6 @@ true
 <a href="https://github.com/zero205/JD_tencent_scf/tree/main">https://github.com/zero205/JD_tencent_scf/tree/main</a></p>
 <p>这是这个库的电报交流群<br>
 <a href="https://t.me/jd_zero_205">https://t.me/jd_zero_205</a></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[关于CFW无法代理uwp应用]]></title>
-        <id>https://ldsoy.github.io/AnnanBlogs/post/cfw_uwp/</id>
-        <link href="https://ldsoy.github.io/AnnanBlogs/post/cfw_uwp/">
-        </link>
-        <updated>2021-10-05T03:55:30.000Z</updated>
-        <summary type="html"><![CDATA[<p>正常情况下，clash for wondows 是无法代理到windows系统的UWP的应用的，UWP应用包括但不限于Microsoft Store，还有啥你可以自己搜下</p>
-<p>这种模式好像叫UWP应用回环</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>正常情况下，clash for wondows 是无法代理到windows系统的UWP的应用的，UWP应用包括但不限于Microsoft Store，还有啥你可以自己搜下</p>
-<p>这种模式好像叫UWP应用回环</p>
-<!-- more -->
-<ol>
-<li>
-<p>打开clash，点击</p>
-<figure data-type="image" tabindex="1"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20211005115842.png" alt="" loading="lazy"></figure>
-</li>
-<li>
-<p>进去后选择你需要代理的UWP应用，Save changes就行了</p>
-<figure data-type="image" tabindex="2"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20211005120254.png" alt="" loading="lazy"></figure>
-</li>
-</ol>
 ]]></content>
     </entry>
 </feed>

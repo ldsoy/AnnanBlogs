@@ -1,0 +1,278 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>修改青龙sendNotify.js脚本实现选择通知 | Annan&#39;s Blogs</title>
+<link rel="shortcut icon" href="https://ldsoy.github.io/AnnanBlogs//favicon.ico?v=1636282200762">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://ldsoy.github.io/AnnanBlogs//styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="修改青龙sendNotify.js脚本实现选择通知 | Annan&#39;s Blogs - Atom Feed" href="https://ldsoy.github.io/AnnanBlogs//atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="这里用plusplus通知举例子
+需要用到else if语句的最基本用法，稍微会点编程的都能修改，不会编程请直接套娃
+
+找到plusplus通知部分的代码，这里我拿过来了
+function pushPlusNotify(text, desp..." />
+    <meta name="keywords" content="京东" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://ldsoy.github.io/AnnanBlogs/">
+  <img class="avatar" src="https://ldsoy.github.io/AnnanBlogs//images/avatar.png?v=1636282200762" alt="">
+  </a>
+  <h1 class="site-title">
+    Annan&#39;s Blogs
+  </h1>
+  <p class="site-description">
+    每天都要开心哦！
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://ldsoy.github.io/AnnanBlogs/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="https://ldsoy.github.io/AnnanBlogs/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="https://ldsoy.github.io/AnnanBlogs/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://ldsoy.github.io/AnnanBlogs/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              修改青龙sendNotify.js脚本实现选择通知
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-11-07
+              </span>
+              <span>
+                3 min read
+              </span>
+              
+                <a href="https://ldsoy.github.io/AnnanBlogs/tag/203OwxXEM/" class="post-tag">
+                  # 京东
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>这里用plusplus通知举例子<br>
+需要用到else if语句的最基本用法，稍微会点编程的都能修改，不会编程请直接套娃</p>
+<!-- more -->
+<p>找到plusplus通知部分的代码，这里我拿过来了</p>
+<pre><code class="language-js">function pushPlusNotify(text, desp) {
+  return new Promise((resolve) =&gt; {
+    if (PUSH_PLUS_TOKEN) {
+      desp = desp.replace(/[\n\r]/g, '&lt;br&gt;'); // 默认为html, 不支持plaintext
+      const body = {
+        token: `${PUSH_PLUS_TOKEN}`,
+        title: `${text}`,
+        content: `${desp}`,
+        topic: `${PUSH_PLUS_USER}`,
+      };
+      const options = {
+        url: `https://www.pushplus.plus/send`,
+        body: JSON.stringify(body),
+        headers: {
+          'Content-Type': ' application/json',
+        },
+        timeout,
+      };
+      $.post(options, (err, resp, data) =&gt; {
+        try {
+          if (err) {
+            console.log(
+              `push+发送${
+                PUSH_PLUS_USER ? '一对多' : '一对一'
+              }通知消息失败！！\n`,
+            );
+            console.log(err);
+          } else {
+            data = JSON.parse(data);
+            if (data.code === 200) {
+              console.log(
+                `push+发送${
+                  PUSH_PLUS_USER ? '一对多' : '一对一'
+                }通知消息完成。\n`,
+              );
+            } else {
+              console.log(
+                `push+发送${
+                  PUSH_PLUS_USER ? '一对多' : '一对一'
+                }通知消息失败：${data.msg}\n`,
+              );
+            }
+          }
+        } catch (e) {
+          $.logErr(e, resp);
+        } finally {
+          resolve(data);
+        }
+      });
+    } else {
+      resolve();
+    }
+  });
+}
+</code></pre>
+<p>第一句传过来两个参数text和desp，text是通知的标题，desp是通知的内容（开头注释有）</p>
+<p>看第三句有一个if判断语句，用来判断<code>PUSH_PLUS_TOKEN</code>这个变量是否为空，空就不通知，有值就通知</p>
+<pre><code class="language-js">if (PUSH_PLUS_TOKEN &amp;&amp; text.indexOf(&quot;资产&quot;) != -1)      //&amp;&amp;是逻辑关系与 连接两个条件，只有两个条件都满足整体才是true
+</code></pre>
+<p>那么if就会多判断一个条件，<code>text.indexOf(&quot;资产&quot;) != -1</code>这个条件就是通知的标题含有<strong>资产</strong>这两个字，现在就是当if同时满足这两个条件的时候，才会通知</p>
+<p>需求：现在仅仅通知资产变动不能满足你了，你还想要ck失效的通知</p>
+<pre><code class="language-js">else if (PUSH_PLUS_TOKEN &amp;&amp; desp.indexOf(&quot;失效了&quot;) != -1) {
+      desp = desp.replace(/[\n\r]/g, '&lt;br&gt;'); // 默认为html, 不支持plaintext
+      const body = {
+        token: `${PUSH_PLUS_TOKEN}`,
+        title: `${text}`,
+        content: `${desp}`,
+        topic: `${PUSH_PLUS_USER}`,
+      };
+      const options = {
+        url: `https://www.pushplus.plus/send`,
+        body: JSON.stringify(body),
+        headers: {
+          'Content-Type': ' application/json',
+        },
+        timeout,
+      };
+      $.post(options, (err, resp, data) =&gt; {
+        try {
+          if (err) {
+            console.log(
+              `push+发送${
+                PUSH_PLUS_USER ? '一对多' : '一对一'
+              }通知消息失败！！\n`,
+            );
+            console.log(err);
+          } else {
+            data = JSON.parse(data);
+            if (data.code === 200) {
+              console.log(
+                `push+发送${
+                  PUSH_PLUS_USER ? '一对多' : '一对一'
+                }通知消息完成。\n`,
+              );
+            } else {
+              console.log(
+                `push+发送${
+                  PUSH_PLUS_USER ? '一对多' : '一对一'
+                }通知消息失败：${data.msg}\n`,
+              );
+            }
+          }
+        } catch (e) {
+          $.logErr(e, resp);
+        } finally {
+          resolve(data);
+        }
+      });
+    }		
+</code></pre>
+<p>把这段代码放if和else之间就行了，第一句的意思就是，判断PUSH_PLUS_TOKEN和desp.indexOf(&quot;失效了&quot;) != -1这两个条件都满足了，才会通知</p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://ldsoy.github.io/AnnanBlogs//atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
