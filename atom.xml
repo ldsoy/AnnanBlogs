@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ldsoy.github.io/AnnanBlogs/</id>
     <title>Annan&apos;s Blogs</title>
-    <updated>2021-11-07T10:50:03.566Z</updated>
+    <updated>2021-11-07T10:50:35.291Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ldsoy.github.io/AnnanBlogs/"/>
     <link rel="self" href="https://ldsoy.github.io/AnnanBlogs/atom.xml"/>
@@ -254,36 +254,6 @@
       resolve();
     }
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[代挂须知]]></title>
-        <id>https://ldsoy.github.io/AnnanBlogs/post/daigua_570/</id>
-        <link href="https://ldsoy.github.io/AnnanBlogs/post/daigua_570/">
-        </link>
-        <updated>2021-11-07T06:01:14.000Z</updated>
-        <summary type="html"><![CDATA[<h1 id="特别注意">特别注意：</h1>
-<p>本项目脚本收集于互联网。为了您的财产安全，请关闭京东免密支付。<br>
-(关闭免密支付：进京东-我的-设置-支付设置-小额免密-关闭)</p>
-]]></summary>
-        <content type="html"><![CDATA[<h1 id="特别注意">特别注意：</h1>
-<p>本项目脚本收集于互联网。为了您的财产安全，请关闭京东免密支付。<br>
-(关闭免密支付：进京东-我的-设置-支付设置-小额免密-关闭)</p>
-<!-- more -->
-<h1 id="关于我性格佛系青年">关于我（性格：佛系青年）</h1>
-<p>本人大四学生党一枚，挂这个纯属就是为了玩（不能浪费自己的云服务器昂，榨干它），顺便做做测试，测试下这个容器最多能跑多少个账号，还有就是，我看到咸鱼上有收费代挂的，几块到十几块一个月的，这么算下来，挂30个账号，一个月最多就是300块钱，但是太麻烦了，还得维护，每个月30个账号的失效和更新，各种问题，太浪费时间，我就想着搭建一个平台让你们自己每个月更新自己的账号，从而实现相对的自动，相对我也轻松点</p>
-<h1 id="怎么登入">怎么登入：</h1>
-<p>进入代挂地址<a href="http://82.157.50.117:5701/">http://82.157.50.117:5701/</a>（哈哈，域名都懒得绑了，直接服务器＋端口,窝太懒了）,输入手机号和验证码，选择第一个容器登入就行了</p>
-<p>注意：如果想要查看每天的京豆和红包，请在登入后点击<code>复制CK</code>,备用，下面会用到，如果对每天获得京豆没兴趣，就是想着挂着就行，请忽略下面教程，但是要记得每个月来这里登入一下，因为每个账号时效大概在30天左右</p>
-<h1 id="查看每天刷的京豆和红包目前仅支持安卓">查看每天刷的京豆和红包（目前仅支持安卓）</h1>
-<p>1.下载 京豆app<br>
-蓝奏云：<a href="https://sexyfox.lanzouw.com/iiY0Ow91lyh">https://sexyfox.lanzouw.com/iiY0Ow91lyh</a><br>
-2.打开软件，点击<code>主账号</code>，把上面复制到的CK粘贴进去，点击更新账号1的CK<br>
-3.回到桌面上添加一个这个app的桌面组件<br>
-<img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20211107142413.png" alt="" loading="lazy"><br>
-这是正常显示，点击右边的哪个豆豆会刷新豆豆数量</p>
-<p>如果显示以下的样子，那就说明你的账号过期了，需要你重新登入下，然后再复制CK，粘贴到这个APP里面<br>
-<img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20211107142749.png" alt="" loading="lazy"></p>
 ]]></content>
     </entry>
     <entry>
@@ -619,6 +589,30 @@ true
 <a href="https://github.com/zero205/JD_tencent_scf/tree/main">https://github.com/zero205/JD_tencent_scf/tree/main</a></p>
 <p>这是这个库的电报交流群<br>
 <a href="https://t.me/jd_zero_205">https://t.me/jd_zero_205</a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[关于CFW无法代理uwp应用]]></title>
+        <id>https://ldsoy.github.io/AnnanBlogs/post/cfw_uwp/</id>
+        <link href="https://ldsoy.github.io/AnnanBlogs/post/cfw_uwp/">
+        </link>
+        <updated>2021-10-05T03:55:30.000Z</updated>
+        <summary type="html"><![CDATA[<p>正常情况下，clash for wondows 是无法代理到windows系统的UWP的应用的，UWP应用包括但不限于Microsoft Store，还有啥你可以自己搜下</p>
+<p>这种模式好像叫UWP应用回环</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>正常情况下，clash for wondows 是无法代理到windows系统的UWP的应用的，UWP应用包括但不限于Microsoft Store，还有啥你可以自己搜下</p>
+<p>这种模式好像叫UWP应用回环</p>
+<!-- more -->
+<ol>
+<li>
+<p>打开clash，点击</p>
+<figure data-type="image" tabindex="1"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20211005115842.png" alt="" loading="lazy"></figure>
+</li>
+<li>
+<p>进去后选择你需要代理的UWP应用，Save changes就行了</p>
+<figure data-type="image" tabindex="2"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20211005120254.png" alt="" loading="lazy"></figure>
+</li>
+</ol>
 ]]></content>
     </entry>
 </feed>
