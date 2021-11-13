@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>薅京东羊毛+青龙面板的安装 | Annan&#39;s Blogs</title>
-<link rel="shortcut icon" href="https://ldsoy.github.io/AnnanBlogs//favicon.ico?v=1636291353208">
+<link rel="shortcut icon" href="https://ldsoy.github.io/AnnanBlogs//favicon.ico?v=1636818961734">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://ldsoy.github.io/AnnanBlogs//styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="薅京东羊毛+青龙面板的安装 | Annan&#39;s Blogs - Atom Feed" href="https://ldsoy.github.io/AnnanBlogs//atom.xml">
@@ -17,11 +17,7 @@
 2.安装青龙面板
 1.拉取青龙镜像
 docker pull whyour/qinglong:latest
-2.安装青龙面板
-
-服务器安装
-
-doc..." />
+下面这个是2.10.2版本的青龙，如果使..." />
     <meta name="keywords" content="日常" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -31,7 +27,7 @@ doc..." />
       <div class="main-content">
         <div class="site-header">
   <a href="https://ldsoy.github.io/AnnanBlogs/">
-  <img class="avatar" src="https://ldsoy.github.io/AnnanBlogs//images/avatar.png?v=1636291353208" alt="">
+  <img class="avatar" src="https://ldsoy.github.io/AnnanBlogs//images/avatar.png?v=1636818961734" alt="">
   </a>
   <h1 class="site-title">
     Annan&#39;s Blogs
@@ -91,7 +87,7 @@ doc..." />
                 2021-10-17
               </span>
               <span>
-                2 min read
+                3 min read
               </span>
               
                 <a href="https://ldsoy.github.io/AnnanBlogs/tag/sI2Onv0Hv/" class="post-tag">
@@ -107,7 +103,9 @@ doc..." />
 <h1 id="1首先自备docker">1.首先自备Docker</h1>
 <h1 id="2安装青龙面板">2.安装青龙面板</h1>
 <h2 id="1拉取青龙镜像">1.拉取青龙镜像</h2>
-<p><code>docker pull whyour/qinglong:latest</code></p>
+<p><code>docker pull whyour/qinglong:latest</code><br>
+下面这个是2.10.2版本的青龙，如果使用最新的不习惯的话，可以使用下面的这个镜像<br>
+<code>docker pull hushunxu/qinglong_base:2.10.2</code></p>
 <h2 id="2安装青龙面板-2">2.安装青龙面板</h2>
 <ul>
 <li>服务器安装</li>
@@ -122,6 +120,20 @@ doc..." />
    --hostname qinglong \
    --restart always \
    whyour/qinglong:latest
+</code></pre>
+<ul>
+<li>服务器安装2.10.2版本</li>
+</ul>
+<pre><code>docker run -dit \
+   -v $PWD/ql/config:/ql/config \
+   -v $PWD/ql/log:/ql/log \
+   -v $PWD/ql/db:/ql/db \
+   -v $PWD/ql/scripts:/ql/scripts \
+   -p 5700:5700 \
+   --name qinglong \
+   --hostname qinglong \
+   --restart always \
+   hushunxu/qinglong_base:2.10.2
 </code></pre>
 <ul>
 <li>N1盒子安装（旁路由设备）</li>
