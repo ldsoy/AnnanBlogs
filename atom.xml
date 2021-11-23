@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ldsoy.github.io/AnnanBlogs/</id>
     <title>Annan&apos;s Blogs</title>
-    <updated>2021-11-13T16:46:17.507Z</updated>
+    <updated>2021-11-23T08:39:38.665Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ldsoy.github.io/AnnanBlogs/"/>
     <link rel="self" href="https://ldsoy.github.io/AnnanBlogs/atom.xml"/>
@@ -10,6 +10,139 @@
     <logo>https://ldsoy.github.io/AnnanBlogs/images/avatar.png</logo>
     <icon>https://ldsoy.github.io/AnnanBlogs/favicon.ico</icon>
     <rights>All rights reserved 2021, Annan&apos;s Blogs</rights>
+    <entry>
+        <title type="html"><![CDATA[我的第一个vps总结]]></title>
+        <id>https://ldsoy.github.io/AnnanBlogs/post/myfirstvps-conclusion/</id>
+        <link href="https://ldsoy.github.io/AnnanBlogs/post/myfirstvps-conclusion/">
+        </link>
+        <updated>2021-11-23T08:20:32.000Z</updated>
+        <summary type="html"><![CDATA[<p>人生第一个vps总结，感觉很新奇，原来节点是这么搭建出来的,想买vps的小伙伴，可以先大概看看我整个的购买和搭建的流程，哪里容易出问题什么的，再做决定<br>
+我的这个vps是Racknerd的</p>
+<p>年付10.88刀，折合支付宝69rmb，性价比极高，反代优选能上 70mb/s</p>
+<blockquote>
+<p>1T/月<br>
+1Gbps宽带<br>
+内存786m<br>
+单核</p>
+</blockquote>
+<p>这价格很可以了</p>
+<p><a href="https://my.racknerd.com/aff.php?aff=3406">同款VPS购买</a></p>
+]]></summary>
+        <content type="html"><![CDATA[<p>人生第一个vps总结，感觉很新奇，原来节点是这么搭建出来的,想买vps的小伙伴，可以先大概看看我整个的购买和搭建的流程，哪里容易出问题什么的，再做决定<br>
+我的这个vps是Racknerd的</p>
+<p>年付10.88刀，折合支付宝69rmb，性价比极高，反代优选能上 70mb/s</p>
+<blockquote>
+<p>1T/月<br>
+1Gbps宽带<br>
+内存786m<br>
+单核</p>
+</blockquote>
+<p>这价格很可以了</p>
+<p><a href="https://my.racknerd.com/aff.php?aff=3406">同款VPS购买</a></p>
+<!-- more -->
+<h1 id="购买vps并搭建节点服务">购买VPS并搭建节点服务</h1>
+<p>1.买个vps</p>
+<p>2.看下面用一键安装脚本搭建个节点</p>
+<h2 id="节点安装或卸载">节点安装或卸载</h2>
+<blockquote>
+<p>温馨提醒，此脚本默认屏蔽一些不友好的网站！(仅限轮子相关)</p>
+</blockquote>
+<p>要求：Ubuntu 16+ / Debian 8+ / CentOS 7+ 系统<br>
+<strong>推荐使用 Debian 9 系统，脚本会自动启用 BBR 优化。</strong><br>
+备注：不推荐使用 Debian 8 系统，因为 Caddy 申请证书可能会出现一些莫名其妙的问题<br>
+使用 root 用户输入下面命令安装或卸载</p>
+<pre><code>bash &lt;(curl -s -L https://git.io/v2ray.sh)
+</code></pre>
+<blockquote>
+<p>如果提示 curl: command not found ，那是因为你的 VPS 没装 Curl<br>
+ubuntu/debian 系统安装 Curl 方法: <code>apt-get update -y &amp;&amp; apt-get install curl -y</code><br>
+centos 系统安装 Curl 方法: <code>yum update -y &amp;&amp; yum install curl -y</code><br>
+安装好 curl 之后就能安装脚本了</p>
+</blockquote>
+<p>备注：安装完成后，输入 <code>v2ray</code> 即可管理 V2Ray<br>
+如果提示你的系统不支持此脚本，那么请尝试更换系统</p>
+<p>下面是此脚本的一些截图</p>
+<p>安装选项</p>
+<figure data-type="image" tabindex="1"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/68747470733a2f2f692e6c6f6c692e6e65742f323031392f30312f30352f356333303532323463666530352e6a7067" alt="安装 V2Ray" loading="lazy"></figure>
+<p>默认不配置配置 Shadowsocks，然后按提示操作就行了</p>
+<h2 id="关于传输协议的选择">关于传输协议的选择</h2>
+<p>你可以直接默认好像容易被墙，我没试过，现在比较流行的是3（ws）和4（ws+tls），选择这两个都得需要一个域名，看下面的白嫖域名，先去白嫖个域名，并且解析到你的vps的ip</p>
+<h2 id="白嫖个域名freenom">白嫖个域名freenom</h2>
+<p>去这里选个域名<a href="https://my.freenom.com/domains.php">https://my.freenom.com/domains.php</a></p>
+<p><strong>需要注意：</strong></p>
+<p>1.全程用v2rayN开全局，建议使用美国节点，香港的节点我老是失败，你要是到最后一步骤提示你错了，你就换个节点试试啥的</p>
+<p>2.推荐用goole邮箱登入，并且登入之后，个人信息里面的地址手机号啥的，尽量和你用的节点地址一样，要不也可能导致失败</p>
+<p>3.当你选好域名，进入购物车的时候，默认是三个月并且，等一会等页面加载完了加载完才能选（无语bug），把时间一定给成改成12个月，3个月很可能失败</p>
+<p>4.要是你发现你筛选出的域名都不可用，那就换个节点试试</p>
+<h2 id="解析域名">解析域名</h2>
+<figure data-type="image" tabindex="2"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/image-20211123160255777.png" alt="image-20211123160255777" loading="lazy"></figure>
+<p>进去之后点击<img src="C:%5CUsers%5CPC-Wang%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20211123160400725.png" alt="" loading="lazy"></p>
+<figure data-type="image" tabindex="3"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/image-20211123160600773.png" alt="image-20211123160600773" loading="lazy"></figure>
+<p>添加两条解析记录，左边按我的填，右边填你的vps的ip</p>
+<p>填写好保存，等待解析完成一般是十几分钟到两个小时就能解析生效</p>
+<p>你可以去这里<a href="https://ping.chinaz.com/">https://ping.chinaz.com/</a>，或者其他的ping网站检测下，这个域名有没有解析到你的ip</p>
+<h1 id="关于垃圾vps提速优化">关于垃圾vps提速优化</h1>
+<p>cloudflare 一向以提供免费的优质服务为名，cf 的反代优选就是利用 workers 反代然后优选 IP 来达到一个节点提速的效果。</p>
+<p>目测移动带宽反代优选效果最佳，电信联通效果也很好，但可能不是那么显著（仅目测，请以实际效果为准）</p>
+<p>反代优选一般是给如 racknerd，heroku 等这类线路不佳的搭建节点提速用的。</p>
+<p>其中 racknerd 最为明显，反代优选前一般是 3mb/s - 5mb/s 的速度，而反代优选后可以达到 70mb/s 的速度（毕竟 racknerd 机器是 G 口的，理论上限可达 128mb/s）</p>
+<h2 id="准备工作">准备工作</h2>
+<ul>
+<li>cloudflare 账号，一个已经解析到 VPS 的域名</li>
+<li>v2rayn（本地配置节点信息用的，使用别的类似软件也可）</li>
+<li>一个已经搭建好的节点，要求必须是 <code>vmess+ws+tls</code> 等这类可以反代优选或使用 CDN 的协议</li>
+<li>优选 IP 软件，项目地址:
+<ol>
+<li>我比较常用的： https://github.com/badafans/better-cloudflare-ip<br>
+release 界面中下载 <code>windows.zip</code> 解压即可（目前也推出了 linux 和安卓端）</li>
+<li>https://github.com/XIU2/CloudflareSpeedTest<br>
+realease 界面中下载 <code>CloudflareST_windows_amd64.zip</code> 即可（其他版本自行看说明下载对应版本）</li>
+</ol>
+</li>
+</ul>
+<h2 id="cf-反代">CF 反代</h2>
+<p>这个时候就需要我们的 Cloudflare 的 workers 来进行一个反代加速了。</p>
+<p>在主页点击 Workers。可能会让你输入一个你的域名，有的话可以输入你 freenom 的域名或者你自己的域名，已经解析到你的vps了的域名</p>
+<p>[<img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/Snipaste_2021-01-04_10-54-15.webp" alt="img" loading="lazy">](https://cdn.jsdelivr.net/gh/wdm1732418365/CDN/New folder/Snipaste_2021-01-04_10-54-15.webp)</p>
+<p>进入 workers 界面以后点击 Create a worker 创建一个 worker</p>
+<p>[<img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/Snipaste_2021-01-04_10-55-22.webp" alt="img" loading="lazy">](https://cdn.jsdelivr.net/gh/wdm1732418365/CDN/New folder/Snipaste_2021-01-04_10-55-22.webp)</p>
+<p>把左边 Script 脚本的内容清空，然后复制下面的代码进去</p>
+<pre><code>CODE
+addEventListener(
+	&quot;fetch&quot;,event =&gt; {
+		let url=new URL(event.request.url);
+		url.hostname=&quot;域名&quot;;
+		let request=new Request(url,event.request);
+		event. respondWith(
+			fetch(request)
+		)
+	}
+)
+</code></pre>
+<p>然后把<code>域名</code>改成你解析的域名，同样要去掉 https 等那些东西，如 <code>jiedian.ednovas.xyz</code></p>
+<p>[<img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/Snipaste_2021-01-04_10-58-36.webp" alt="img" loading="lazy">](https://cdn.jsdelivr.net/gh/wdm1732418365/CDN/New folder/Snipaste_2021-01-04_10-58-36.webp)</p>
+<p>然后点击 Save and Deploy 保存和部署。等待几秒部署完成后点击 send 发送。如果右边出现 <em>400 Bad Request</em> 说明配置成功。如果出现如 502 等其他错误代码说明配置失败 (其实出现了也问题不大，直接略过这里即可)。</p>
+<p>[<img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/Snipaste_2021-01-04_11-00-55.webp" alt="img" loading="lazy">](https://cdn.jsdelivr.net/gh/wdm1732418365/CDN/New folder/Snipaste_2021-01-04_11-00-55.webp)</p>
+<p>在这里把这个 HTTP 下面的这个地址复制到 V2ray 里刚刚配置的那个文件里的地址和伪装域名这里。（双击刚刚配置的节点可以再次打开这个配置界面）点击确定保存。</p>
+<p>[<img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/Snipaste_2021-01-04_11-02-58.webp" alt="img" loading="lazy">](https://cdn.jsdelivr.net/gh/wdm1732418365/CDN/New folder/Snipaste_2021-01-04_11-02-58.webp)</p>
+<p>再来测速，好家伙，直接几百 kbps 的速度了，这速度还不如刚才呢。不要急，有速度说明刚刚的配置没有问题。下面还需要使用优选 IP 来实现完全的加速。</p>
+<p>[<img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/Snipaste_2021-01-04_11-04-25.webp" alt="img" loading="lazy">](https://cdn.jsdelivr.net/gh/wdm1732418365/CDN/New folder/Snipaste_2021-01-04_11-04-25.webp)</p>
+<h2 id="优选-ip">优选 IP</h2>
+<p>将下载好了的 CF 优选 IP 软件解压后，打开 CF 优选 <code>IP.bat</code>，在弹出的 cmd 窗口中输入你家的带宽大小。不建议直接输入你家实际带宽总大小，会导致程序没法正确找到合适的 IP。</p>
+<p>如果不知道自己家的带宽是多少的，可以上 <a href="https://speedtest.net/">https://speedtest.net</a> 测速，看下载带宽速度是多少 Mbps。</p>
+<p>这里是建议先选择你家 IP 一半的带宽大小。比如我家是 100 兆 的带宽，那么我这里就选择 50 兆。如果你对测出来的 IP 速度不满意，那么可以逐渐加大这个数字，下次测速 60、在下次 70，总之切勿超过自家最大带宽。</p>
+<p>一般来说，100M 选择 70-80M，200M 选择 160-180M，300M 选择 260-280M，差不多个值就行，也不用非得填 100M 和 200M 这样填满，否则有可能会一直循环跑脚本。</p>
+<p>[<img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/Snipaste_2021-01-04_11-08-36.webp" alt="img" loading="lazy">](https://cdn.jsdelivr.net/gh/wdm1732418365/CDN/New folder/Snipaste_2021-01-04_11-08-36.webp)</p>
+<p>我这里输入 50 以后直接按 Enter 回车，然后等待一段时间，不会超过 5 分钟，他会自动测速并且筛选优选 IP，耐心等待即可。</p>
+<p>[<img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/Snipaste_2021-01-04_11-12-03.webp" alt="img" loading="lazy">](https://cdn.jsdelivr.net/gh/wdm1732418365/CDN/New folder/Snipaste_2021-01-04_11-12-03.webp)</p>
+<p>那么测试出来以后，把上方的优选 IP 复制下来，我这里也就是 104.19.71.197。注意不要复制到空格。</p>
+<p>[<img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/Snipaste_2021-01-04_11-13-00.webp" alt="img" loading="lazy">](https://cdn.jsdelivr.net/gh/wdm1732418365/CDN/New folder/Snipaste_2021-01-04_11-13-00.webp)</p>
+<p>再次打开 V2ray 的节点配置界面，把刚刚的优选出来的 IP 复制黏贴到地址里，并点击确定保存。</p>
+<p>[<img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/Snipaste_2021-01-04_11-14-28.webp" alt="img" loading="lazy">](https://cdn.jsdelivr.net/gh/wdm1732418365/CDN/New folder/Snipaste_2021-01-04_11-14-28.webp)</p>
+<p>现在再来看这个节点的速度，十分可观啊，直接上了 3w，甚至直逼 4w。看个 4k 视频没有什么压力的高速度了。</p>
+<p>[<img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/Snipaste_2021-01-04_11-15-38.webp" alt="img" loading="lazy">](https://cdn.jsdelivr.net/gh/wdm1732418365/CDN/New folder/Snipaste_2021-01-04_11-15-38.webp)</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[青龙选择性通知暂行解决办法(修改sendnotify.js文件)]]></title>
         <id>https://ldsoy.github.io/AnnanBlogs/post/sendnotify_linshi/</id>
@@ -616,30 +749,6 @@ true
 <a href="https://github.com/zero205/JD_tencent_scf/tree/main">https://github.com/zero205/JD_tencent_scf/tree/main</a></p>
 <p>这是这个库的电报交流群<br>
 <a href="https://t.me/jd_zero_205">https://t.me/jd_zero_205</a></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[关于CFW无法代理uwp应用]]></title>
-        <id>https://ldsoy.github.io/AnnanBlogs/post/cfw_uwp/</id>
-        <link href="https://ldsoy.github.io/AnnanBlogs/post/cfw_uwp/">
-        </link>
-        <updated>2021-10-05T03:55:30.000Z</updated>
-        <summary type="html"><![CDATA[<p>正常情况下，clash for wondows 是无法代理到windows系统的UWP的应用的，UWP应用包括但不限于Microsoft Store，还有啥你可以自己搜下</p>
-<p>这种模式好像叫UWP应用回环</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>正常情况下，clash for wondows 是无法代理到windows系统的UWP的应用的，UWP应用包括但不限于Microsoft Store，还有啥你可以自己搜下</p>
-<p>这种模式好像叫UWP应用回环</p>
-<!-- more -->
-<ol>
-<li>
-<p>打开clash，点击</p>
-<figure data-type="image" tabindex="1"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20211005115842.png" alt="" loading="lazy"></figure>
-</li>
-<li>
-<p>进去后选择你需要代理的UWP应用，Save changes就行了</p>
-<figure data-type="image" tabindex="2"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20211005120254.png" alt="" loading="lazy"></figure>
-</li>
-</ol>
 ]]></content>
     </entry>
 </feed>
