@@ -1,0 +1,290 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>centos安装的先前工作 | Annan&#39;s Blogs</title>
+<link rel="shortcut icon" href="https://ldsoy.github.io/AnnanBlogs//favicon.ico?v=1638291292768">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://ldsoy.github.io/AnnanBlogs//styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="centos安装的先前工作 | Annan&#39;s Blogs - Atom Feed" href="https://ldsoy.github.io/AnnanBlogs//atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="一个空白的Centos7.6版本的系统，使用前需要弄得工作
+
+设置系统时间为北京时间（可选）
+1.删除自带的localtime
+rm -rf /etc/localtime
+
+2.创建软链接到localtime
+ln -s /usr/shar..." />
+    <meta name="keywords" content="linux" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://ldsoy.github.io/AnnanBlogs/">
+  <img class="avatar" src="https://ldsoy.github.io/AnnanBlogs//images/avatar.png?v=1638291292768" alt="">
+  </a>
+  <h1 class="site-title">
+    Annan&#39;s Blogs
+  </h1>
+  <p class="site-description">
+    每天都要开心哦！
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://ldsoy.github.io/AnnanBlogs/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="https://ldsoy.github.io/AnnanBlogs/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="https://ldsoy.github.io/AnnanBlogs/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://ldsoy.github.io/AnnanBlogs/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              centos安装的先前工作
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-12-01
+              </span>
+              <span>
+                3 min read
+              </span>
+              
+                <a href="https://ldsoy.github.io/AnnanBlogs/tag/mE0kg5We8/" class="post-tag">
+                  # linux
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>一个空白的Centos7.6版本的系统，使用前需要弄得工作</p>
+<!-- more -->
+<h2 id="设置系统时间为北京时间可选">设置系统时间为北京时间（可选）</h2>
+<p>1.删除自带的localtime</p>
+<pre><code class="language-sh">rm -rf /etc/localtime
+</code></pre>
+<p>2.创建软链接到localtime</p>
+<pre><code class="language-sh">ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+</code></pre>
+<h2 id="宝塔面板安装">宝塔面板安装</h2>
+<pre><code class="language-sh">yum install -y wget &amp;&amp; wget -O install.sh http://download.bt.cn/install/install_6.0.sh &amp;&amp; sh install.sh
+</code></pre>
+<h2 id="docker安装">Docker安装</h2>
+<p>安装前用sudo更新下软件包</p>
+<pre><code class="language-sh">sudo yum update
+</code></pre>
+<p>卸载旧版本(如果安装过旧版本的话)</p>
+<pre><code class="language-sh">sudo yum remove docker  docker-common docker-selinux docker-engine
+</code></pre>
+<p>安装需要的软件包， yum-util 提供yum-config-manager功能，另外两个是devicemapper驱动依赖的</p>
+<pre><code class="language-sh">sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+</code></pre>
+<p>设置yum源</p>
+<pre><code class="language-sh">sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+</code></pre>
+<p>可以查看所有仓库中所有docker版本，并选择特定版本安装</p>
+<pre><code class="language-sh">yum list docker-ce --showduplicates | sort -r
+</code></pre>
+<p>安装docker</p>
+<pre><code class="language-sh">sudo yum install docker-ce  #由于repo中默认只开启stable仓库，故这里安装的是最新稳定版17.12.0
+#sudo yum install &lt;FQPN&gt;  # 例如：sudo yum install docker-ce-17.12.0.ce
+</code></pre>
+<p>启动并加入开机启动</p>
+<pre><code class="language-sh">sudo systemctl start docker
+sudo systemctl enable docker
+</code></pre>
+<p>验证安装是否成功(有client和service两部分表示docker安装启动都成功了)</p>
+<pre><code class="language-sh">docker version
+</code></pre>
+<h3 id="docker可视化面板portainer安装">docker可视化面板Portainer安装</h3>
+<pre><code class="language-sh"># 搜索镜像
+docker search portainer/portainer
+# 拉取镜像
+docker pull portainer/portainer
+# 运行镜像
+docker run -d -p 9000:9000 -v /root/portainer:/data -v /var/run/docker.sock:/var/run/docker.sock --name dev-portainer portainer/portainer
+</code></pre>
+<p>参数说明：</p>
+<blockquote>
+<p>-d #容器在后台运行</p>
+<p>-p 9000:9000 # 宿主机9000端口映射容器中的9000端口</p>
+<p>-v /var/run/docker.sock:/var/run/docker.sock # 把宿主机的Docker守护进程(docker daemon)默认监听的Unix域套接字挂载到容器中</p>
+<p>-v /root/portainer:/data # 把宿主机目录 /root/portainer 挂载到容器 /data 目录；</p>
+<p>–name dev-portainer # 指定运行容器的名称</p>
+</blockquote>
+<h3 id="docker拉取镜像速度慢解决">docker拉取镜像速度慢解决</h3>
+<p>在/etc/docker/daemon.json文件中添加下面参数</p>
+<p>此处使用的是中国科技大学的docker镜像源</p>
+<pre><code class="language-shell">{
+
+ &quot;registry-mirrors&quot; : [&quot;https://docker.mirrors.ustc.edu.cn&quot;]
+
+}
+</code></pre>
+<p>弄完重启容器服务<code>service docker restart</code></p>
+<h2 id="关于端口命令">关于端口命令</h2>
+<h3 id="查看所有开放端口">查看所有开放端口</h3>
+<pre><code class="language-sh">firewall-cmd --zone=public --list-ports
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/image-20211130220256939.png" alt="image-20211130220256939" loading="lazy"></figure>
+<h3 id="查看监听的端口">查看监听的端口</h3>
+<pre><code class="language-sh">netstat -lnpt
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/image-20211130220333208.png" alt="image-20211130220333208" loading="lazy"></figure>
+<p><em><strong>PS:centos7默认没有 netstat 命令，需要安装 net-tools 工具，yum install -y net-tools</strong></em></p>
+<h3 id="检查端口号被哪个进程占用或者可以检索进程号占用的哪个端口">检查端口号被哪个进程占用，或者可以检索进程号占用的哪个端口</h3>
+<figure data-type="image" tabindex="3"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/image-20211130220659404.png" alt="image-20211130220659404" loading="lazy"></figure>
+<h2 id="关于进程的命令">关于进程的命令</h2>
+<h3 id="查看所有命令">查看所有命令</h3>
+<pre><code class="language-sh">ps -a
+</code></pre>
+<h3 id="查看某个进程的详细信息">查看某个进程的详细信息</h3>
+<pre><code class="language-sh">ps 2809
+</code></pre>
+<h3 id="终止进程">终止进程</h3>
+<pre><code class="language-sh">kill -9 2809
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E8%AE%BE%E7%BD%AE%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4%E4%B8%BA%E5%8C%97%E4%BA%AC%E6%97%B6%E9%97%B4%E5%8F%AF%E9%80%89">设置系统时间为北京时间（可选）</a></li>
+<li><a href="#%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E5%AE%89%E8%A3%85">宝塔面板安装</a></li>
+<li><a href="#docker%E5%AE%89%E8%A3%85">Docker安装</a>
+<ul>
+<li><a href="#docker%E5%8F%AF%E8%A7%86%E5%8C%96%E9%9D%A2%E6%9D%BFportainer%E5%AE%89%E8%A3%85">docker可视化面板Portainer安装</a></li>
+<li><a href="#docker%E6%8B%89%E5%8F%96%E9%95%9C%E5%83%8F%E9%80%9F%E5%BA%A6%E6%85%A2%E8%A7%A3%E5%86%B3">docker拉取镜像速度慢解决</a></li>
+</ul>
+</li>
+<li><a href="#%E5%85%B3%E4%BA%8E%E7%AB%AF%E5%8F%A3%E5%91%BD%E4%BB%A4">关于端口命令</a>
+<ul>
+<li><a href="#%E6%9F%A5%E7%9C%8B%E6%89%80%E6%9C%89%E5%BC%80%E6%94%BE%E7%AB%AF%E5%8F%A3">查看所有开放端口</a></li>
+<li><a href="#%E6%9F%A5%E7%9C%8B%E7%9B%91%E5%90%AC%E7%9A%84%E7%AB%AF%E5%8F%A3">查看监听的端口</a></li>
+<li><a href="#%E6%A3%80%E6%9F%A5%E7%AB%AF%E5%8F%A3%E5%8F%B7%E8%A2%AB%E5%93%AA%E4%B8%AA%E8%BF%9B%E7%A8%8B%E5%8D%A0%E7%94%A8%E6%88%96%E8%80%85%E5%8F%AF%E4%BB%A5%E6%A3%80%E7%B4%A2%E8%BF%9B%E7%A8%8B%E5%8F%B7%E5%8D%A0%E7%94%A8%E7%9A%84%E5%93%AA%E4%B8%AA%E7%AB%AF%E5%8F%A3">检查端口号被哪个进程占用，或者可以检索进程号占用的哪个端口</a></li>
+</ul>
+</li>
+<li><a href="#%E5%85%B3%E4%BA%8E%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%91%BD%E4%BB%A4">关于进程的命令</a>
+<ul>
+<li><a href="#%E6%9F%A5%E7%9C%8B%E6%89%80%E6%9C%89%E5%91%BD%E4%BB%A4">查看所有命令</a></li>
+<li><a href="#%E6%9F%A5%E7%9C%8B%E6%9F%90%E4%B8%AA%E8%BF%9B%E7%A8%8B%E7%9A%84%E8%AF%A6%E7%BB%86%E4%BF%A1%E6%81%AF">查看某个进程的详细信息</a></li>
+<li><a href="#%E7%BB%88%E6%AD%A2%E8%BF%9B%E7%A8%8B">终止进程</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://ldsoy.github.io/AnnanBlogs/post/myfirstvps-conclusion/">
+              <h3 class="post-title">
+                我的第一个vps总结
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://ldsoy.github.io/AnnanBlogs//atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
