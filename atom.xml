@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ldsoy.github.io/AnnanBlogs/</id>
     <title>Annan&apos;s Blogs</title>
-    <updated>2021-12-03T04:44:57.802Z</updated>
+    <updated>2021-12-12T03:02:56.621Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ldsoy.github.io/AnnanBlogs/"/>
     <link rel="self" href="https://ldsoy.github.io/AnnanBlogs/atom.xml"/>
@@ -10,6 +10,23 @@
     <logo>https://ldsoy.github.io/AnnanBlogs/images/avatar.png</logo>
     <icon>https://ldsoy.github.io/AnnanBlogs/favicon.ico</icon>
     <rights>All rights reserved 2021, Annan&apos;s Blogs</rights>
+    <entry>
+        <title type="html"><![CDATA[N1单臂路由设置]]></title>
+        <id>https://ldsoy.github.io/AnnanBlogs/post/n1-danbi/</id>
+        <link href="https://ldsoy.github.io/AnnanBlogs/post/n1-danbi/">
+        </link>
+        <updated>2021-12-12T03:01:15.000Z</updated>
+        <summary type="html"><![CDATA[<p>Openwrt如何设置单臂路由</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Openwrt如何设置单臂路由</p>
+<!-- more -->
+<p>1.LAN口物理设置关闭桥接</p>
+<p>2.添加一个WAN口和LAN口同一块物理网卡</p>
+<figure data-type="image" tabindex="1"><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/image-20211212110018126.png" alt="image-20211212110018126" loading="lazy"></figure>
+<p>WAN的上网协议就看着你自己了，DHCP和PPOE都行</p>
+<p>3.在LAN口设置IP段，别和其他路由冲突</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[centos安装的先前工作]]></title>
         <id>https://ldsoy.github.io/AnnanBlogs/post/use-centos-before/</id>
@@ -739,38 +756,6 @@ true
 <p><mark>注意</mark><br>
 上文说的环境变量是下图圈中的这个，别搞错了，替换完了env.db,记得重启面板才会生效<br>
 <img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20211027040731.png" alt="" loading="lazy"></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[京东Cookie的获取（安卓＋PC）]]></title>
-        <id>https://ldsoy.github.io/AnnanBlogs/post/get_jingdongcookie/</id>
-        <link href="https://ldsoy.github.io/AnnanBlogs/post/get_jingdongcookie/">
-        </link>
-        <updated>2021-10-21T12:14:09.000Z</updated>
-        <summary type="html"><![CDATA[<p>这里提供两种获取京东Cookie的方式</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>这里提供两种获取京东Cookie的方式</p>
-<!-- more -->
-<h1 id="1安卓获取">1.安卓获取</h1>
-<ul>
-<li>下载 京豆app</li>
-<li><a href="https://sexyfox.lanzouw.com/iiY0Ow91lyh">https://sexyfox.lanzouw.com/iiY0Ow91lyh</a></li>
-<li>安装好</li>
-<li><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/1634819099908.jpg" alt="1634819107702" loading="lazy"></li>
-<li>点击 <code>获取京东CK</code> 然后输入手机号验证码，就弹出来Cookie了</li>
-</ul>
-<p><mark>提示：</mark><br>
-这个软件除了可以获取COOKIE外，还可以在桌面上添加京豆信息组件<br>
-预览图：<a href="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/1634819099908.jpg">点击预览</a></p>
-<p>感谢作者：<a href="https://github.com/wangjing71/JingBeanAppWidget">https://github.com/wangjing71/JingBeanAppWidget</a></p>
-<h1 id="2pc获取">2.PC获取</h1>
-<ul>
-<li>下载 <code>Get_COOKIE.zip</code> 文件并解压</li>
-<li>双击 <code>JDCookie获取工具-forWin.exe</code> 打开</li>
-<li>如果有错，就命令行中的提示，去下载跟你谷歌版本差不多的驱动</li>
-<li>查看谷歌版本<a href="chrome://settings/help">chrome://settings/help</a></li>
-<li>装好驱动，就会弹出来京东手机网页的登入，输入手机号验证码，登入成功，COOKIE就会显示在命令行，同时程序目录下也会出现一个txt文档，里面就是获取到的COOKIE</li>
-</ul>
 ]]></content>
     </entry>
 </feed>
