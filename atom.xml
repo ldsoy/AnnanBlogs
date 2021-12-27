@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ldsoy.github.io/AnnanBlogs/</id>
     <title>Annan&apos;s Blogs</title>
-    <updated>2021-12-13T14:11:29.348Z</updated>
+    <updated>2021-12-27T12:08:32.516Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ldsoy.github.io/AnnanBlogs/"/>
     <link rel="self" href="https://ldsoy.github.io/AnnanBlogs/atom.xml"/>
@@ -696,12 +696,23 @@ NETJDC started
 ]]></summary>
         <content type="html"><![CDATA[<p>记录常见的青龙脚本库</p>
 <!-- more -->
-<p>Faker</p>
-<pre><code class="language-java">ql repo https://ghproxy.com/https://github.com/shufflewzc/faker2.git &quot;jd_|jx_|gua_|jddj_|getJDCookie&quot; &quot;activity|backUp&quot; &quot;^jd[^_]|USER|ZooFaker_Necklace.js|JDJRValidator_Pure|sign_graphics_validate&quot;
-</code></pre>
-<p>Zero_205</p>
-<pre><code class="language-java">ql repo https://github.com/zero205/JD_tencent_scf.git &quot;jd_|jx_|getJDCookie&quot; &quot;backUp|icon&quot; &quot;^jd[^_]|USER|sendNotify|sign_graphics_validate|JDJR|JDSign&quot; &quot;main&quot;
-</code></pre>
+<ol>
+<li>JB库<br>
+ql repo https://ghproxy.com/github.com/KingRan/JDJB.git &quot;jd_|jx_|jdCookie&quot; &quot;activity|backUp&quot; &quot;<sup>jd[</sup>_]|USER|utils|function|sign|sendNotify|ql|JDJR&quot;</li>
+<li>smiek2121开卡库：<br>
+ql repo https://ghproxy.com/github.com/smiek2121/scripts.git &quot;jd_|gua_&quot; &quot;&quot; &quot;ZooFaker_Necklace.js|JDJRValidator_Pure.js|sign_graphics_validate.js&quot;</li>
+<li>619库<br>
+ql repo https://github.com/gys619/jdd.git &quot;jd_|jx_|jddj_|gua_|jddj_|getJDCookie|wskey&quot; &quot;activity|backUp&quot; &quot;<sup>jd[</sup>_]|USER|utils|ZooFaker_Necklace|JDJRValidator_Pure|sign_graphics_validate|jddj_cookie|function|ql&quot;</li>
+<li>kingran库<br>
+ql repo https://ghproxy.com/github.com/KingRan/JD-Scripts.git &quot;jd_|jx_|getJDCookie&quot; &quot;activity|backUp&quot; &quot;<sup>jd[</sup>_]|USER|utils|function&quot;</li>
+<li>faker2库<br>
+ql repo https://ghproxy.com/https://github.com/shufflewzc/faker2.git &quot;jd_|jx_|gua_|jddj_|getJDCookie&quot; &quot;activity|backUp&quot; &quot;<sup>jd[</sup><em>]|USER|function|utils|sendNotify|ZooFaker_Necklace.js|JDJRValidator</em>|sign_graphics_validate|ql&quot;</li>
+<li>faker3纯净库<br>
+ql repo https://ghproxy.com/https://github.com/shufflewzc/faker3.git &quot;jd_|jx_|gua_|jddj_|getJDCookie&quot; &quot;activity|backUp&quot; &quot;<sup>jd[</sup><em>]|USER|function|utils|sendNotify|ZooFaker_Necklace.js|JDJRValidator</em>|sign_graphics_validate|ql&quot;</li>
+<li>ccwav大佬的资产通知增强版和CK检测 不包含sendNotify:<br>
+ql repo https://github.com/ccwav/QLScript2.git &quot;jd_&quot; &quot;sendNotify|NoUsed&quot; &quot;ql&quot; 包含sendNotify: ql repo https://github.com/ccwav/QLScript2.git &quot;jd_&quot; &quot;NoUsed&quot; &quot;ql|sendNotify&quot;</li>
+</ol>
+<p>欢迎补充更新……</p>
 ]]></content>
     </entry>
     <entry>
