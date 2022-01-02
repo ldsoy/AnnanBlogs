@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ldsoy.github.io/AnnanBlogs/</id>
     <title>Annan&apos;s Blogs</title>
-    <updated>2022-01-02T08:34:59.771Z</updated>
+    <updated>2022-01-02T08:35:45.096Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ldsoy.github.io/AnnanBlogs/"/>
     <link rel="self" href="https://ldsoy.github.io/AnnanBlogs/atom.xml"/>
@@ -579,114 +579,6 @@ repo=$repo7                                        #默认调用 shufflewzc_fake
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[云服务器安装nvjdc面板（配合青龙使用）]]></title>
-        <id>https://ldsoy.github.io/AnnanBlogs/post/nvjdc_install_qinglong/</id>
-        <link href="https://ldsoy.github.io/AnnanBlogs/post/nvjdc_install_qinglong/">
-        </link>
-        <updated>2021-11-06T10:38:16.000Z</updated>
-        <summary type="html"><![CDATA[<p>感谢作者：<a href="https://github.com/NolanHzy/nvjdc">https://github.com/NolanHzy/nvjdc</a><br>
-安装环境：centos 7.6<br>
-配置：2h4g<br>
-面板功能：手机号登入自动获取京东ck，并自动更新到青龙面板</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>感谢作者：<a href="https://github.com/NolanHzy/nvjdc">https://github.com/NolanHzy/nvjdc</a><br>
-安装环境：centos 7.6<br>
-配置：2h4g<br>
-面板功能：手机号登入自动获取京东ck，并自动更新到青龙面板</p>
-<!-- more -->
-<h2 id="安装之前一定要安装unzip不装解压会出错">安装之前一定要安装unzip，不装解压会出错</h2>
-<pre><code class="language-shell">sudo yum update
-sudo yum install unzip
-</code></pre>
-<h2 id="安装">安装</h2>
-<p>1.首先进入你的宿主机，不是青龙容器<br>
-2.创建一个目录放配置以及chromium</p>
-<pre><code>cd /
-</code></pre>
-<pre><code>mkdir nolan &amp;&amp; cd nolan
-</code></pre>
-<p>3.下载config.json 配置文件(先下载好，一会再说怎么修改)<br>
-这个文件非常玄学，如果下不了就换个别人的库，再不行就创建个config.json，并把第九步的配置复制粘贴进去，效果一样</p>
-<pre><code>wget -O Config.json  https://raw.githubusercontent.com/NolanHzy/nvjdc/main/Config.json
-</code></pre>
-<p>国内请使用</p>
-<pre><code>wget -O Config.json   https://ghproxy.com/https://raw.githubusercontent.com/NolanHzy/nvjdc/main/Config.json
-</code></pre>
-<p>4 .创建chromium文件夹并进入</p>
-<pre><code>mkdir -p  .local-chromium/Linux-884014 &amp;&amp; cd .local-chromium/Linux-884014
-</code></pre>
-<p>5.下载 chromium</p>
-<pre><code>wget https://mirrors.huaweicloud.com/chromium-browser-snapshots/Linux_x64/884014/chrome-linux.zip &amp;&amp; unzip chrome-linux.zip
-</code></pre>
-<p>6.删除刚刚下载的压缩包,并回到上级目录</p>
-<pre><code>rm -rf chrome-linux.zip
-</code></pre>
-<pre><code>cd  /nolan
-</code></pre>
-<p>7.拉镜像(拉镜像的时候，如果拉不动，就检查一下你有没有装shellclash类似的代理软件，先把代理软件关了，再拉，因为一般国内的云服务器的docker的镜像都是用的国内163的镜像，如果开代理软件就会导致镜像从国外拉去，可能会是失败)</p>
-<pre><code>sudo docker pull nolanhzy/nvjdc:latest
-</code></pre>
-<p>8.启动镜像（这里是把80端口映射到了宿主机的5701端口，映射目录和端口啥的你们根据自己的情况改）</p>
-<pre><code class="language-shell">sudo docker run -d \
---name nvjdc \
--p 5703:80 \
--v /home/nolan:/app \ #这个目录根据你们情况改哦
--v /etc/localtime:/etc/localtime:ro \  #这个不用改
--it --privileged=true \
-nolanhzy/nvjdc:latest
-</code></pre>
-<p>9.配置第三步下好的Config.json文件</p>
-<pre><code class="language-java">{
-  ///浏览器最多几个网页
-  &quot;MaxTab&quot;: &quot;4&quot;,
-  //网站标题
-  &quot;Title&quot;: &quot;NVJDC&quot;,
-  //回收时间分钟 不填默认3分钟
-  &quot;Closetime&quot;: &quot;3&quot;,
-  //网站公告
-  &quot;Announcement&quot;: &quot;做人，最重要的就是开心啦。&quot;,
-  ///开启打印等待日志卡短信验证登陆 可开启 拿到日志群里回复 默认不要填写
-  &quot;Debug&quot;: &quot;&quot;,
-  ///自动滑块次数5次 5次后手动滑块 可设置为0默认手动滑块
-  &quot;AutoCaptchaCount&quot;: &quot;5&quot;,
-  ///XDD PLUS Url  http://IP地址:端口/api/login/smslogin
-  &quot;XDDurl&quot;: &quot;&quot;,
-  ///xddToken
-  &quot;XDDToken&quot;: &quot;&quot;,
-  ///青龙配置  注意对接XDD 对接芝士 设置为&quot;Config&quot;:[]
-  &quot;Config&quot;: [
-    {
-      //序号必填从1 开始
-      &quot;QLkey&quot;: 1,
-      //服务器名称
-      &quot;QLName&quot;: &quot;阿里云&quot;,
-      //青龙地址
-      &quot;QLurl&quot;: &quot;&quot;,
-      //青龙2,9 OpenApi Client ID
-      &quot;QL_CLIENTID&quot;: &quot;&quot;,
-      //青龙2,9 OpenApi Client Secret
-      &quot;QL_SECRET&quot;: &quot;&quot;,
-      //CK最大数量
-      &quot;QL_CAPACITY&quot;: 40,
-      &quot;QRurl&quot;: &quot;&quot;
-    }
-  ]
-}
-</code></pre>
-<p>10.配置好，重启容器,检查日志输出</p>
-<pre><code>docker restart nvjdc
-</code></pre>
-<pre><code>docker logs -f nvjdc
-</code></pre>
-<p>如果出现下面这样就好了</p>
-<pre><code>True
-检查成功
-NETJDC started
-</code></pre>
-<p>11.弄好了直接访问你的ip:5703就好了</p>
-]]></content>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[京东青龙脚本库]]></title>
         <id>https://ldsoy.github.io/AnnanBlogs/post/qinglong_getjs/</id>
         <link href="https://ldsoy.github.io/AnnanBlogs/post/qinglong_getjs/">
@@ -796,6 +688,38 @@ true
 <p><mark>注意</mark><br>
 上文说的环境变量是下图圈中的这个，别搞错了，替换完了env.db,记得重启面板才会生效<br>
 <img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20211027040731.png" alt="" loading="lazy"></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[京东Cookie的获取（安卓＋PC）]]></title>
+        <id>https://ldsoy.github.io/AnnanBlogs/post/get_jingdongcookie/</id>
+        <link href="https://ldsoy.github.io/AnnanBlogs/post/get_jingdongcookie/">
+        </link>
+        <updated>2021-10-21T12:14:09.000Z</updated>
+        <summary type="html"><![CDATA[<p>这里提供两种获取京东Cookie的方式</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>这里提供两种获取京东Cookie的方式</p>
+<!-- more -->
+<h1 id="1安卓获取">1.安卓获取</h1>
+<ul>
+<li>下载 京豆app</li>
+<li><a href="https://sexyfox.lanzouw.com/iiY0Ow91lyh">https://sexyfox.lanzouw.com/iiY0Ow91lyh</a></li>
+<li>安装好</li>
+<li><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/1634819099908.jpg" alt="1634819107702" loading="lazy"></li>
+<li>点击 <code>获取京东CK</code> 然后输入手机号验证码，就弹出来Cookie了</li>
+</ul>
+<p><mark>提示：</mark><br>
+这个软件除了可以获取COOKIE外，还可以在桌面上添加京豆信息组件<br>
+预览图：<a href="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/1634819099908.jpg">点击预览</a></p>
+<p>感谢作者：<a href="https://github.com/wangjing71/JingBeanAppWidget">https://github.com/wangjing71/JingBeanAppWidget</a></p>
+<h1 id="2pc获取">2.PC获取</h1>
+<ul>
+<li>下载 <code>Get_COOKIE.zip</code> 文件并解压</li>
+<li>双击 <code>JDCookie获取工具-forWin.exe</code> 打开</li>
+<li>如果有错，就命令行中的提示，去下载跟你谷歌版本差不多的驱动</li>
+<li>查看谷歌版本<a href="chrome://settings/help">chrome://settings/help</a></li>
+<li>装好驱动，就会弹出来京东手机网页的登入，输入手机号验证码，登入成功，COOKIE就会显示在命令行，同时程序目录下也会出现一个txt文档，里面就是获取到的COOKIE</li>
+</ul>
 ]]></content>
     </entry>
 </feed>
