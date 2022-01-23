@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ldsoy.github.io/AnnanBlogs/</id>
     <title>Annan&apos;s Blogs</title>
-    <updated>2022-01-02T08:50:23.645Z</updated>
+    <updated>2022-01-23T11:53:21.525Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ldsoy.github.io/AnnanBlogs/"/>
     <link rel="self" href="https://ldsoy.github.io/AnnanBlogs/atom.xml"/>
@@ -10,6 +10,68 @@
     <logo>https://ldsoy.github.io/AnnanBlogs/images/avatar.png</logo>
     <icon>https://ldsoy.github.io/AnnanBlogs/favicon.ico</icon>
     <rights>All rights reserved 2022, Annan&apos;s Blogs</rights>
+    <entry>
+        <title type="html"><![CDATA[小猫咪订阅]]></title>
+        <id>https://ldsoy.github.io/AnnanBlogs/post/clash-sub/</id>
+        <link href="https://ldsoy.github.io/AnnanBlogs/post/clash-sub/">
+        </link>
+        <updated>2022-01-23T11:49:53.000Z</updated>
+        <summary type="html"><![CDATA[<blockquote>
+<p>注意：</p>
+<p>​	以下订阅均来自互联网，出处来源都有注明，小安南只是负责整理筛选</p>
+<p>使用：</p>
+<p>使用Clash系列的工具导入订阅，包括Clash_for_Andriod、Clash_for_Windows等</p>
+<p>若订阅的节点失效了,请及时更新订阅再使用</p>
+<p>工具下载:<a href="https://sexyfox.lanzouw.com/b00pbbjjg">https://sexyfox.lanzouw.com/b00pbbjjg</a>  密码:8888</p>
+</blockquote>
+]]></summary>
+        <content type="html"><![CDATA[<blockquote>
+<p>注意：</p>
+<p>​	以下订阅均来自互联网，出处来源都有注明，小安南只是负责整理筛选</p>
+<p>使用：</p>
+<p>使用Clash系列的工具导入订阅，包括Clash_for_Andriod、Clash_for_Windows等</p>
+<p>若订阅的节点失效了,请及时更新订阅再使用</p>
+<p>工具下载:<a href="https://sexyfox.lanzouw.com/b00pbbjjg">https://sexyfox.lanzouw.com/b00pbbjjg</a>  密码:8888</p>
+</blockquote>
+<!-- more -->
+<ul>
+<li>
+<p>订阅一</p>
+<p>来源:油管不良林</p>
+<pre><code class="language-yacas">https://ldsoy.coding.net/p/Config/d/Pub/git/raw/main/buliang.yaml?download=false
+</code></pre>
+</li>
+<li>
+<p>订阅二</p>
+<p>来源:油管八度科技</p>
+<pre><code class="language-yacas">https://ldsoy.coding.net/p/Config/d/Pub/git/raw/main/8du.yaml?download=false
+</code></pre>
+</li>
+<li>
+<p>订阅三</p>
+<p>来源:Github的Freefq</p>
+<pre><code class="language-yacas">https://ldsoy.coding.net/p/Config/d/Pub/git/raw/main/freefq.yaml?download=false
+</code></pre>
+</li>
+<li>
+<p>订阅四</p>
+<p>来源:yugogo节点池，节点池网址:<a href="https://proxy.yugogo.xyz">https://proxy.yugogo.xyz</a>,下面两条订阅筛选出了香港和美国的中转节点,节点类型是vmess和trojan类型的,如果你会使用节点池的参数,你也可以字节改规则筛选,若不会,那就用下面这两条吧,够用了</p>
+<ul>
+<li>
+<p>香港中转节点筛选出的订阅:</p>
+<pre><code class="language-yacas">https://api.dler.io/sub?target=clash&amp;url=https://proxy.yugogo.xyz/clash/proxies?c=HK&amp;filter=1&amp;type=vmess,trojan&amp;config=config/ACL4SSR_Mini.ini&amp;include=Relay
+</code></pre>
+</li>
+<li>
+<p>美国中转节点筛选出的订阅:</p>
+<pre><code class="language-yacas">https://api.dler.io/sub?target=clash&amp;url=https://proxy.yugogo.xyz/clash/proxies?c=US&amp;filter=1&amp;type=vmess,trojan&amp;config=config/ACL4SSR_Mini.ini&amp;include=Relay
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[N1单臂路由设置]]></title>
         <id>https://ldsoy.github.io/AnnanBlogs/post/n1-danbi/</id>
@@ -688,38 +750,6 @@ true
 <p><mark>注意</mark><br>
 上文说的环境变量是下图圈中的这个，别搞错了，替换完了env.db,记得重启面板才会生效<br>
 <img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/20211027040731.png" alt="" loading="lazy"></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[京东Cookie的获取（安卓＋PC）]]></title>
-        <id>https://ldsoy.github.io/AnnanBlogs/post/get_jingdongcookie/</id>
-        <link href="https://ldsoy.github.io/AnnanBlogs/post/get_jingdongcookie/">
-        </link>
-        <updated>2021-10-21T12:14:09.000Z</updated>
-        <summary type="html"><![CDATA[<p>这里提供两种获取京东Cookie的方式</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>这里提供两种获取京东Cookie的方式</p>
-<!-- more -->
-<h1 id="1安卓获取">1.安卓获取</h1>
-<ul>
-<li>下载 京豆app</li>
-<li><a href="https://sexyfox.lanzouw.com/iiY0Ow91lyh">https://sexyfox.lanzouw.com/iiY0Ow91lyh</a></li>
-<li>安装好</li>
-<li><img src="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/1634819099908.jpg" alt="1634819107702" loading="lazy"></li>
-<li>点击 <code>获取京东CK</code> 然后输入手机号验证码，就弹出来Cookie了</li>
-</ul>
-<p><mark>提示：</mark><br>
-这个软件除了可以获取COOKIE外，还可以在桌面上添加京豆信息组件<br>
-预览图：<a href="https://ldsoy.coding.net/p/PC/d/Img/git/raw/master/MDimg/1634819099908.jpg">点击预览</a></p>
-<p>感谢作者：<a href="https://github.com/wangjing71/JingBeanAppWidget">https://github.com/wangjing71/JingBeanAppWidget</a></p>
-<h1 id="2pc获取">2.PC获取</h1>
-<ul>
-<li>下载 <code>Get_COOKIE.zip</code> 文件并解压</li>
-<li>双击 <code>JDCookie获取工具-forWin.exe</code> 打开</li>
-<li>如果有错，就命令行中的提示，去下载跟你谷歌版本差不多的驱动</li>
-<li>查看谷歌版本<a href="chrome://settings/help">chrome://settings/help</a></li>
-<li>装好驱动，就会弹出来京东手机网页的登入，输入手机号验证码，登入成功，COOKIE就会显示在命令行，同时程序目录下也会出现一个txt文档，里面就是获取到的COOKIE</li>
-</ul>
 ]]></content>
     </entry>
 </feed>
